@@ -1,13 +1,13 @@
 # Edited excerpts from forum.i2p thread http://forum.i2p/viewtopic.php?t=2474
 
-## Initial Version — posted: Thu Jan 03, 2008 10:24 pm
+## Initial Version — posted: Jan 3, 2008 10:24 pm
 	
-This Messenger is a very early Beta Release!
+This messenger is a very early beta release.
 
 ### Features
 
- * Online States: like invisible, want to chat...
- * Sound Events: like a new chat message
+ * Online States: like invisible, want to chat etc
+ * Sound Events: like a new chat message etc
  * Chat Messages: formatted text with colors
 
 ### Security
@@ -18,6 +18,6 @@ This Messenger is a very early Beta Release!
 
 ### Details
 
- * The client works with the I2P - SAM Protocol, default Port 7656 TCP.
- * The communication goes "direct over i2p" from client to client, no server required.
+ * The client works with the I2P SAM protocol; default port: 7656 TCP.
+ * The communication goes «direct over i2p» from client to client, no server is required.
  * […]
