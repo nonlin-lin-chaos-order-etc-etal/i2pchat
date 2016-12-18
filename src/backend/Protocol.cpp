@@ -303,6 +303,13 @@ using namespace Protocol_Info;
 
 	CI2PStream* stream=mCore.getI2PStreamObjectByID(ID);
 
+    if(stream==0) {
+        auto msg = "Protocol.cpp : stream object is null, ignoring incoming data\n";
+        qDebug() << msg;
+        QErrorMessage * box = new QErrorMessage(); box->showMessage(msg);
+        return;
+    }
+
 	if(stream->getConnectionType()==UNKNOWN){
 	//check if First Paket = from a other CHATSYSTEM
 		if(Data.contains("CHATSYSTEM\t")==true){

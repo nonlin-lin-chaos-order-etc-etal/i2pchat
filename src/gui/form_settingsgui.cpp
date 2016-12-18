@@ -133,7 +133,7 @@ void form_settingsgui::loadSettings()
 {
 	settings->beginGroup("General");
 		spinBox->setValue(settings->value("Debug_Max_Message_count","20").toInt());
-		spinBox_3->setValue(settings->value("Waittime_between_rechecking_offline_users","30000").toInt()/1000);
+        waitTimeBetweenCheckingForOfflineUsersSecondsSpinBox->setValue(settings->value("Waittime_between_rechecking_offline_users","1000").toInt()/1000);
 		checkBox_DebugLog->setChecked(settings->value(("DebugLogging"),"true").toBool());
 
 		if(settings->value("current_Style","").toString().isEmpty()==false)
@@ -339,7 +339,8 @@ void form_settingsgui::saveSettings()
 {	
 	settings->beginGroup("General");
 		settings->setValue("Debug_Max_Message_count",spinBox->value());
-		settings->setValue("Waittime_between_rechecking_offline_users",spinBox_3->value()*1000);
+        settings->setValue("Waittime_between_rechecking_offline_users",
+                           waitTimeBetweenCheckingForOfflineUsersSecondsSpinBox->value()*1000);
 		settings->setValue("current_Style",styleCombo->currentText());
 		settings->setValue("current_Style_sheet",styleSheetCombo->currentText());
 		settings->setValue("AutoAcceptFileRecive",checkBox_AutoAcceptFileRecive->isChecked());

@@ -78,7 +78,16 @@
     <enum>QFrame::Plain</enum>
    </property>
    <layout class="QGridLayout">
-    <property name="margin">
+    <property name="leftMargin">
+     <number>9</number>
+    </property>
+    <property name="topMargin">
+     <number>9</number>
+    </property>
+    <property name="rightMargin">
+     <number>9</number>
+    </property>
+    <property name="bottomMargin">
      <number>9</number>
     </property>
     <property name="spacing">
@@ -86,7 +95,16 @@
     </property>
     <item row="1" column="0" colspan="4">
      <layout class="QGridLayout">
-      <property name="margin">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
        <number>0</number>
       </property>
       <property name="spacing">
@@ -107,7 +125,16 @@
          <enum>QFrame::Raised</enum>
         </property>
         <layout class="QGridLayout">
-         <property name="margin">
+         <property name="leftMargin">
+          <number>9</number>
+         </property>
+         <property name="topMargin">
+          <number>9</number>
+         </property>
+         <property name="rightMargin">
+          <number>9</number>
+         </property>
+         <property name="bottomMargin">
           <number>9</number>
          </property>
          <property name="spacing">
@@ -342,7 +369,7 @@
     <item row="0" column="1">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="general_page">
        <widget class="QGroupBox" name="groupBox_6">
@@ -355,7 +382,7 @@
          </rect>
         </property>
         <property name="title">
-         <string>Waittime between rechecking offline users</string>
+         <string>Wait time between rechecking for offline users</string>
         </property>
         <widget class="QWidget" name="layoutWidget_1">
          <property name="geometry">
@@ -375,12 +402,15 @@
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="spinBox_3">
+           <widget class="QSpinBox" name="waitTimeBetweenCheckingForOfflineUsersSecondsSpinBox">
             <property name="minimum">
-             <number>30</number>
+             <number>1</number>
             </property>
             <property name="maximum">
              <number>99999</number>
+            </property>
+            <property name="value">
+             <number>1</number>
             </property>
            </widget>
           </item>
@@ -397,7 +427,7 @@
          </rect>
         </property>
         <property name="title">
-         <string>SAM-Log</string>
+         <string>SAM log</string>
         </property>
         <widget class="QWidget" name="layoutWidget_18">
          <property name="geometry">
@@ -412,7 +442,7 @@
           <item>
            <widget class="QLabel" name="label_4">
             <property name="text">
-             <string>Max. Log Messages:</string>
+             <string>Max. number of log messages:</string>
             </property>
            </widget>
           </item>
@@ -432,7 +462,16 @@
          </rect>
         </property>
         <layout class="QGridLayout">
-         <property name="margin">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
           <number>0</number>
          </property>
          <property name="spacing">
@@ -630,7 +669,16 @@ in your settingsdirectory</string>
          </rect>
         </property>
         <layout class="QGridLayout">
-         <property name="margin">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
           <number>0</number>
          </property>
          <property name="spacing">
@@ -728,7 +776,7 @@ p, li { white-space: pre-wrap; }
            <x>10</x>
            <y>60</y>
            <width>391</width>
-           <height>102</height>
+           <height>107</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_10">
@@ -2395,7 +2443,7 @@ p, li { white-space: pre-wrap; }
            <x>10</x>
            <y>310</y>
            <width>211</width>
-           <height>24</height>
+           <height>26</height>
           </rect>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_8">

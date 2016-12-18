@@ -11,9 +11,9 @@ TEMPLATE = app
 QMAKE_CXXFLAGS+= -std=c++11 -Wall
 QMAKE_LFLAGS  += -std=c++11
 
-DEPENDPATH += ". \
+DEPENDPATH += . \
 	      src/gui/ \
-	      src/backend/"
+              src/backend/
 
 INCLUDEPATH += . \
 	      src/gui \

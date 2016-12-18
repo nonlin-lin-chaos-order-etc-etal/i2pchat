@@ -232,7 +232,9 @@ void form_MainWindow::closeApplication(){
 		emit closeAllWindows();
 			
 		delete Core;
+        Core = 0;
 		delete trayIcon;
+        trayIcon = 0;
 		
 		this->close();
 	}
@@ -557,7 +559,7 @@ void form_MainWindow::renameUserCLicked(){
 
 void form_MainWindow::closeEvent(QCloseEvent *e)
 {
-    if (trayIcon->isVisible()) {
+    if ((trayIcon != 0) && (trayIcon->isVisible())) {
 	static bool firstTime = true;
         if (firstTime)
         {

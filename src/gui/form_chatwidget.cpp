@@ -218,7 +218,7 @@ void form_ChatWidget::addAllMessages(){
 
 void form_ChatWidget::addMessage(QString text){
 	QTextBrowser *chat=this->chat;
-	QString newMessage=text;
+    QString& newMessage=text;
 	
 	//replace http://, https:// and www. with <a href> links
 	QRegExp rx("(https?://[^ <>]*)|(www\\.[^ <>]*)");
@@ -247,7 +247,44 @@ void form_ChatWidget::addMessage(QString text){
 		pos += rx.matchedLength();
   	}
 	
-	chat->insertHtml(newMessage);
+    //append HTML (newMessage)
+    {
+        auto cursor = QTextCursor(chat->document());
+        if(cursor.isNull()) {
+            auto msg = "Error appending to chatLog: cursor is null";
+            qDebug() << msg;
+            QErrorMessage * box = new QErrorMessage(this); box->showMessage(msg);
+            return;
+        }
+        //cursor.beginEditBlock();
+        //bool success =
+                cursor.movePosition(QTextCursor::End);
+        /*if(!success) {
+            auto msg="Error appending to chatLog: error moving position to end of chat log document. QTextBrowser";
+            qDebug() << msg;
+            QErrorMessage * box = new QErrorMessage(this); box->showMessage(msg);
+            //cursor.endEditBlock();
+            return;
+        }*/
+        if(!cursor.atEnd()) {
+            auto msg = "Error appending to chatLog: ¬cursor.atBlockEnd()";
+            qDebug() << msg;
+            QErrorMessage * box = new QErrorMessage(this); box->showMessage(msg);
+            //cursor.endEditBlock();
+            return;
+        }
+
+        //cursor.insertBlock();
+
+        //cursor.insertHtml("<a href='http://www.w3schools.com/'>Link!</a>");
+        //cursor.insertText("something");
+        qDebug() << "inserting HTML: '" << newMessage << "'\n";
+        cursor.insertHtml(newMessage);
+
+        //cursor.endEditBlock();
+
+    }
+
 	chat->update();
 }	
 
