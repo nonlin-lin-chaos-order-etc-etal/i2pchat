@@ -10,7 +10,7 @@ You need to enable SAM in your router on <a href="http://127.0.0.1:7657/configcl
 
 ## Project News and History
 
-Now the development was resumed by Hypnosis-i2p and r4sas, with a lot more folks as testers &amp; bugs+issues reporters.
+Now the development was resumed by Hypnosis-i2p and R4SAS, with a lot more folks as testers &amp; bugs+issues reporters.
 
 Original developer of this messenger went away.
   
@@ -21,8 +21,8 @@ The license of this software is GPLv2.
 ## Old Files and Sites
 
  * http://echelon.i2p/qti2pmessenger/macos → Mac OS X versions, not tested;
- * http://echelon.i2p/qti2pmessenger/ → old eche|on's site for I2P Chat
- * https://launchpad.net/~i2p.packages/+archive/ubuntu/i2p/+sourcepub/4824794/+listing-archive-extra → Kill Your TV's PPA (v.0.2.25)
+ * http://echelon.i2p/qti2pmessenger/ → old eche|on's site for I2P Chat (versions up to 0.2.24);
+ * https://launchpad.net/~i2p.packages/+archive/ubuntu/i2p/+sourcepub/4824794/+listing-archive-extra → Kill Your TV's PPA (v.0.2.25).
 
 ## Forum thread (English)
 
@@ -31,8 +31,8 @@ http://forum.i2p/viewtopic.php?t=2474
 ## Notes (in Russian)
  
 я два репа на гитхабе создал
- * один для антиквариата по части и2п массажника https://github.com/hypnosis-i2p/I2PQtMessengerLegacy
- * другой для разработки, я заплоадил туда 0.2.25 https://github.com/hypnosis-i2p/i2pqtchat
+ * один для антиквариата по части и2п массажника https://github.com/hypnosis-i2p/I2PQtMessengerLegacy ;
+ * другой для разработки, я заплоадил туда 0.2.25 https://github.com/hypnosis-i2p/i2pqtchat .
 
 ## Build Requirements (in Russian)
 
