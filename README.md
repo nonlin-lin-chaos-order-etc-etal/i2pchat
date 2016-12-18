@@ -8,7 +8,7 @@
 
 You need to enable SAM in your router on <a href="http://127.0.0.1:7657/configclients">java i2p configclients page</a> or i2pd's i2pd.conf [sam] section to make I2P Chat work over your I2P router.
 
-## Project News and History
+## Project news and history
 
 Now the development was resumed by Hypnosis-i2p and R4SAS, with a lot more folks as testers &amp; bugs+issues reporters.
 
@@ -18,7 +18,7 @@ Original developer of this messenger went away.
 
 The license of this software is GPLv2.
 
-## Old Files and Sites
+## Old files and sites
 
  * http://echelon.i2p/qti2pmessenger/macos → Mac OS X versions, not tested;
  * http://echelon.i2p/qti2pmessenger/ → old eche|on's site for I2P Chat (versions up to 0.2.24);
