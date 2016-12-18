@@ -28,7 +28,7 @@ The license of this software is GPLv2.
 
 http://forum.i2p/viewtopic.php?t=2474
 
-## Notes (in Russian)
+## List of relevant repositories (in Russian)
  
 я два репа на гитхабе создал
  * один для антиквариата по части и2п массажника https://github.com/hypnosis-i2p/I2PQtMessengerLegacy ;
