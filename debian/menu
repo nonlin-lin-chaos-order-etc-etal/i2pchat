@@ -1,0 +1,4 @@
+?package(i2p-messenger):needs="X11" section="Applications/Network/Communication"\
+  title="i2p-messenger" command="/usr/bin/i2p-messenger"\
+  icon="/usr/share/pixmaps/i2p-messenger.xpm" \
+  longtitle="I2P Instant Messaging Client"
