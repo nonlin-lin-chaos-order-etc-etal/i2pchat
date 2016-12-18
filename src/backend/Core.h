@@ -36,8 +36,8 @@
 #include "FileTransferManager.h"
 #include "UnsentChatMessageStorage.h"
 
-#define CLIENTVERSION "0.2.25"
-#define CLIENTNAME "I2P-Messenger (QT)"
+#define CLIENTVERSION "0.2.26"
+#define CLIENTNAME "I2PChat (QT)"
 
 using namespace SAM_Message_Types;
 using namespace User;
