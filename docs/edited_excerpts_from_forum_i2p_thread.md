@@ -24,8 +24,10 @@ This messenger is a very early beta release.
 
 ### Build instructions
 
+With both Debian and Ubuntu this can be built with just qt4-qmake & libqt4-dev. Of course when compiling software you'll want to "build-essential" installed too.
+
+After these are installed, building should be possible with just
 ```
 qmake-qt4 I2P-Messenger_release.pro
-qmake-qt4
 make
 ```
