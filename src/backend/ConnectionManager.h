@@ -37,7 +37,7 @@ namespace SESSION_ENUMS
 	};
 };
 
-class CConnectionManager :public QObject
+class CConnectionManager : public QObject
 {
 	Q_OBJECT
 	public:

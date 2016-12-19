@@ -52,6 +52,7 @@ SOURCES +=  src/backend/Main.cpp \
 	    src/gui/form_settingsgui.cpp \
 	    src/gui/form_UserSearch.cpp \
 	    src/gui/form_about.cpp \
+    src/gui/form_TopicSubscribe.cpp
 
 
 HEADERS +=  src/backend/Core.h \
@@ -87,6 +88,7 @@ HEADERS +=  src/backend/Core.h \
 	    src/gui/form_UserSearch.h \
 	    src/gui/form_about.h \
 	    src/gui/gui_icons.h \
+    src/gui/form_TopicSubscribe.h
 	  
 
 
@@ -100,7 +102,8 @@ FORMS +=    src/gui/form_Main.ui \
 	    src/gui/form_rename.ui \
 	    src/gui/form_settingsgui.ui \
 	    src/gui/form_userSearch.ui \
-	    src/gui/form_about.ui 
+	    src/gui/form_about.ui \  
+    src/gui/form_topicSubscribe.ui
 	    
 
 RESOURCES += src/gui/resourcen.qrc

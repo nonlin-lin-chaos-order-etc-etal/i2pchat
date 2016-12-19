@@ -122,6 +122,7 @@ void CUser::slotIncomingNewChatMessage(QString newMessage){
 
 	newMessage=mChatMessageChanger.changeChatMessage(newMessage);
 
+    //TODO fix this in OOP way
 	this->mAllMessages.push_back(mName+" ( "+ QTime::currentTime().toString("hh:mm:ss") +" ): "+newMessage+"<br>");
 	this->mNewMessages.push_back(mName+" ( "+ QTime::currentTime().toString("hh:mm:ss") +" ): "+newMessage+"<br>");
 	

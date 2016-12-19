@@ -869,3 +869,12 @@ int CSeedlessManager::getCountForSeedlessserverSearch() const
     }
 }
 
+void CSeedlessManager::doSeedlessSubscribeToTopic(SeedlessTopicSubscribeStruct subscribeStruct) {
+    //FIXME implement  CSeedlessManager::doSeedlessSubscribeToTopic(SeedlessTopicSubscribeStruct subscribeStruct)
+}
+
+bool CSeedlessManager::openTopic(SeedlessTopicSubscribeStruct topicSubscribeStruct) {
+    //FIXME implement CSeedlessManager::openTopic(SeedlessTopicSubscribeStruct topicSubscribeStruct)
+
+    return false;
+}
