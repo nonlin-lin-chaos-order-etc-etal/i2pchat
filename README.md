@@ -1,4 +1,4 @@
-# I2P Qt Chat AKA Messenger
+# I2P Chat AKA I2P Qt Messenger
 
 ## Features
 
