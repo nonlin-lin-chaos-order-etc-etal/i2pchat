@@ -21,3 +21,11 @@ This messenger is a very early beta release.
  * The client works with the I2P SAM protocol; default port: 7656 TCP.
  * The communication goes «direct over i2p» from client to client, no server is required.
  * […]
+
+### Build instructions
+
+```
+qmake-qt4 I2P-Messenger_release.pro
+qmake-qt4
+make
+```
