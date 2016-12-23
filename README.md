@@ -32,7 +32,7 @@ http://forum.i2p/viewtopic.php?t=2474
  
 я два репа на гитхабе создал
  * один для антиквариата по части и2п массажника https://github.com/hypnosis-i2p/I2PQtMessengerLegacy ;
- * другой для разработки, я заплоадил туда 0.2.25 https://github.com/hypnosis-i2p/i2pqtchat .
+ * другой для разработки https://github.com/hypnosis-i2p/i2pchat .
 
 ## Build Requirements (in Russian)
 
