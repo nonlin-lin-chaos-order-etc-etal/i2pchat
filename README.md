@@ -2,7 +2,7 @@
 
 ## Features
 
- * The communication goes «directly over i2p» from client to client, no server is required.[1]
+ * The communication goes «directly over i2p» from client to client, no server is required`*`.[1] NB`*`: The so-called «seedless» servers are being currently used : we are auditing the code with the question «is it possible to not use any servers» in mind ; I intend to remove seedless servers technology from this project ; see : https://github.com/hypnosis-i2p/i2pchat/issues/40 . —hypn.
 
 ## How to run it
 
@@ -32,7 +32,7 @@ http://forum.i2p/viewtopic.php?t=2474
  
 я два репа на гитхабе создал
  * один для антиквариата по части и2п массажника https://github.com/hypnosis-i2p/I2PQtMessengerLegacy ;
- * другой для разработки, я заплоадил туда 0.2.25 https://github.com/hypnosis-i2p/i2pqtchat .
+ * другой для разработки https://github.com/hypnosis-i2p/i2pchat .
 
 ## Build Requirements (in Russian)
 
