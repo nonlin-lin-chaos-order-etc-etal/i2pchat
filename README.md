@@ -2,7 +2,7 @@
 
 ## Features
 
- * The communication goes «directly over i2p» from client to client, no server is required*.[1] NB*: The so-called «seedless» servers are being currently used : we are auditing the code with the question «is it possible to not use any servers» in mind ; I intend to remove seedless servers technology from this project. —hypn.
+ * The communication goes «directly over i2p» from client to client, no server is required*.[1] NB*: The so-called «seedless» servers are being currently used : we are auditing the code with the question «is it possible to not use any servers» in mind ; I intend to remove seedless servers technology from this project ; see : #40 . —hypn.
 
 ## How to run it
 
