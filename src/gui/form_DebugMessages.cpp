@@ -26,24 +26,11 @@ form_DebugMessages::form_DebugMessages(CCore& core,QDialog *parent)
 	//this->setAttribute(Qt::WA_DeleteOnClose,true);
 
 	DebugMessageManager=core.getDebugMessageHandler();
-	DebugSeedlessManager=core.getDebugSeedlessHandler();
 	
 	if(DebugMessageManager==NULL){
 		return;
 	}
     
-	if(DebugSeedlessManager!=NULL){
-		connect(DebugSeedlessManager,SIGNAL(signNewDebugMessage(QString)),this,
-		  SLOT(newDebugSeedlessMessage()));
-		  
-		connect(cmd_clear_seedless,SIGNAL(clicked()),this,
-		  SLOT(clearDebugSeedlessMessages()));
-
-		  newDebugSeedlessMessage();	  
-	}else{
-	  this->tabWidget->removeTab(1);
-	}
-
 	connect(cmd_clear_sam,SIGNAL(clicked() ),this,
 		SLOT(clearDebugMessages()));
 	connect(DebugMessageManager,SIGNAL(signNewDebugMessage(QString)),this,
@@ -52,8 +39,6 @@ form_DebugMessages::form_DebugMessages(CCore& core,QDialog *parent)
 		SLOT(connectionDump()));
 
 	connect(cmd_close,SIGNAL(clicked()),this,
-		SLOT(close()));
-	connect(cmd_close_2,SIGNAL(clicked()),this,
 		SLOT(close()));
 	connect(cmd_close_3,SIGNAL(clicked()),this,
 		SLOT(close()));
@@ -72,22 +57,6 @@ void form_DebugMessages::connectionDump()
 	connection_txt->setText(Message);
 }
 
-
-void form_DebugMessages::newDebugSeedlessMessage()
-{
-      seedless_txt->clear();
-      QStringList temp=DebugSeedlessManager->getAllMessages();
-      for(int i=0;i<temp.count();i++){
-		this->seedless_txt->append(temp[i]);
-      }
-
-	QTextCursor cursor = seedless_txt->textCursor();
-	cursor.movePosition(QTextCursor::Start);
-	seedless_txt->setTextCursor(cursor);
-}
-
-
-
 void form_DebugMessages::newDebugMessage()
 {
 	Sam_txt->clear();
@@ -101,11 +70,6 @@ void form_DebugMessages::newDebugMessage()
 	cursor.movePosition(QTextCursor::Start);
 	Sam_txt->setTextCursor(cursor);
 	
-}
-void form_DebugMessages::clearDebugSeedlessMessages()
-{
-	DebugSeedlessManager->doClearAllMessages();
-	seedless_txt->clear();
 }
 
 void form_DebugMessages::clearDebugMessages(){

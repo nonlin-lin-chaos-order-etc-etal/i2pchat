@@ -20,7 +20,6 @@
 #include "Core.h"
 
 #include "I2PStream.h"
-#include "SeedlessManager.h"
 #include "PacketManager.h"
 #include "FileTransferSend.h"
 #include "FileTransferRecive.h"
@@ -81,7 +80,7 @@ CCore::CCore()
     this->mCurrentOnlineStatus=User::USEROFFLINE;
 
     loadUserInfos();
-
+/*
     settings.beginGroup("Usersearch");
     if((settings.value("Enabled",false).toBool()) ==true && getUserInfos().Nickname.isEmpty()==false){
         mSeedlessManager= new CSeedlessManager(*this,
@@ -97,7 +96,7 @@ CCore::CCore()
     }
     settings.endGroup();
 
-
+*/
     mUnsentChatMessageStorage= new CUnsentChatMessageStorage(mConfigPath+"/UnsentChatMessageStorage.ini");
     mUserBlockManager= new CUserBlockManager(*this,mConfigPath+"/UserBlockList.dat");
     mUserManager= new CUserManager(*this,mConfigPath+"/users.config",*mUnsentChatMessageStorage);
@@ -133,15 +132,8 @@ CCore::~CCore(){
 
     delete mConnectionManager;
 
-    if(mSeedlessManager!=NULL){
-        delete mSeedlessManager;
-    }
-
     delete mUserBlockManager;
     delete mDebugMessageHandler;
-    if(mDebugSeedlessHandler!=NULL){
-        delete mDebugSeedlessHandler;
-    }
     delete mFileTransferManager;
 
 }
@@ -332,10 +324,6 @@ void CCore::closeAllActiveConnections(){
 void CCore::slotNamingReplyRecived(const SAM_Message_Types::RESULT result,QString Name,QString Value,QString Message){
     if(result==SAM_Message_Types::OK && Name=="ME"&& mMyDestination.isEmpty()){
         this->mMyDestination=Value;
-
-        if(mSeedlessManager!=NULL){
-            mSeedlessManager->doStart();
-        }
     }
     else if(result==SAM_Message_Types::OK){
         CUser* theUser=mUserManager->getUserByI2P_Destination(Name);
@@ -589,9 +577,6 @@ void CCore::setOnlineStatus(const ONLINESTATE newStatus)
 void CCore::stopCore()
 {
     mMyDestination="";
-    if(mSeedlessManager!=NULL){
-        mSeedlessManager->doStop();
-    }
     closeAllActiveConnections();
     mConnectionManager->doStopp();
 }

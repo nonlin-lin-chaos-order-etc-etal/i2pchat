@@ -36,8 +36,8 @@
 #include "FileTransferManager.h"
 #include "UnsentChatMessageStorage.h"
 
-#define CLIENTVERSION "0.2.27"
-#define CLIENTNAME "I2PChat (Qt)"
+#define CLIENTVERSION "0.2.28"
+#define CLIENTNAME "I2PChat (Qt), hypnotic fork"
 
 using namespace SAM_Message_Types;
 using namespace User;
@@ -46,7 +46,6 @@ class CUserManager;
 class CConnectionManager;
 class CFileTransferManager;
 class CPacketManager;
-class CSeedlessManager;
 class CCore :public QObject
 {
     Q_OBJECT
@@ -68,11 +67,9 @@ public:
 
     //<SUBSYSTEMS>
     CDebugMessageManager* 	getDebugMessageHandler()	const	{return mDebugMessageHandler;};
-    CDebugMessageManager*	getDebugSeedlessHandler()	const	{return mDebugSeedlessHandler;};
     CConnectionManager*	    getConnectionManager()		const	{return mConnectionManager;};
     CUserBlockManager*      getUserBlockManager()		const	{return mUserBlockManager;};
     CProtocol*              getProtocol()               const	{return mProtocol;};
-    CSeedlessManager*       getSeedlessManager()		const	{return mSeedlessManager;};
     CSoundManager*          getSoundManager()           const	{return mSoundManager;};
     CUserManager*           getUserManager()            const	{return mUserManager;};
     CFileTransferManager*	getFileTransferManager()	const	{return mFileTransferManager;};
@@ -114,10 +111,8 @@ signals:
 private:
     CConnectionManager*         mConnectionManager;
     CDebugMessageManager*       mDebugMessageHandler;
-    CDebugMessageManager*       mDebugSeedlessHandler;
     CSoundManager*              mSoundManager;
     CProtocol*                  mProtocol;
-    CSeedlessManager*           mSeedlessManager;
     CUserBlockManager*          mUserBlockManager;
     CUserManager*               mUserManager;
     CFileTransferManager*       mFileTransferManager;

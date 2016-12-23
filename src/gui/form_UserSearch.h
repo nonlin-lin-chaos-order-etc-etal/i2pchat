@@ -27,7 +27,6 @@
 
 #include "ui_form_userSearch.h"
 
-#include "SeedlessManager.h"
 #include "gui_icons.h"
 
 class CCore;
@@ -37,7 +36,7 @@ class form_userSearch : public QDialog,private Ui::form_userSearch
   Q_OBJECT
 
   public:
-      form_userSearch(CCore& Core,CSeedlessManager& SeedlessManage);
+      form_userSearch(CCore& Core);
      ~form_userSearch();
       void getFocus();
      
@@ -46,7 +45,6 @@ class form_userSearch : public QDialog,private Ui::form_userSearch
       
   private slots:
       void slot_cmdSearch();
-      void slot_SeedlessSearchFinished(QMap<QString,CSeedlessManager::SeedlessSearchStruct> SearchResults);
       void slot_showContextMenu(const QPoint &);
       void slot_addUser();  
       void slot_onlineStateChanged();
@@ -54,11 +52,9 @@ class form_userSearch : public QDialog,private Ui::form_userSearch
       void slot_genderFemale();
       
   private:
-      CSeedlessManager& mSeedlessManager;  
       CCore&		mCore;
       void init();
       void closeEvent(QCloseEvent *e);
       void keyPressEvent(QKeyEvent* event); 
-      QMap< QString, CSeedlessManager::SeedlessSearchStruct > mSearchResults;
 };
 #endif

@@ -139,7 +139,7 @@ void form_MainWindow::initToolBars()
 
     toolBar->setContextMenuPolicy(Qt::CustomContextMenu);
     toolBar->addAction(QIcon(ICON_NEWUSER)		,tr("Add User")		,this,SLOT(openAdduserWindow() ) );
-
+/*
     {
         settings.beginGroup("Usersearch");
         if((settings.value("Enabled",true).toBool()) ==true){
@@ -158,7 +158,7 @@ void form_MainWindow::initToolBars()
         }
         settings.endGroup();
     }
-
+*/
     {
         settings.beginGroup("Topics");
         if((settings.value("Enabled",true).toBool())){
@@ -1031,7 +1031,7 @@ void form_MainWindow::addUserToBlockList()
         }
     }
 }
-
+/*
 void form_MainWindow::openUserSearchWindow()
 {
     ONLINESTATE currentState=Core->getOnlineStatus();
@@ -1055,7 +1055,7 @@ void form_MainWindow::openUserSearchWindow()
         mUserSearchWindow->getFocus();
     }
 }
-
+*/
 void form_MainWindow::eventUserSearchWindowClosed()
 {
     delete mUserSearchWindow;
@@ -1106,7 +1106,7 @@ void form_MainWindow::openTopicSubscribeWindow() {
 
     if(mTopicSubscribeWindow == NULL) {
 
-        mTopicSubscribeWindow = new form_topicSubscribe(*Core,*(Core->getSeedlessManager()));
+        mTopicSubscribeWindow = new form_topicSubscribe(*Core);
 
         connect(this, SIGNAL(closeAllWindows()), mTopicSubscribeWindow,
                 SLOT(close()));

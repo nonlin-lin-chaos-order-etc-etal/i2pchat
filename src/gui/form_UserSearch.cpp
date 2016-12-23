@@ -3,8 +3,8 @@
 
 
 
-form_userSearch::form_userSearch(CCore&Core,CSeedlessManager& SeedlessManage)
-  :mSeedlessManager(SeedlessManage),mCore(Core)
+form_userSearch::form_userSearch(CCore&Core)
+  :mCore(Core)
 {
     setupUi(this);
     
@@ -28,14 +28,8 @@ form_userSearch::form_userSearch(CCore&Core,CSeedlessManager& SeedlessManage)
     connect(checkGender_Male,SIGNAL(clicked()),this,
 	    SLOT(slot_genderMale()));
 	    
-    connect(&mSeedlessManager,SIGNAL(signSeedlessSearchResults(QMap<QString,CSeedlessManager::SeedlessSearchStruct>)),this,
-	    SLOT(slot_SeedlessSearchFinished(QMap<QString,CSeedlessManager::SeedlessSearchStruct>)));
-	    
     connect(treeWidget_SearchResults,SIGNAL(customContextMenuRequested(QPoint)),this,
 	    SLOT(slot_showContextMenu(QPoint)));
-	    
-    connect(&mSeedlessManager,SIGNAL(signSearchState(QString)),label_SearchState,
-	    SLOT(setText(QString)));
 	    
     connect(&mCore,SIGNAL(signOnlineStatusChanged()),this,
 	    SLOT(slot_onlineStateChanged()));
@@ -47,27 +41,11 @@ form_userSearch::~form_userSearch()
 
 void form_userSearch::slot_cmdSearch()
 {
-   CSeedlessManager::SeedlessSearchStruct searchStruct;
    treeWidget_SearchResults->clear();
    label_ResultCount->setText("0");
    label_SearchState->setText(tr("Starting"));
     
-   searchStruct.NickName=txt_Nickname->text();
-   searchStruct.Age=spinBox_Age->value();
-   if(checkGender_Female->isChecked()){
-      searchStruct.Gender="W";
-   }
-   else if(checkGender_Male->isChecked()){
-      searchStruct.Gender="M";
-   }
-   else{
-      searchStruct.Gender=" ";
-   }
-   
-   searchStruct.Interests=txt_interests->text();
-   
    cmd_search->setEnabled(false);
-   mSeedlessManager.doSeedlessMessangerSearch(searchStruct);
 }
 
 void form_userSearch::init()
@@ -80,7 +58,8 @@ void form_userSearch::closeEvent(QCloseEvent* e)
    e->ignore();
    emit signClosingUserSearchWindow(); 
 }
-void form_userSearch::slot_SeedlessSearchFinished(QMap< QString, CSeedlessManager::SeedlessSearchStruct > SearchResults)
+
+/*void form_userSearch::slot_SeedlessSearchFinished(QMap< QString, CSeedlessManager::SeedlessSearchStruct > SearchResults)
 {
     QString TTLS;
     QList<CSeedlessManager::SeedlessSearchStruct> ListResults=SearchResults.values();
@@ -136,7 +115,7 @@ void form_userSearch::slot_SeedlessSearchFinished(QMap< QString, CSeedlessManage
     }
     treeWidget_SearchResults->sortByColumn(0,Qt::AscendingOrder);
 }
-
+*/
 void form_userSearch::slot_showContextMenu(const QPoint& pos)
 {
       QTreeWidgetItem *item = treeWidget_SearchResults->itemAt(pos);
@@ -174,12 +153,13 @@ void form_userSearch::slot_addUser()
     
     
       Destination=parent->child(1)->text(1);
+      /*
       CSeedlessManager::SeedlessSearchStruct tmp=mSearchResults.find(Destination).value();
       
       if(mSeedlessManager.addNewUser(tmp)==true){
 	  mSearchResults.remove(Destination);
 	  slot_SeedlessSearchFinished(mSearchResults);
-      }
+      }*/
     } 
 }
 void form_userSearch::slot_onlineStateChanged()

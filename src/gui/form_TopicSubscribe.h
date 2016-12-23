@@ -27,7 +27,6 @@
 
 #include "ui_form_topicSubscribe.h"
 
-#include "SeedlessManager.h"
 #include "gui_icons.h"
 
 class CCore;
@@ -37,7 +36,7 @@ class form_topicSubscribe : public QDialog,private Ui::form_topicSubscribe
     Q_OBJECT
 
 public:
-    form_topicSubscribe(CCore & Core, CSeedlessManager & SeedlessManage);
+    form_topicSubscribe(CCore & Core);
     ~form_topicSubscribe();
 
     void requestFocus();
@@ -47,18 +46,14 @@ signals:
 
 private slots:
     void slot_cmdSubscribe();
-    void slot_SeedlessTopicSubscribeFinished(
-            CSeedlessManager::SeedlessTopicSubscribeStruct TopicSubscribeResult);
     void slot_showContextMenu(const QPoint &);
     void slot_openTopic();
     void slot_onlineStateChanged();
 
 private:
-    CSeedlessManager & mSeedlessManager;
     CCore            & mCore;
     void init();
     void closeEvent(QCloseEvent *e);
     void keyPressEvent(QKeyEvent* event);
-    CSeedlessManager::SeedlessTopicSubscribeStruct mSubscribeResult;
 };
 #endif /* of FORM_TOPICSUBSCRIBE_H */

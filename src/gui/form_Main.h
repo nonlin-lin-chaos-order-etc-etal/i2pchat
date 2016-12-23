@@ -88,7 +88,7 @@ private slots:
     void openChatWindow(QString Destination);
     void openFileReciveWindow(qint32 StreamID);
     void openFileSendWindow(qint32 StreamID);
-    void openUserSearchWindow();
+    //void openUserSearchWindow();
     void openTopicSubscribeWindow();
 
 

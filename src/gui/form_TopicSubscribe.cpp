@@ -3,8 +3,8 @@
 
 
 
-form_topicSubscribe::form_topicSubscribe(CCore&Core, CSeedlessManager& SeedlessManager)
-    :mSeedlessManager(SeedlessManager), mCore(Core)
+form_topicSubscribe::form_topicSubscribe(CCore&Core)
+    : mCore(Core)
 {
     setupUi(this);
     
@@ -22,15 +22,8 @@ form_topicSubscribe::form_topicSubscribe(CCore&Core, CSeedlessManager& SeedlessM
     connect(cmd_close,SIGNAL(clicked()),this,
             SLOT(close()));
 
-    connect(&mSeedlessManager,SIGNAL(signSeedlessTopicSubscribeResults(
-                                         QMap<QString,CSeedlessManager::SeedlessTopicSubscribeStruct>)),this,
-            SLOT(slot_SeedlessTopicSubscribeFinished(QMap<QString,CSeedlessManager::SeedlessTopicSubscribeStruct>)));
-
     connect(treeWidget_SubscribeResults,SIGNAL(customContextMenuRequested(QPoint)),this,
             SLOT(slot_showContextMenu(QPoint)));
-
-    connect(&mSeedlessManager,SIGNAL(signTopicSubscribeState(QString)),label_SubscribeState,
-            SLOT(setText(QString)));
 
     connect(&mCore,SIGNAL(signOnlineStatusChanged()),this,
             SLOT(slot_onlineStateChanged()));
@@ -40,16 +33,15 @@ form_topicSubscribe::~form_topicSubscribe() {
 }
 
 void form_topicSubscribe::slot_cmdSubscribe() {
-    CSeedlessManager::SeedlessTopicSubscribeStruct subscribeStruct;
     treeWidget_SubscribeResults->clear();
     label_ResultCount->setText("0");
     label_SubscribeState->setText(tr("Starting"));
     
-    subscribeStruct.topicId=mCore.canonicalizeTopicId(inputField_topicId->text());
+    //subscribeStruct.topicId=mCore.canonicalizeTopicId(inputField_topicId->text());
 
     cmd_subscribe->setEnabled(false);
     inputField_topicId->setEnabled(false);//FIXME queue subscription requests
-    mSeedlessManager.doSeedlessSubscribeToTopic(subscribeStruct);
+    //mSeedlessManager.doSeedlessSubscribeToTopic(subscribeStruct);
 }
 
 void form_topicSubscribe::init() {
@@ -58,6 +50,7 @@ void form_topicSubscribe::closeEvent(QCloseEvent* e) {
     e->ignore();
     emit signClosingTopicSubscribeWindow();
 }
+/*
 void form_topicSubscribe::slot_SeedlessTopicSubscribeFinished(
         CSeedlessManager::SeedlessTopicSubscribeStruct SubscribeResult)
 {
@@ -98,7 +91,7 @@ void form_topicSubscribe::slot_SeedlessTopicSubscribeFinished(
     }
     treeWidget_SubscribeResults->sortByColumn(0,Qt::AscendingOrder);
 }
-
+*/
 void form_topicSubscribe::slot_showContextMenu(const QPoint& pos)
 {
     QTreeWidgetItem *item = treeWidget_SubscribeResults->itemAt(pos);
@@ -126,19 +119,6 @@ void form_topicSubscribe::slot_openTopic()
         parent=item->parent();
         if(parent==NULL){
             parent=item;
-        }
-        //     qDebug()<<"0\t"<<parent->child(0)->text(1)<<endl;
-        //     qDebug()<<"1\t"<<parent->child(1)->text(1)<<endl;
-        //     qDebug()<<"2\t"<<parent->child(2)->text(1)<<endl;
-        //     qDebug()<<"3\t"<<parent->child(3)->text(1)<<endl;
-        //     qDebug()<<"4\t"<<parent->child(4)->text(1)<<endl;
-        //     qDebug()<<"5\t"<<parent->child(5)->text(1)<<endl;
-
-        //Destination=parent->child(1)->text(1);
-        CSeedlessManager::SeedlessTopicSubscribeStruct & tmp=mSubscribeResult;
-
-        if(mSeedlessManager.openTopic(tmp)==true){
-            slot_SeedlessTopicSubscribeFinished(mSubscribeResult);
         }
     }
 }

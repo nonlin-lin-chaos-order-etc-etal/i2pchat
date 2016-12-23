@@ -37,8 +37,6 @@ class form_DebugMessages : public QDialog, private Ui::form_DebugMessages
 		
 	private slots:
 	    void newDebugMessage();
-	    void newDebugSeedlessMessage();
-	    void clearDebugSeedlessMessages();
 	    void clearDebugMessages();
 	    void connectionDump();
 
@@ -48,7 +46,6 @@ class form_DebugMessages : public QDialog, private Ui::form_DebugMessages
 	private:
 	    CCore& core;
 	    CDebugMessageManager* DebugMessageManager;
-	    CDebugMessageManager* DebugSeedlessManager;
 
 	    void closeEvent(QCloseEvent *e);
 	    void keyPressEvent(QKeyEvent* event); 

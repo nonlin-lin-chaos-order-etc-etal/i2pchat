@@ -34,9 +34,6 @@ SOURCES +=  src/backend/Main.cpp \
   	    src/backend/I2PStream.cpp \
 	    src/backend/ChatmessageChanger.cpp \
 	    src/backend/UserBlockManager.cpp \
-	    src/backend/SeedlessManager.cpp \
-	    src/backend/SeedlessAnnouncer.cpp \
-	    src/backend/SeedlessSearcher.cpp \
 	    src/backend/HttpOverStreamObject.cpp \
 	    src/backend/UserManager.cpp \
 	    src/backend/FileTransferManager.cpp \
@@ -69,10 +66,7 @@ HEADERS +=  src/backend/Core.h \
             src/backend/I2PStream.h \
   	    src/backend/ChatmessageChanger.h \
 	    src/backend/UserBlockManager.h \
-	    src/backend/SeedlessManager.h \
-	    src/backend/SeedlessSearcher.h \
 	    src/backend/HttpOverStreamObject.h \
-	    src/backend/SeedlessAnnouncer.h \
 	    src/backend/UserManager.h \
 	    src/backend/FileTransferManager.h \
 	    src/backend/TextEmotionChanger.h \

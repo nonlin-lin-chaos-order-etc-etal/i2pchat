@@ -66,44 +66,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="Tab_Seedless">
-      <attribute name="title">
-       <string>Seedless</string>
-      </attribute>
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="0">
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <item>
-          <widget class="QTextEdit" name="seedless_txt"/>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="_3">
-           <property name="spacing">
-            <number>6</number>
-           </property>
-           <property name="margin">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QPushButton" name="cmd_clear_seedless">
-             <property name="text">
-              <string>&amp;Clear</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="cmd_close_2">
-             <property name="text">
-              <string>C&amp;lose</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
+
      <widget class="QWidget" name="Tab_Connection">
       <attribute name="title">
        <string>Connection</string>
