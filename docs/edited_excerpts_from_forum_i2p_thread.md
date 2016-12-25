@@ -24,7 +24,10 @@ This messenger is a very early beta release.
 
 ### Build instructions
 
-With both Debian and Ubuntu this can be built with just qt4-qmake & libqt4-dev. Of course when compiling software you'll want to "build-essential" installed too.
+With both Debian and Ubuntu this can be built with just qt4-qmake & libqt4-dev. Of course when compiling software you'll want to "build-essential" installed too:
+```
+sudo apt-get install qt4-qmake libqt4-dev build-essential
+```
 
 After these are installed, building should be possible with just
 ```
