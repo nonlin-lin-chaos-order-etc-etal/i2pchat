@@ -4,6 +4,10 @@
 
 ## Answer
 
+In latest versions, this error doesn't occur. 
+
+In previous versions:
+
 Put https://raw.githubusercontent.com/hypnosis-i2p/i2pqtchat/master/SeedlessFallbackList.txt 
 file into your I2P Messenger application folder, see below. After that, close the I2P Messenger application and re-launch.
 
