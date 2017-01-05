@@ -8,15 +8,42 @@
 
 You need to enable SAM in your router on <a href="http://127.0.0.1:7657/configclients">java i2p configclients page</a> or i2pd's i2pd.conf [sam] section to make I2P Chat work over your I2P router.
 
-## Project news and history
+## Project status, news and history
+
+### Project status
 
 Now the development was resumed by Hypnosis-i2p and R4SAS, with a lot more folks as testers &amp; bugs+issues reporters.
 
-Original developer of this messenger went away.
+### Current news
+
+5 Jan, 2017: Original repo at http://git.repo.i2p/w/I2P-Messenger-QT.git was fully merged here.
   
+### History
+
+Original developer of this messenger went away.
+
 ## License
 
 The license of this software is GPLv2.
+
+### Build instructions
+
+ * Install prerequisites:
+```
+sudo apt-get install qt5-qmake qt5-default build-essential libqt5multimedia5
+```
+ * Run qmake for either release:
+```
+qmake I2P-Messenger.pro "CONFIG += release"
+```
+or for debug:
+```
+qmake I2P-Messenger.pro "CONFIG += debug"
+```
+ * And after that,
+```
+make
+```
 
 ## Old files and sites
 
