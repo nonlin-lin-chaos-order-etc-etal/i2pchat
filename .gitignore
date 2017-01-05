@@ -1,4 +1,4 @@
 *.pro.user*
 .cproject
 .project
-
+temp/**

@@ -37,8 +37,9 @@ form_About::form_About(QString ApplicationVersion,
 	ui.label_10->setText(Protoclversion);
     ui.label_supportedVersion->setText(FiletransferversionMin+tr("…")+FiletransferversionMax);
 
-	ui.label_git->setText(GIT_VERSION);
-	ui.label_dateCompile->setText(__DATE__);
+    ui.labelGitCommitCount->setText(GIT_COMMIT_COUNT);
+    ui.gitCommitHashTextBrowser->setText(GIT_HASH);
+    ui.label_dateCompile->setText(__DATE__);
 }
 
 form_About::~form_About()

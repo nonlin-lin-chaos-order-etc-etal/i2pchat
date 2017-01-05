@@ -14,7 +14,9 @@ win32 {
 BASE_GIT_COMMAND = git --git-dir $$PWD/.git --work-tree $$PWD
 
 # Trying to get version from git tag / revision
-GIT_VERSION = $$system($$BASE_GIT_COMMAND describe --always --tags 2> $$NULL_DEVICE)
+GIT_HASH = $$system($$BASE_GIT_COMMAND describe --always --tags 2> $$NULL_DEVICE)
+GIT_VERSION = $$GIT_HASH
+GIT_COMMIT_COUNT = -1
 
 # Check if we only have hash without version number
 !contains(GIT_VERSION,\d+\.\d+\.\d+) {
@@ -24,7 +26,7 @@ GIT_VERSION = $$system($$BASE_GIT_COMMAND describe --always --tags 2> $$NULL_DEV
     } else { # otherwise construct proper git describe string
         GIT_COMMIT_COUNT = $$system($$BASE_GIT_COMMAND rev-list HEAD --count 2> $$NULL_DEVICE)
         isEmpty(GIT_COMMIT_COUNT) {
-            GIT_COMMIT_COUNT = 0
+            GIT_COMMIT_COUNT = -1
         }
         GIT_VERSION = $$GIT_COMMIT_COUNT-$$GIT_VERSION
     }
@@ -44,6 +46,8 @@ win32 { # On windows version can only be numerical so remove commit hash
 # Adding C preprocessor #DEFINE so we can use it in C++ code
 # also here we want full version on every system so using GIT_VERSION
 DEFINES += GIT_VERSION=\\\"$$GIT_VERSION\\\"
+DEFINES += GIT_HASH=\\\"$$GIT_HASH\\\"
+DEFINES += GIT_COMMIT_COUNT=\\\"$$GIT_COMMIT_COUNT\\\"
 
 # By default Qt only uses major and minor version for Info.plist on Mac.
 # This will rewrite Info.plist with full version
