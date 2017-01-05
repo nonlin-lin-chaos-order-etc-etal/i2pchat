@@ -23,7 +23,8 @@ The license of this software is GPLv2.
  * http://echelon.i2p/qti2pmessenger/macos → Mac OS X versions, not tested;
  * http://echelon.i2p/qti2pmessenger/ → old eche|on's site for I2P Chat (versions up to 0.2.24);
  * https://launchpad.net/~i2p.packages/+archive/ubuntu/i2p/+sourcepub/4824794/+listing-archive-extra → Kill Your TV's PPA (v.0.2.25).
-
+ * http://git.repo.i2p/w/I2P-Messenger-QT.git/shortlog → original repo (which I discovered too late, now in process of merging it)
+ 
 ## Forum thread (English)
 
 http://forum.i2p/viewtopic.php?t=2474
