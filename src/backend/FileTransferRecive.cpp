@@ -336,7 +336,7 @@ void CFileTransferRecive::start(QString FilePath,bool Accepted)
 void CFileTransferRecive::slotCalcAverageTransferSpeed()
 {	
 	int departedtime=(mTimer.elapsed()/1000);
-	int speed=mAllreadyRecivedSize / departedtime;
+	int speed=departedtime == 0 ? 0 : mAllreadyRecivedSize / departedtime;
 
 	QString speedSize;
 	QString speedType;

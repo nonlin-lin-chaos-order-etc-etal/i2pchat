@@ -345,11 +345,13 @@ void CFileTransferSend::slotCalcAverageTransferSpeed()
 	int speed;
 	int departedtime=(mTimer.elapsed()/1000);
 	
-	if(mUsingProtocolVersionD<=0.2){
-	    speed=mAllreadySendedSize / departedtime;
-	}else{
-	    speed=mRemoteRecivedSize / departedtime;
-	}
+	if(departedtime==0) speed=0;
+	else
+		if(mUsingProtocolVersionD<=0.2){
+			speed=mAllreadySendedSize / departedtime;
+		}else{
+			speed=mRemoteRecivedSize / departedtime;
+		}
 	
 	mCore.doConvertNumberToTransferSize(speed,speedSize,speedType);
 	emit signAverageTransferSpeed(speedSize,speedType);
