@@ -2502,7 +2502,7 @@ p, li { white-space: pre-wrap; }
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="layoutWidget">
+       <widget class="QWidget" name="layoutWidget1">
         <property name="geometry">
          <rect>
           <x>10</x>

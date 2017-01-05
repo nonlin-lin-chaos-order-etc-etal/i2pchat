@@ -1,5 +1,4 @@
-CONFIG += qt \
-          debug
+CONFIG += qt
           
 greaterThan(QT_MAJOR_VERSION, 4): CONFIG += c++11
          
