@@ -45,8 +45,8 @@ class form_About : public QDialog
 		form_About& operator=(const form_About&)=delete;
 
 		void getFocus();
-	private slots:
-		void copyDestToClipboard();
+    //private slots:
+    //	void copyDestToClipboard();
 		
 	signals:
 		void closingAboutWindow();
@@ -56,6 +56,6 @@ class form_About : public QDialog
 		void keyPressEvent(QKeyEvent* event); 
 
 	Ui::form_About ui;
-	QString mBoteDestination;
+    //QString mBoteDestination;
 };
 #endif

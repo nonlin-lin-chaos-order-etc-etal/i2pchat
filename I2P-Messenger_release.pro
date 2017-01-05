@@ -115,3 +115,4 @@ RCC_DIR = temp/qrc
 MOC_DIR = temp/moc
 RC_FILE = src/gui/icons/i2pmessenger_win.rc
 
+include(gitversion.pri)

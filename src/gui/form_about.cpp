@@ -28,15 +28,17 @@ form_About::form_About(QString ApplicationVersion,
 :QDialog(parent)
 {
 	ui.setupUi(this);
-	mBoteDestination="mi8H8RkS1ckUrkS2JiFgojN7ExvoCJ45DAEj8y0Ac0Fu6kMS-vEvLerNa~a0WQN9hVhsUUlHJc2B47Ln6wscK5";
+    //mBoteDestination="mi8H8RkS1ckUrkS2JiFgojN7ExvoCJ45DAEj8y0Ac0Fu6kMS-vEvLerNa~a0WQN9hVhsUUlHJc2B47Ln6wscK5";
 
-	connect(ui.cmd_destCopy,SIGNAL(clicked()),this,
-		SLOT(copyDestToClipboard()));
+    //connect(ui.cmd_destCopy,SIGNAL(clicked()),this,
+    //	SLOT(copyDestToClipboard()));
 
 	ui.label_9->setText(ApplicationVersion);
 	ui.label_10->setText(Protoclversion);
-	//ui.label_11->setText(Filetransferversion);
-	ui.label_supportedVersion->setText(FiletransferversionMin+" - "+FiletransferversionMax);
+    ui.label_supportedVersion->setText(FiletransferversionMin+tr("…")+FiletransferversionMax);
+
+	ui.label_git->setText(GIT_VERSION);
+	ui.label_dateCompile->setText(__DATE__);
 }
 
 form_About::~form_About()
@@ -47,10 +49,9 @@ form_About::~form_About()
 void form_About::closeEvent(QCloseEvent * e)
 {
 	e->ignore();
-	//this->deleteLater();
 	emit closingAboutWindow();
 }
-
+/*
 void form_About::copyDestToClipboard()
 {
 	QClipboard *clipboard = QApplication::clipboard();
@@ -59,7 +60,7 @@ void form_About::copyDestToClipboard()
 	QMessageBox::information(this, "",
 		tr("The Destination is in the clipboard"),QMessageBox::Close);
 }
-
+*/
 void form_About::getFocus()
 {
 	this->activateWindow();
