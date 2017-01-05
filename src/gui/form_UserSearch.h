@@ -24,6 +24,7 @@
 #include <QtGui>
 #include <QtGlobal> 
 #include <QMap>
+#include <QMenu>
 
 #include "ui_form_userSearch.h"
 

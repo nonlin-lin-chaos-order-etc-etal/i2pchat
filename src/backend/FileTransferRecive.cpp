@@ -115,10 +115,8 @@ void CFileTransferRecive::slotStreamStatusRecived(const SAM_Message_Types::RESUL
 					QString MB;
 					QString KB;
 			
-					qint32 tmp= mFileSize/(1024*1024);
-					qint32 tmp2=mFileSize-(tmp*(1024*1024));
-					tmp2 =qRound(tmp2/1024);
-					
+					int tmp  = mFileSize/(1024*1024);
+					int tmp2 = (mFileSize-(tmp*(1024*1024)))/1024;
 					MB.setNum(tmp,10);
 					KB.setNum(tmp2,10);
 					
@@ -130,9 +128,8 @@ void CFileTransferRecive::slotStreamStatusRecived(const SAM_Message_Types::RESUL
 					QString KB;
 					QString Bytes;
 			
-					qint32 tmp= mFileSize/(1024);
-					qint32 tmp2=mFileSize-(tmp*(1024));
-					tmp2 =qRound(tmp2/1024);
+					qint32 tmp  = mFileSize/(1024);
+					qint32 tmp2 = (mFileSize-(tmp*(1024)))/1024;
 			
 					KB.setNum(tmp,10);
 					Bytes.setNum(tmp2,10);
@@ -143,7 +140,7 @@ void CFileTransferRecive::slotStreamStatusRecived(const SAM_Message_Types::RESUL
 				else{
 				//Byte
 					SSize.setNum(mFileSize,10);
-					SizeName="Bytes";
+					SizeName="bytes";
 			
 				}
 				mCore.getUserManager()->getUserByI2P_Destination(mDestination)->
@@ -249,7 +246,7 @@ void CFileTransferRecive::slotDataRecived (const qint32 ID, QByteArray t )
 	
 			qint32 tmp= mFileSize/(1024*1024);
 			qint32 tmp2=mFileSize-(tmp*(1024*1024));
-			tmp2 =qRound(tmp2/1024);
+			tmp2 =tmp2/1024;
 			
 			MB.setNum(tmp,10);
 			KB.setNum(tmp2,10);
@@ -264,7 +261,7 @@ void CFileTransferRecive::slotDataRecived (const qint32 ID, QByteArray t )
 	
 			qint32 tmp= mFileSize/(1024);
 			qint32 tmp2=mFileSize-(tmp*(1024));
-			tmp2 =qRound(tmp2/1024);
+			tmp2 = (tmp2/1024);
 	
 			KB.setNum(tmp,10);
 			Bytes.setNum(tmp2,10);

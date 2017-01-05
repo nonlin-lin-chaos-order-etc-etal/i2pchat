@@ -3,35 +3,35 @@
 COUNT=$(cat /proc/cpuinfo | grep 'model name' | sed -e 's/.*: //' | wc -l)
 
 
-	echo "\nCompiling - Script(Unix/Linux) for I2P-Messenger v.04"
+	echo "\n*** Build script (Unix/Linux) for I2P-Messenger"
 	echo  "\n\nNeeded software:"
-	echo  "\t QT4"
-	echo  "\t QT4-devs"
-	echo  "\t NAS (Network Audio System ) for Sound"
+	echo  "\t QT5"
+	echo  "\t QT5-devs + qtmultimedia5-dev"
+	echo  "\t NAS (Network Audio System ) for sound"
 	echo  "\n"
-	echo  "\t Found:\t ${COUNT} cpu's"
-	echo  "\t Use:\t ${COUNT} thread's for compile"
+	echo  "\t Found:\t ${COUNT} CPUs"
+	echo  "\t Using:\t ${COUNT} threads for compilation"
 	echo  "\n\n"
 
 
-if [ -e "/usr/bin/qmake-qt4" ]; then
-	make_qt=$("qmake-qt4")
-	echo "\t Found qmake-qt4,- use it"
+if [ -e "/usr/bin/qmake-qt5" ]; then
+	make_qt=$("qmake-qt5")
+	echo "\t Found qmake-qt5; using it"
 
 elif [  -e "/usr/bin/qmake" ]; then
 	make_qt=$("qmake")
-	echo "\t Found qmake,- use it"
+	echo "\t Found qmake; using it"
       
 else
-	echo "\tFound no qmake or qmake-qt4"
+	echo "\tError: found neither qmake-qt5 nor qmake"
 	exit
 fi
 
 if [ $# = 0 ]; 
 then
-	echo  "Select a option:"
-	echo  "\t--R vor Release"
-	echo  "\t--D vor Debug"
+	echo  "Specify an option:"
+	echo  "\t--R for release build"
+	echo  "\t--D for debug build"
 	exit
 fi
 
@@ -51,12 +51,10 @@ then
 	mv I2P-Messenger_release I2P-Messenger
 	strip I2P-Messenger
 else
-	echo  "Select a option:"
-	echo  "\t--R vor Release"
-	echo  "\t--D vor Debug"
+	echo  "Specify an option:"
+	echo  "\t--R for release build"
+	echo  "\t--D for debug build"
 	exit
 fi
 
-
-
-echo  "\n\n\nFinished"
+echo  "\n\n\nI2PChat build finished"

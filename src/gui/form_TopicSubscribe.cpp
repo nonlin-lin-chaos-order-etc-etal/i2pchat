@@ -1,3 +1,4 @@
+#include <QMenu>
 #include "form_TopicSubscribe.h"
 #include "Core.h"
 

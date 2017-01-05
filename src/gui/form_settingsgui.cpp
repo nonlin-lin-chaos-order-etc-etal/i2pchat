@@ -22,7 +22,7 @@
 #include "UserBlockManager.h"
 #include "form_settingsgui.h"
 
-form_settingsgui::form_settingsgui(CCore& Core,QWidget *parent, Qt::WFlags flags)
+form_settingsgui::form_settingsgui(CCore& Core,QWidget *parent, Qt::WindowFlags flags)
 	: QDialog(parent, flags),mCore(Core),mConfigPath(Core.getConfigPath())
 {
     	setupUi(this);

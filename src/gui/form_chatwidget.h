@@ -35,6 +35,12 @@
 #include <QTextBrowser>
 #include <QPalette>
 #include <QPushButton>
+#include <QColorDialog>
+#include <QFontDialog>
+#include <QFileDialog>
+#include <QScrollBar>
+#include <QApplication>
+#include <QDesktopWidget>
 
 class ChatEventEater : public QObject
 {

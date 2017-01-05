@@ -1,15 +1,18 @@
-
-
 CONFIG += qt \
-	  release 
-	  
-QT += network xml
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+          release 
+          
+greaterThan(QT_MAJOR_VERSION, 4): CONFIG += c++11
+         
+QT += network xml 
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia core
 
 TEMPLATE = app
 
-QMAKE_CXXFLAGS+= -std=c++11 -Wall
+QMAKE_CXXFLAGS+= -std=c++11
 QMAKE_LFLAGS  += -std=c++11
+QMAKE_CXXFLAGS+= -Wall
+
 
 DEPENDPATH +=  ". \
 	      src/gui/ \

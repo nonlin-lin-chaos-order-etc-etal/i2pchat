@@ -28,17 +28,20 @@
 #include "FileTransferManager.h"
 #include <QtGlobal>
 #include <QMessageBox>
+#include <QApplication>
+#include <QStandardPaths>
 
 CCore::CCore()
 {	
 
-    if(QFile::exists(QApplication::applicationDirPath()+"/UseHomeForConfigStore")==true){
-        mConfigPath=QDesktopServices::storageLocation(QDesktopServices::HomeLocation);
-        mConfigPath+="/.I2P-Messenger";
-    }
-    else{
+//    if(QFile::exists(QApplication::applicationDirPath()+"/UseHomeForConfigStore")==true){
+//    	//mConfigPath=QDesktopServices::storageLocation(QDesktopServices::HomeLocation);
+//    	//mConfigPath=QStandardPaths::standardLocations(QStandardPaths::QStandardPaths::HomeLocation);
+//        mConfigPath+="/.I2P-Messenger";
+//    }
+//    else{
         mConfigPath=QApplication::applicationDirPath();
-    }
+//    }
 
     mDebugMessageHandler= new CDebugMessageManager("General");
     mSoundManager= new CSoundManager(mConfigPath);

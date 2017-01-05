@@ -29,6 +29,11 @@
 #include <QMapIterator>
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
+#include <QFileDialog>
+#include <QStyleFactory>
+#include <QFontDialog>
+#include <QColorDialog>
+
 #include "UserManager.h"
 
 class CCore;
@@ -37,7 +42,7 @@ class form_settingsgui : public QDialog, private Ui::form_settingsgui
     	Q_OBJECT
 
 public:
-	form_settingsgui(CCore& Core,QWidget *parent = 0, Qt::WFlags flags = 0);
+	form_settingsgui(CCore& Core,QWidget *parent = 0, Qt::WindowFlags flags = 0);
 	~form_settingsgui();
 
 private slots:

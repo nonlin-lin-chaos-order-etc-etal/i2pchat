@@ -1,3 +1,5 @@
+#include <QErrorMessage>
+
 #include "form_chatwidget.h"
 #include "User.h"
 

@@ -21,6 +21,7 @@
 #define I2PSAMMESSAGEANALYSER_H
 
 #include <QtGui> 
+#include <QMessageBox>
 
 namespace SAM_Message_Types
 {

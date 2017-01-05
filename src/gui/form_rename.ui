@@ -21,7 +21,16 @@
    <locale language="English" country="UnitedStates"/>
   </property>
   <layout class="QGridLayout">
-   <property name="margin">
+   <property name="leftMargin">
+    <number>9</number>
+   </property>
+   <property name="topMargin">
+    <number>9</number>
+   </property>
+   <property name="rightMargin">
+    <number>9</number>
+   </property>
+   <property name="bottomMargin">
     <number>9</number>
    </property>
    <property name="spacing">
@@ -33,7 +42,16 @@
       <string>New Nickname</string>
      </property>
      <layout class="QGridLayout">
-      <property name="margin">
+   <property name="leftMargin">
+    <number>9</number>
+   </property>
+   <property name="topMargin">
+    <number>9</number>
+   </property>
+   <property name="rightMargin">
+    <number>9</number>
+   </property>
+   <property name="bottomMargin">
        <number>9</number>
       </property>
       <property name="spacing">

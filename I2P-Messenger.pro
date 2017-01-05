@@ -1,15 +1,17 @@
-
-
 CONFIG += qt \
-	  debug	
+          debug
+          
+greaterThan(QT_MAJOR_VERSION, 4): CONFIG += c++11
+         
+QT += network xml 
 
-QT += network xml
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia core
 
 TEMPLATE = app
 
-QMAKE_CXXFLAGS+= -std=c++11 -Wall
+QMAKE_CXXFLAGS+= -std=c++11
 QMAKE_LFLAGS  += -std=c++11
+QMAKE_CXXFLAGS+= -Wall
 
 DEPENDPATH += . \
 	      src/gui/ \

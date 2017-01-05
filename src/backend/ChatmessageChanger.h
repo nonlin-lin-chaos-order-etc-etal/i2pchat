@@ -21,6 +21,7 @@
 #define CHATMESSAGECHANGER_H
 
 #include <QtGui>
+#include <QTextEdit>
 
 class CCore;
 class CChatMessageChanger{

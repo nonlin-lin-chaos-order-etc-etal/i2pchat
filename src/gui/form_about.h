@@ -23,6 +23,7 @@
 #include <QtGui>
 #include <QtGlobal> 
 #include <QClipboard>
+#include <QMessageBox>
 
 #include "ui_form_about.h"
 

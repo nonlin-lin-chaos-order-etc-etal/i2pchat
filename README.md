@@ -34,26 +34,6 @@ http://forum.i2p/viewtopic.php?t=2474
  * один для антиквариата по части и2п массажника https://github.com/hypnosis-i2p/I2PQtMessengerLegacy ;
  * другой для разработки https://github.com/hypnosis-i2p/i2pchat .
 
-## Build Requirements (in Russian)
-
-```
-Q: 0.2.25 на пятом QT?
-A: нет
-   нужно качать Qt 4.8.6 https://download.qt.io/archive/qt/4.8/4.8.6/ и собирать его
-   
-   instructions on compiling Qt 4.8.6 from sources:
-   
-      ./configure
-      make
-      sudo make install
-
-   и отдельно качать Qt Creator https://www.qt.io/download/ - если креатор 
-   у тебя есть, просто добавишь ему QT SDK 4.8.6
-   
-Q: а разве apt-get install qt4-qmake не хватит?
-A: не пробовал, не знаю
-```
-
 ## Footnotes
 
 [1] http://forum.i2p/viewtopic.php?p=11071#11071

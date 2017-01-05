@@ -26,19 +26,19 @@
 #include <QTextStream>
 #include <QSettings>
 #include <QTime>
+#include <QDir>
 
 #include "form_Main.h"
 
 QString Path;
 
 void enableDebugLogging();
-void myMessageHandler(QtMsgType type, const char *msg);
+//void myMessageHandler(QtMsgType type, const char *msg);
+void myMessageHandler(QtMsgType type,const QMessageLogContext &context,const QString &msg);
 int main(int argc, char *argv[])
 {
 	QApplication app(argc, argv);
 	enableDebugLogging();
-	QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
-	QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
 	QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
 	form_MainWindow* mainForm= new form_MainWindow();
 	mainForm->show();
@@ -51,10 +51,13 @@ int main(int argc, char *argv[])
 void enableDebugLogging()
 {
 	if(QFile::exists(QApplication::applicationDirPath()+"/UseHomeForConfigStore")==true){
-	      Path=QDesktopServices::storageLocation(QDesktopServices::HomeLocation);
-	      Path+="/.I2P-Messenger";
-	}
-	else{
+		QStringList tmp=QStandardPaths::standardLocations(QStandardPaths::HomeLocation);
+
+		if(tmp.size()>=1){
+			Path=tmp.at(0);
+			Path+="/.I2P-Messenger";
+		}
+	}else{
 	   Path=QApplication::applicationDirPath();
 	}
 	
@@ -62,29 +65,34 @@ void enableDebugLogging()
 	QSettings settings(Path+"/application.ini",QSettings::IniFormat);
 	settings.beginGroup("General");
 	  if(settings.value("DebugLogging","true").toBool()==true){
-	    qInstallMsgHandler(myMessageHandler); 
+          qInstallMessageHandler(myMessageHandler);
 	  }
 	settings.endGroup();
 }
 
-void myMessageHandler(QtMsgType type, const char *msg)
+void myMessageHandler(QtMsgType type,const QMessageLogContext &context,const QString &msg)
 {
 	QString txt;
 	
 	txt.append(QTime::currentTime().toString("hh:mm:ss"));
 	
 	switch (type) {
-	case QtDebugMsg:
-	    txt.append(QString(" Debug: %1").arg(msg));;
-	    break;
-	case QtWarningMsg:
-	    txt.append(QString(" Warning: %1").arg(msg));;
-	break;
-	case QtCriticalMsg:
-	    txt.append(QString(" Critical: %1").arg(msg));;
-	break;
-	case QtFatalMsg:
-	    txt.append(QString(" Fatal: %1").arg(msg));;
+	case QtDebugMsg:{
+		txt.append(QString(" Debug: %1 (%2:%3, %4)\n").arg(msg).arg(context.file).arg(context.line).arg(context.function));
+		break;
+	}
+	case QtWarningMsg:{
+		txt.append(QString(" Warning: %1 (%2:%3, %4)\n").arg(msg).arg(context.file).arg(context.line).arg(context.function));
+		break;
+	}
+	case QtCriticalMsg:{
+		txt.append(QString(" Critical: %1 (%2:%3, %4)\n").arg(msg).arg(context.file).arg(context.line).arg(context.function));
+		break;
+	}
+	case QtFatalMsg:{
+		txt.append(QString(" Fatal: %1 (%2:%3, %4)\n").arg(msg).arg(context.file).arg(context.line).arg(context.function));
+		break;
+	}
 	}
 	QFile outFile(Path+"/DebugLog.txt");
 	outFile.open(QIODevice::WriteOnly | QIODevice::Append);

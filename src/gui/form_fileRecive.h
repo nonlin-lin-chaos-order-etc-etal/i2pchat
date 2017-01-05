@@ -22,6 +22,7 @@
 #define FORM_FILERECIVE_H
 
 #include <QtGui>
+#include <QFileDialog>
 
 #include "ui_form_fileRecive.h"
 
