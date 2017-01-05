@@ -60,6 +60,10 @@ public:
     form_MainWindow ( QWidget* parent=0 );
     ~form_MainWindow();
 
+    //forbid some operators
+    form_MainWindow(const form_MainWindow&)=delete;
+    form_MainWindow& operator=(const form_MainWindow&)=delete;
+
 protected:
     void closeEvent(QCloseEvent *);
 

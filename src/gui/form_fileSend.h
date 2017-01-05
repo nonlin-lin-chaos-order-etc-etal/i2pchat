@@ -35,6 +35,11 @@ class form_fileSend : public QDialog, public Ui::form_FileSend
 	public:
 		form_fileSend(CFileTransferSend& FileTransfer);
 		~form_fileSend();
+
+		//forbid some operators
+		form_fileSend(const form_fileSend&)=delete;
+		form_fileSend& operator=(const form_fileSend&)=delete;
+
 		void getFocus();
 	signals:
 		void closingFileSendWindow(qint32 StreamID);

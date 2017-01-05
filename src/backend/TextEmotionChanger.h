@@ -57,6 +57,9 @@ class CTextEmotionChanger
    static CTextEmotionChanger* exemplar();
    ~CTextEmotionChanger();
    
+   //forbid some operators
+   CTextEmotionChanger& operator=(const CTextEmotionChanger&)=delete;
+
    	QHash<QString,QStringList> getEmoticonsList()const { return m_emoticon_list; }
 	void checkMessageForEmoticons(QString &message);
 	static bool lengthLessThan(const QString &s1, const QString &s2);

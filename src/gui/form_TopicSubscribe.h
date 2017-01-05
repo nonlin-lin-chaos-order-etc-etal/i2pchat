@@ -39,6 +39,10 @@ public:
     form_topicSubscribe(CCore & Core);
     ~form_topicSubscribe();
 
+    //forbid some operators
+    form_topicSubscribe(const form_topicSubscribe&)=delete;
+    form_topicSubscribe& operator=(const form_topicSubscribe&)=delete;
+
     void requestFocus();
 
 signals:

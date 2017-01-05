@@ -32,6 +32,11 @@ class form_HelpDialog : public QDialog
 
 public:
   	form_HelpDialog(QString ProgrammVersion,QString ProtocolVersion,QString ConfigPath,QWidget *parent = 0);
+
+  	//forbid some operators
+  	form_HelpDialog(const form_HelpDialog&)=delete;
+  	form_HelpDialog& operator=(const form_HelpDialog&)=delete;
+
 private slots:
 
 private:

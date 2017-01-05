@@ -76,6 +76,11 @@ class CI2PSamMessageAnalyser: public QObject
 	public:
 	CI2PSamMessageAnalyser(const QString debugFrom="not set");
 	~CI2PSamMessageAnalyser();
+
+	//forbid some operators
+	CI2PSamMessageAnalyser(const CI2PSamMessageAnalyser&)=delete;
+	CI2PSamMessageAnalyser& operator=(const CI2PSamMessageAnalyser&)=delete;
+
 	const SAM_MESSAGE Analyse(QString Message) const;
 
 	private:

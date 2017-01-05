@@ -53,6 +53,10 @@ class CUserBlockManager :public QObject
 		CUserBlockManager(CCore& Core,const QString FilePathToBlockFile);
 		~CUserBlockManager();
 		
+		//forbid some operators
+		CUserBlockManager(const CUserBlockManager&)=delete;
+		CUserBlockManager& operator=(const CUserBlockManager&)=delete;
+
 		void addNewBlockEntity(const QString NickName,const QString Destination,QString BlockDate="");
 		void removeBlockEntity(const QString Destination,bool CreateUser=false);
 		bool isDestinationInBlockList(const QString Destination)const;

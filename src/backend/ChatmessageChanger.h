@@ -29,13 +29,16 @@ public:
     static CChatMessageChanger* exemplar(CCore& Core);
 
     ~CChatMessageChanger();
+
+    //forbid some operators
+    CChatMessageChanger& operator = (const CChatMessageChanger&)=delete;
+
     QString changeChatMessage(QString Chatmessage);
     
 private:
 	static CChatMessageChanger* instanz;
 	CChatMessageChanger(QString& ConfigPath);
 	CChatMessageChanger(const CChatMessageChanger&);
-
 
 	QFont  mFont;
 	QColor mColor;

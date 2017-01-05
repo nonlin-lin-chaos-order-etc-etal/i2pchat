@@ -39,6 +39,11 @@ class form_About : public QDialog
 				QString FiletransferversionMax,
 				QWidget *parent = 0);
 		~form_About();
+
+		//forbid some operators
+		form_About(const form_About&)=delete;
+		form_About& operator=(const form_About&)=delete;
+
 		void getFocus();
 	private slots:
 		void copyDestToClipboard();

@@ -33,6 +33,11 @@ class CUserManager: public QObject
       public:
 				CUserManager(CCore& Core,QString UserFileWithPath,CUnsentChatMessageStorage& UnsentChatMessageStorage);
 				~CUserManager();
+
+				//forbid some operators
+				CUserManager(const CUserManager&)=delete;
+				CUserManager& operator=(const CUserManager&)=delete;
+
 		void 		saveUserList()const;
 		void 		loadUserList();
 		bool 		addNewUser (QString Name,QString I2PDestination,qint32 I2PStream_ID=0,bool SaveUserList=true);

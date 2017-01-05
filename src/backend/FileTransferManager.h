@@ -34,6 +34,10 @@ class CFileTransferManager: public QObject
 		CFileTransferManager(CCore& Core);
 		~CFileTransferManager();
 		
+		//forbid some operators
+		CFileTransferManager(const CFileTransferManager&)=delete;
+		CFileTransferManager& operator=(const CFileTransferManager&)=delete;
+
 		void 	addNewFileTransfer(QString FilePath,QString Destination);
 		void 	addNewFileRecive(qint32 ID,QString FileName,QString FileSize,QString Destination,QString ProtocolVersion);
 		

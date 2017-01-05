@@ -34,6 +34,11 @@ class form_fileRecive : public QDialog, public Ui::form_FileRecive
 	public:
 		form_fileRecive(CFileTransferRecive& FileRecive);
 		~form_fileRecive();
+
+		//forbid some operators
+		form_fileRecive(const form_fileRecive&)=delete;
+		form_fileRecive& operator=(const form_fileRecive&)=delete;
+
 		void getFocus();
 		void start();
 

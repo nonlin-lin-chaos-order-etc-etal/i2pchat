@@ -33,6 +33,11 @@ class form_DebugMessages : public QDialog, private Ui::form_DebugMessages
 	public:
 	    form_DebugMessages(CCore& core,QDialog *parent = 0);
 	    ~form_DebugMessages();
+
+	    //forbid some operators
+	    form_DebugMessages(const form_DebugMessages&)=delete;
+	    form_DebugMessages& operator=(const form_DebugMessages&)=delete;
+
 	    void getFocus();
 		
 	private slots:

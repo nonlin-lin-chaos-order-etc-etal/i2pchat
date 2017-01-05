@@ -31,6 +31,11 @@ class form_RenameWindow : public QDialog, private Ui::form_renameWindow
 	public:
 	      form_RenameWindow(CCore& Core,QString OldNickname,QString Destination);	
 	      ~form_RenameWindow();
+
+	      //forbid some operators
+	      form_RenameWindow(const form_RenameWindow&)=delete;
+	      form_RenameWindow& operator=(const form_RenameWindow&)=delete;
+
 	private slots:
 		void OK();
 	private:

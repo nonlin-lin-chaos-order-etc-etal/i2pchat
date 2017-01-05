@@ -66,6 +66,10 @@ class CFileTransferSend:public QObject
 				double ProtocolversionD
 		);
 		~CFileTransferSend();
+
+		//forbid some operators
+		CFileTransferSend(const CFileTransferSend&)=delete;
+		CFileTransferSend& operator=(const CFileTransferSend&)=delete;
 	
 		quint64 getFileSize()	{return mFileSize;};
 		qint32  getStreamID()	{return mStreamID;};

@@ -38,6 +38,11 @@ class CFileTransferRecive:public QObject
 		CFileTransferRecive(CCore& Core,CI2PStream& Stream,qint32 StreamID,QString FileName,
 				quint64 FileSize,QString Destination,QString Protocolversion,double ProtocolversionD);
 		~CFileTransferRecive();
+
+		//forbid some operators
+		CFileTransferRecive(const CFileTransferRecive&)=delete;
+		CFileTransferRecive& operator=(const CFileTransferRecive&)=delete;
+
 		void start(QString FilePath,bool Accepted);
 		
 		quint64 getFileSize()	{return mFileSize;};

@@ -39,6 +39,11 @@ class form_userSearch : public QDialog,private Ui::form_userSearch
   public:
       form_userSearch(CCore& Core);
      ~form_userSearch();
+
+     //forbid some operators
+     form_userSearch(const form_userSearch&)=delete;
+     form_userSearch& operator=(const form_userSearch&)=delete;
+
       void getFocus();
      
   signals:

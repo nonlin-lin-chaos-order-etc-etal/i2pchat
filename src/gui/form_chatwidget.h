@@ -64,6 +64,11 @@ Q_OBJECT
 public:
 	form_ChatWidget(CUser& user,CCore& Core,QDialog* parent = 0);
 	~form_ChatWidget();
+
+	//forbid some operators
+	form_ChatWidget(const form_ChatWidget&)=delete;
+	form_ChatWidget& operator=(const form_ChatWidget&)=delete;
+
 	void getFocus();
 	
 

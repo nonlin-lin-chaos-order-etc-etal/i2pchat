@@ -33,6 +33,10 @@ class CDebugMessageManager:public QObject
 	CDebugMessageManager(QString Group);
 	~CDebugMessageManager();
 
+	//forbid some operators
+	CDebugMessageManager(const CDebugMessageManager&)=delete;
+	CDebugMessageManager& operator=(const CDebugMessageManager&)=delete;
+
 
 	public slots:
 		void 	doClearAllMessages();

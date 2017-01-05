@@ -109,6 +109,11 @@ Q_OBJECT
 public:
 	CProtocol(CCore& Core);
 	~CProtocol();
+
+	//forbid some operators
+	CProtocol(const CProtocol&)=delete;
+	CProtocol& operator=(const CProtocol&)=delete;
+
 	QString getProtocolVersion()const {return PROTOCOLVERSION;};
 	void newConnectionChat(const qint32 ID);
 

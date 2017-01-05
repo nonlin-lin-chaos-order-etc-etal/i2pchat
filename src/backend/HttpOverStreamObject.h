@@ -41,6 +41,10 @@ class CHttpOverStreamObject: public QObject{
 		CHttpOverStreamObject(CConnectionManager& ConnectionManager);
 		~CHttpOverStreamObject();
 
+		//forbid some operators
+		CHttpOverStreamObject(const CHttpOverStreamObject&)=delete;
+		CHttpOverStreamObject& operator=(const CHttpOverStreamObject&)=delete;
+
 		void doHttpRequest(HTTPMODE mode,QString Destination,QStringList HttpHeader);
 
 	signals: 

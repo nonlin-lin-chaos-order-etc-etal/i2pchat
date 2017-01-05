@@ -53,6 +53,10 @@ public:
     CCore();
     ~CCore();
 
+    //forbid some operators
+    CCore(const CCore&)=delete;
+    CCore& operator=(const CCore&)=delete;
+
     QString 		getDestinationByID(qint32 ID) 	const;
     const 	QString 		getMyDestination() 		const;
     const 	QString 		getMyDestinationB32() 		const;

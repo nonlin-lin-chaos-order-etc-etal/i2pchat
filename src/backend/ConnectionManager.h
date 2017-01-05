@@ -44,6 +44,10 @@ class CConnectionManager : public QObject
  		CConnectionManager(QString SamHost,QString SamPort,QString ConfigPath);
 		~CConnectionManager();
 
+		//forbid some operators
+		CConnectionManager(const CConnectionManager&)=delete;
+		CConnectionManager& operator=(const CConnectionManager&)=delete;
+
 		bool 		doCreateSession(
 					SESSION_ENUMS::SESSION_STYLEV3 SessionStyle,
 					QString SamPrivKey,

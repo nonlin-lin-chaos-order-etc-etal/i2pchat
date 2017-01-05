@@ -31,6 +31,11 @@ class CSoundManager :public QObject
 	public:
 		CSoundManager(QString ConfigPath);
 		~CSoundManager();
+
+		//forbid some operators
+		CSoundManager(const CSoundManager&)=delete;
+		CSoundManager& operator=(const CSoundManager&)=delete;
+
 		void reInit();
 		void doMute(bool t);
 	public slots:

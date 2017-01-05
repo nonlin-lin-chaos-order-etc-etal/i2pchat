@@ -45,6 +45,10 @@ public:
 	form_settingsgui(CCore& Core,QWidget *parent = 0, Qt::WindowFlags flags = 0);
 	~form_settingsgui();
 
+	//forbid some operators
+	form_settingsgui(const form_settingsgui&)=delete;
+	form_settingsgui& operator=(const form_settingsgui&)=delete;
+
 private slots:
 	void loadSettings();
 	void saveSettings();

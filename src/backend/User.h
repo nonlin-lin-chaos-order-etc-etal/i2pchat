@@ -82,6 +82,10 @@ class CUser: public QObject
 						qint32 I2PStream_ID
 					);
 					~CUser();
+
+					//forbid some operators
+					CUser(const CUser&)=delete;
+					CUser& operator=(const CUser&)=delete;
 	
 	const 	QString 		getName()		const{return mName;}
 	const 	QString 		getI2PDestination()	const{return mI2PDestination;}

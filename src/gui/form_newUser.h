@@ -31,6 +31,10 @@ class form_newUserWindow : public QDialog, private Ui::form_newUserWindow
 	form_newUserWindow(CCore& Core,QDialog *parent = 0);
 	~form_newUserWindow();
 
+	//forbid some operators
+	form_newUserWindow(const form_newUserWindow&)=delete;
+	form_newUserWindow& operator=(const form_newUserWindow&)=delete;
+
 	private slots:
 	void addnewUser();
 	

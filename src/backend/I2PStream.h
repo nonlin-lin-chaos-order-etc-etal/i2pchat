@@ -61,6 +61,10 @@ class CI2PStream:public QObject
 				);	
 				~CI2PStream();
 
+				//forbid some operators
+				CI2PStream(const CI2PStream&)=delete;
+				CI2PStream& operator=(const CI2PStream&)=delete;
+
 		bool 		doConnect(QString Destination);
 		bool 		doAccept();
 		void 		doDisconnect();
