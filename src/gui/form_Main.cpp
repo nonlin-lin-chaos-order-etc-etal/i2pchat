@@ -706,6 +706,8 @@ void form_MainWindow::openAboutDialog()
 
 void form_MainWindow::initStyle()
 {
+    //commented out the style stuff as styles on "ubuntu 14.04 mate" make the tray icon not appear
+    /*
     QSettings * settings=new QSettings(Core->getConfigPath()+"/application.ini",QSettings::IniFormat);
     settings->beginGroup("General");
     //Load Style
@@ -738,6 +740,7 @@ void form_MainWindow::initStyle()
     settings->endGroup();
 
     delete settings;
+    */
 }
 
 void form_MainWindow::initTryIconMenu()
