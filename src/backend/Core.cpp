@@ -40,7 +40,15 @@ CCore::CCore()
 //        mConfigPath+="/.I2P-Messenger";
 //    }
 //    else{
-        mConfigPath=QApplication::applicationDirPath();
+#ifdef ANDROID
+    QString configPathLastSegment=QString("i2pchat/");
+    QString configPathUp=QString("/sdcard1/");
+    mConfigPath=configPathUp+configPathLastSegment;
+    QDir path(configPathUp);
+    if(!path.exists(configPathLastSegment))path.mkdir(configPathLastSegment);
+#else
+    mConfigPath=QApplication::applicationDirPath();
+#endif
 //    }
 
     mDebugMessageHandler= new CDebugMessageManager("General");

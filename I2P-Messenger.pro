@@ -115,4 +115,8 @@ MOC_DIR = temp/moc
 RC_FILE = src/gui/icons/i2pmessenger_win.rc
 
 
+android {
+    DEFINES += ANDROID=1
+}
+
 include(gitversion.pri)

@@ -89,11 +89,15 @@ void myMessageHandler(QtMsgType type,const QMessageLogContext &context,const QSt
 		txt.append(QString(" Critical: %1 (%2:%3, %4)\n").arg(msg).arg(context.file).arg(context.line).arg(context.function));
 		break;
 	}
-	case QtFatalMsg:{
-		txt.append(QString(" Fatal: %1 (%2:%3, %4)\n").arg(msg).arg(context.file).arg(context.line).arg(context.function));
-		break;
-	}
-	}
+    case QtFatalMsg:{
+        txt.append(QString(" Fatal: %1 (%2:%3, %4)\n").arg(msg).arg(context.file).arg(context.line).arg(context.function));
+        break;
+    }
+    default:{
+        txt.append(QString(" Message: %1 (%2:%3, %4)\n").arg(msg).arg(context.file).arg(context.line).arg(context.function));
+        break;
+    }
+    }
 	QFile outFile(Path+"/DebugLog.txt");
 	outFile.open(QIODevice::WriteOnly | QIODevice::Append);
 	QTextStream ts(&outFile);
