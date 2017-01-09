@@ -125,6 +125,7 @@ form_settingsgui::form_settingsgui(CCore& Core,QWidget *parent, Qt::WindowFlags 
 
 form_settingsgui::~form_settingsgui()
 {
+	settings->sync();
 	delete (settings);
 }
 
@@ -333,7 +334,7 @@ void form_settingsgui::loadSettings()
 		spinBox_ReAnnouncingUserSearch->setMaximum(23);
 		spinBox_ReAnnouncingUserSearch->setValue(settings->value("ReAnnounceTimerInHours",1).toInt());
 	settings->endGroup();
-	
+	settings->sync();
 }
 void form_settingsgui::saveSettings()
 {	
@@ -427,7 +428,7 @@ void form_settingsgui::saveSettings()
 		settings->setValue("Debug_Max_Message_count",spinBox_MaxLogMessagesUserSearch->value());
 		settings->setValue("ReAnnounceTimerInHours",spinBox_ReAnnouncingUserSearch->value());
 	settings->endGroup();
-	
+	settings->sync();
 	mCore.loadUserInfos();
 	mCore.getUserManager()->avatarImageChanged();
 	this->close();
@@ -539,6 +540,7 @@ void form_settingsgui::clicked_DestinationGenerate()
 	settings->beginGroup("Network");
 		settings->setValue("SamPrivKey","");
 	settings->endGroup();
+	settings->sync();
 	delete settings;
 
 	QMessageBox* msgBox= new QMessageBox(NULL);

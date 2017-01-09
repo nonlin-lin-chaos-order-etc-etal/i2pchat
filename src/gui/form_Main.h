@@ -57,7 +57,7 @@ class form_MainWindow : public QMainWindow, private Ui::form_MainWindow
     Q_OBJECT
 
 public:
-    form_MainWindow ( QWidget* parent=0 );
+    form_MainWindow ( QString configDir, QWidget* parent=0 );
     ~form_MainWindow();
 
     //forbid some operators

@@ -50,7 +50,7 @@ class CCore :public QObject
 {
     Q_OBJECT
 public:
-    CCore();
+    CCore(QString configPath);
     ~CCore();
 
     //forbid some operators

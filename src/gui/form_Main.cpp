@@ -24,12 +24,12 @@
 #include "UserManager.h"
 
 
-form_MainWindow::form_MainWindow(QWidget* parent)
+form_MainWindow::form_MainWindow(QString configDir, QWidget* parent)
     : QMainWindow(parent){
     setupUi(this); // this sets up GUI
 
     QApplication::setQuitOnLastWindowClosed(false);
-    Core= new CCore();
+    Core= new CCore(configDir);
     connect (Core,SIGNAL(signUserStatusChanged()),this,
              SLOT(eventUserChanged()));
 
@@ -165,6 +165,7 @@ void form_MainWindow::initToolBars()
             toolBar->addAction(QIcon(ICON_USERSEARCH), tr("Subscribe to Topic"), this, SLOT(openTopicSubscribeWindow()));
         }
         settings.endGroup();
+        settings.sync();
     }
 
     toolBar->addAction(QIcon(ICON_SETTINGS)		,tr("Settings")		,this,SLOT(openConfigWindow() ) );
@@ -738,7 +739,7 @@ void form_MainWindow::initStyle()
     qApp->setStyleSheet(styleSheet);
     //load Stylesheet end
     settings->endGroup();
-
+	settings->sync();
     delete settings;
     */
 }

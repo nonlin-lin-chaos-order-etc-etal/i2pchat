@@ -135,6 +135,7 @@ void CUserBlockManager::addNewBlockEntity(const QString NickName, const QString 
 					    mCore.getProtocol()->send(USER_BLOCK_INVISIBLE,User->getI2PStreamID(),QString(""));
 				      }
 				settings.endGroup();
+				settings.sync();
 			}
 		}
 		mCore.getUserManager()->deleteUserByI2PDestination(User->getI2PDestination());

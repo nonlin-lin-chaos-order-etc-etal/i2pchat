@@ -114,6 +114,7 @@ void CSessionController::slotReadFromSocket()
                     Signature.replace("%s",settings.value("Signature_Type","DSA_SHA1").toString());
                     this->doDestGenerate(Signature);
                     settings.endGroup();
+                    settings.sync();
 
                 }
                 else{

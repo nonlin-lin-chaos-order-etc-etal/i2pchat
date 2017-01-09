@@ -47,6 +47,7 @@ CUser::CUser(	CCore&	Core,
 		this->mTextColor.setNamedColor(settings.value("DefaultColor","#000000").toString());
 		this->mLogOnlineStateOfUsers=(settings.value("LogOnlineStatesOfUsers",true).toBool());
 	settings.endGroup();
+	settings.sync();
 	this->mInvisible=false;
 	this->mRecivedNicknameToUserNickname=false;
 	this->mProtocolVersion="0.2";

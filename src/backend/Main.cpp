@@ -30,17 +30,69 @@
 
 #include "form_Main.h"
 
-QString Path;
+QString debugLogDir;
 
-void enableDebugLogging();
+void enableDebugLogging(QString configPath);
 //void myMessageHandler(QtMsgType type, const char *msg);
 void myMessageHandler(QtMsgType type,const QMessageLogContext &context,const QString &msg);
 int main(int argc, char *argv[])
 {
 	QApplication app(argc, argv);
-	enableDebugLogging();
+	QString configPath;
+#ifdef ANDROID
+    QStringList loc = QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation);
+    if(loc.size()<=0){
+        QMessageBox::critical(
+            NULL,
+            "I2P-Messenger",
+            "Error: no USER folder found");
+        app.exec();
+        app.closeAllWindows();
+        return 1;
+    }
+    QString configPathParent=loc.at(0);
+    QDir configPathParentDir(configPathParent);
+    QString configPathDir("i2pchat");
+    configPath=configPathParent+"/"+configPathDir;
+    if(!configPathParentDir.mkpath(configPathDir)) {
+        QMessageBox::critical(
+            NULL,
+            "I2P-Messenger",
+            "Error: mkpath for config dir returned false");
+        app.exec();
+        app.closeAllWindows();
+        return 1;
+    }
+    /*
+    {
+        QSettings settings(configPath+"/application.ini",QSettings::IniFormat);
+        settings.beginGroup("General");
+        settings.setValue("dummy","1");
+        settings.endGroup();
+        settings.sync();
+        QString status = QString("status=(%1), folder=(%2).").arg((int)settings.status()).arg(configPath);
+        QMessageBox::information(
+            NULL,
+            "I2P-Messenger status",
+            status);
+        app.exec();
+        app.closeAllWindows();
+        return 1;
+    }
+    */
+#else
+	configPath=QApplication::applicationDirPath();
+	if(QFile::exists(configPath+"/UseHomeForConfigStore")==true){
+		QStringList tmp=QStandardPaths::standardLocations(QStandardPaths::HomeLocation);
+		if(tmp.size()>=1){
+			configPath=tmp.at(0);
+			configPath+="/.I2P-Messenger";
+		}
+	}
+#endif
+	enableDebugLogging(configPath);
 	QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
-	form_MainWindow* mainForm= new form_MainWindow();
+    form_MainWindow* mainForm= new form_MainWindow(configPath);
 	mainForm->show();
         app.exec();
 	app.closeAllWindows();
@@ -48,26 +100,17 @@ int main(int argc, char *argv[])
 	return 0;
 }
 
-void enableDebugLogging()
+void enableDebugLogging(QString configPath)
 {
-	if(QFile::exists(QApplication::applicationDirPath()+"/UseHomeForConfigStore")==true){
-		QStringList tmp=QStandardPaths::standardLocations(QStandardPaths::HomeLocation);
-
-		if(tmp.size()>=1){
-			Path=tmp.at(0);
-			Path+="/.I2P-Messenger";
-		}
-	}else{
-	   Path=QApplication::applicationDirPath();
-	}
-	
 	//is DebugPrint = enabled ?
-	QSettings settings(Path+"/application.ini",QSettings::IniFormat);
+    debugLogDir=configPath;
+	QSettings settings(configPath+"/application.ini",QSettings::IniFormat);
 	settings.beginGroup("General");
 	  if(settings.value("DebugLogging","true").toBool()==true){
           qInstallMessageHandler(myMessageHandler);
 	  }
 	settings.endGroup();
+	settings.sync();
 }
 
 void myMessageHandler(QtMsgType type,const QMessageLogContext &context,const QString &msg)
@@ -98,7 +141,7 @@ void myMessageHandler(QtMsgType type,const QMessageLogContext &context,const QSt
         break;
     }
     }
-	QFile outFile(Path+"/DebugLog.txt");
+    QFile outFile(debugLogDir+"/DebugLog.txt");
 	outFile.open(QIODevice::WriteOnly | QIODevice::Append);
 	QTextStream ts(&outFile);
 	ts << txt << endl;

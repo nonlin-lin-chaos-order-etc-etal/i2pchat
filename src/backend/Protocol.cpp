@@ -352,6 +352,7 @@ using namespace Protocol_Info;
 						    send(USER_BLOCK_INVISIBLE,ID,QString(""));
 					      }
 					settings.endGroup();
+					settings.sync();
 					mCore.getConnectionManager()->doDestroyStreamObjectByID(ID);
 					return;
 				    }

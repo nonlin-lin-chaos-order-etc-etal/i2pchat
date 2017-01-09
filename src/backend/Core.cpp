@@ -31,27 +31,11 @@
 #include <QApplication>
 #include <QStandardPaths>
 
-CCore::CCore()
+CCore::CCore(QString configPath)
 {	
+    mConfigPath=configPath;
 
-//    if(QFile::exists(QApplication::applicationDirPath()+"/UseHomeForConfigStore")==true){
-//    	//mConfigPath=QDesktopServices::storageLocation(QDesktopServices::HomeLocation);
-//    	//mConfigPath=QStandardPaths::standardLocations(QStandardPaths::QStandardPaths::HomeLocation);
-//        mConfigPath+="/.I2P-Messenger";
-//    }
-//    else{
-#ifdef ANDROID
-    QString configPathLastSegment=QString("i2pchat/");
-    QString configPathUp=QString("/sdcard1/");
-    mConfigPath=configPathUp+configPathLastSegment;
-    QDir path(configPathUp);
-    if(!path.exists(configPathLastSegment))path.mkdir(configPathLastSegment);
-#else
-    mConfigPath=QApplication::applicationDirPath();
-#endif
-//    }
-
-    mDebugMessageHandler= new CDebugMessageManager("General");
+    mDebugMessageHandler= new CDebugMessageManager("General", configPath);
     mSoundManager= new CSoundManager(mConfigPath);
 
 
@@ -86,6 +70,7 @@ CCore::CCore()
         settings.remove("Destination");
     }
     settings.endGroup();
+    settings.sync();
 
     mProtocol= new CProtocol(*this);
     this->mCurrentOnlineStatus=User::USEROFFLINE;
@@ -106,6 +91,7 @@ CCore::CCore()
         mDebugSeedlessHandler=NULL;
     }
     settings.endGroup();
+    settings.sync();
 
 */
     mUnsentChatMessageStorage= new CUnsentChatMessageStorage(mConfigPath+"/UnsentChatMessageStorage.ini");
@@ -181,6 +167,7 @@ QString CCore::calcSessionOptionString() const
 
     settings.remove("SessionOptionString");//no longer used,- so erase it
     settings.endGroup();
+    settings.sync();
 
     return SessionOptionString;
 }
@@ -205,6 +192,7 @@ void CCore::init(){
                 calcSessionOptionString());
 
     settings.endGroup();
+    settings.sync();
 }
 
 void CCore::slotStreamStatusRecived(const SAM_Message_Types::RESULT result,const qint32 ID,QString Message) {
@@ -712,6 +700,7 @@ void CCore::createStreamObjectForUser(CUser& User)
         t->doConnect(User.getI2PDestination());
         t->startUnlimintedReconnect(msec);
     }
+    settings->sync();
     delete settings;
 }
 
@@ -721,6 +710,7 @@ void CCore::slotNewSamPrivKeyGenerated(const QString SamPrivKey)
     settings->beginGroup("Network");
     settings->setValue("SamPrivKey",SamPrivKey);
     settings->endGroup();
+    settings->sync();
     delete settings;
 }
 
@@ -799,6 +789,7 @@ void CCore::loadUserInfos()
         emit signOwnAvatarImageChanged();
     }
     settings.endGroup();
+    settings.sync();
 }
 
 const CRecivedInfos CCore::getUserInfos() const
@@ -863,6 +854,7 @@ void CCore::setMyDestinationB32(QString B32Dest)
     settings.beginGroup("Network");
     settings.setValue("MyDestinationB32",B32Dest);
     settings.endGroup();
+    settings.sync();
     
     mMyDestinationB32=B32Dest;
 }

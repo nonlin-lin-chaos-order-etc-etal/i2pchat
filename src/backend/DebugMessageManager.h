@@ -30,7 +30,7 @@ class CDebugMessageManager:public QObject
 	    Q_OBJECT
 
 	public:
-	CDebugMessageManager(QString Group);
+    CDebugMessageManager(QString Group, QString configPath);
 	~CDebugMessageManager();
 
 	//forbid some operators

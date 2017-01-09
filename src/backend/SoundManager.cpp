@@ -97,6 +97,7 @@ void CSoundManager::reInit()
 			mSoundFileNewChatMessage	=settings.value("NewChatMessage","./sounds/Notify.wav")	.toString();
 		settings.endGroup();
 	settings.endGroup();
+	settings.sync();
 }
 
 CSoundManager::~ CSoundManager()

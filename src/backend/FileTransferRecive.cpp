@@ -63,6 +63,7 @@ CFileTransferRecive::CFileTransferRecive(CCore& Core,CI2PStream& Stream, qint32 
 		}
 		
 	settings.endGroup();
+	settings.sync();
 
 
 	if(AutoAcceptFileRecive==true){
