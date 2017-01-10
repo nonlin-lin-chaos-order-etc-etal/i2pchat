@@ -62,8 +62,9 @@ class form_ChatWidget : public QMainWindow, public Ui::form_chatwidget
 {
 Q_OBJECT
 public:
-	form_ChatWidget(CUser& user,CCore& Core,QDialog* parent = 0);
-	~form_ChatWidget();
+    form_ChatWidget(CUser& user,ActorRosterEntry &actorRosterEntry,CCore& Core,QDialog* parent = 0);
+    form_ChatWidget(AbstractGroupRosterEntry& groupRosterEntry,CCore& Core,QDialog* parent = 0);
+    ~form_ChatWidget();
 
 	//forbid some operators
 	form_ChatWidget(const form_ChatWidget&)=delete;
@@ -71,6 +72,8 @@ public:
 
 	void getFocus();
 	
+private:
+    void init();
 
 private slots:
 	void sendMessageSignal();
@@ -118,21 +121,23 @@ private slots:
 
 private:
 	void closeEvent(QCloseEvent *e);
-	void centerDialog();
-  
-	
-	QColor textColor;
-	QColor textColor2;
-	
-	CUser& user;
-	QFont  mCurrentFont;
-	QFont  mCurrentFont2;
-	
+    void keyPressEvent(QKeyEvent* event);
+    void centerDialog();
+
+    CUser* user;
+    AbstractGroupRosterEntry* group;
+    CCore& Core;
+    RosterController& rosterController;
+    ActorRosterEntry *actorRosterEntry;
+
+    QFont mCurrentFont;
+    QFont mCurrentFont2;
+    QColor textColor;
+    QColor textColor2;
+
 	ChatEventEater *m_event_eater;
-	CCore& Core;
 	bool mHaveFocus;	
 	QTextEdit mControllForChange;
-	void keyPressEvent(QKeyEvent* event);
 	QPixmap mOwnAvatar;
 	QPixmap mUserAvatar;
 	int currentOfflineMessageIndex;

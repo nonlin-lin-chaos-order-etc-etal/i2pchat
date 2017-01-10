@@ -27,6 +27,6 @@ AbstractRosterEntry* RosterEntryFactory::createRosterEntryForOldStyleUser(CUser&
     return ActorRosterEntry::createRosterEntryForOldStyleUser(user, cum, mUnsentMessageStorage);
 }
 
-SwarmType1RosterEntry* RosterEntryFactory::createRosterEntryForSwarmType1(SwarmType1&swarm) {
-    return SwarmType1RosterEntry::createRosterEntryForSwarmType1(swarm);
+SwarmType1RosterEntry* RosterEntryFactory::createRosterEntryForSwarmType1(SwarmType1&swarm,CCore&chatCore) {
+    return SwarmType1RosterEntry::createRosterEntryForSwarmType1(swarm,chatCore);
 }

@@ -35,7 +35,7 @@
 #include "UserBlockManager.h"
 #include "FileTransferManager.h"
 #include "UnsentChatMessageStorage.h"
-#include "rostermodel.h"
+#include "rostercontroller.h"
 
 using namespace SAM_Message_Types;
 using namespace User;
@@ -45,6 +45,7 @@ class CConnectionManager;
 class CFileTransferManager;
 class CPacketManager;
 class RosterModel;
+class RosterController;
 
 class CCore :public QObject
 {
@@ -130,8 +131,7 @@ private:
     ONLINESTATE                 mCurrentOnlineStatus;
     ONLINESTATE                 mNextOnlineStatus;
 
-    RosterModel* rosterModel;
-
+    RosterController* rosterController;
 
     void init();
     void stopCore();
@@ -139,6 +139,7 @@ private:
     void closeAllActiveConnections();
 
 public:
-    RosterModel& getRosterModel() { return *rosterModel; }
+    RosterModel& getRosterModel();
+    RosterController& getRosterController();
 };
 #endif

@@ -5,6 +5,8 @@
 #include <QObject>
 #include <QSet>
 
+#include "actorrosterentry.h"
+
 class CUserManager;
 class CCore;
 class AbstractRosterEntry;
@@ -44,8 +46,23 @@ private:
     void loadRosterEntry(QStringList& lookaheadTokens, QTextStream& input);
 public:
     void createNewSwarmType1(SwarmType1&swarm);
-
+    AbstractRosterEntry* operator [](QString mapId) { return entryIdQStrToRosterEntry[mapId]; }
+private:
     void insertRosterEntry(AbstractRosterEntry* entry);
+public:
+    //dealloc by `delete result`
+    QList<AbstractRosterEntry*>* cloneRosterEntriesSet();
+    void removeActorByI2PDestination(QString I2PDestination) {
+        for(QMap<QString,AbstractRosterEntry*>::iterator it = entryIdQStrToRosterEntry.begin(); it!=entryIdQStrToRosterEntry.end(); ++it) {
+            AbstractRosterEntry* e = *it;
+            ActorRosterEntry * actor = e->asActor();
+            if(!actor)continue;
+            if(actor->getUser().getI2PDestination()==I2PDestination) {
+                entryIdQStrToRosterEntry.remove(actor->getMapIdQString());
+                return;
+            }
+        }
+    }
 };
 
 #endif // ROSTERMODEL_H

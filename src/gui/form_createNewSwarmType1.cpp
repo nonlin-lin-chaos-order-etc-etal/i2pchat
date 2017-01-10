@@ -1,6 +1,7 @@
 #include "form_createNewSwarmType1.h"
 #include "Core.h"
 #include "SwarmType1FactoryMethods.h"
+#include "rostermodel.h"
 
 void form_createNewSwarmType1::swarmLabelInputTextChanged(QString /*text*/) {
     updateCmdCreate();

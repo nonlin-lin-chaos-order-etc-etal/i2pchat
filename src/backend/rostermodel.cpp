@@ -119,12 +119,18 @@ void RosterModel::invalidateContents() {
     entryIdQStrToRosterEntry.clear();
 }
 
+QList<AbstractRosterEntry*>* RosterModel::cloneRosterEntriesSet() {
+    return new QList<AbstractRosterEntry*>(entryIdQStrToRosterEntry.values());
+}
+
+
 void RosterModel::createNewSwarmType1(SwarmType1&swarm) {
-    SwarmType1RosterEntry* entry = RosterEntryFactory::createRosterEntryForSwarmType1(swarm);
+    SwarmType1RosterEntry* entry = RosterEntryFactory::createRosterEntryForSwarmType1(swarm,chatCore);
     insertRosterEntry(entry);
 }
 
 void RosterModel::insertRosterEntry(AbstractRosterEntry* entry) {
     if(!entry)return;
     entryIdQStrToRosterEntry[entry->getMapIdQString()]=entry;
+    save();
 }

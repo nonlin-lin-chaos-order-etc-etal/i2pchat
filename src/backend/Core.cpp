@@ -33,7 +33,7 @@
 
 #include "rostermodel.h"
 
-CCore::CCore(QString configPath) : rosterModel(nullptr)
+CCore::CCore(QString configPath) : rosterController(nullptr)
 {	
     mConfigPath=configPath;
 
@@ -110,7 +110,8 @@ CCore::CCore(QString configPath) : rosterModel(nullptr)
     connect(mFileTransferManager,SIGNAL(signUserStatusChanged()),this,
             SIGNAL(signUserStatusChanged()));
 
-    rosterModel = new RosterModel(*this, *mUserManager, *mUnsentChatMessageStorage);
+    RosterModel * rosterModel = new RosterModel(*this, *mUserManager, *mUnsentChatMessageStorage);
+    rosterController = new RosterController(*rosterModel);
     mUserManager->setRosterModel(rosterModel);
 }
 
@@ -136,6 +137,8 @@ CCore::~CCore(){
     delete mUserBlockManager;
     delete mDebugMessageHandler;
     delete mFileTransferManager;
+    RosterModel * rosterModel = & (rosterController->getRosterModel());
+    delete rosterController;
     delete rosterModel;
 }
 
@@ -869,3 +872,5 @@ QString CCore::canonicalizeTopicId(QString topicIdNonCanonicalized) {
     return topicIdNonCanonicalized;
 }
 
+RosterModel& CCore::getRosterModel() { return rosterController->getRosterModel(); }
+RosterController& CCore::getRosterController() { return *rosterController; }

@@ -18,7 +18,8 @@ DEPENDPATH += . \
 
 INCLUDEPATH += . \
 	      src/gui \
-	      src/backend/
+              src/backend/ \
+              src/controller/
 
 SOURCES +=  src/backend/Main.cpp \
 	    src/backend/Core.cpp \
@@ -60,7 +61,9 @@ SOURCES +=  src/backend/Main.cpp \
     src/backend/actorrosterentry.cpp \
     src/backend/abstractgrouprosterentry.cpp \
     src/backend/swarmtype1rosterentry.cpp \
-    src/backend/rosterentryfactory.cpp
+    src/backend/rosterentryfactory.cpp \
+    src/controller/rostercontroller.cpp \
+    src/gui/abstractrosterentryview.cpp
 
 
 HEADERS +=  src/backend/Core.h \
@@ -105,7 +108,10 @@ HEADERS +=  src/backend/Core.h \
     src/backend/actorrosterentry.h \
     src/backend/abstractgrouprosterentry.h \
     src/backend/swarmtype1rosterentry.h \
-    src/backend/rosterentryfactory.h
+    src/backend/rosterentryfactory.h \
+    src/controller/rostercontroller.h \
+    src/gui/abstractrosterentryview.h \
+    src/backend/main.h
 	  
 
 

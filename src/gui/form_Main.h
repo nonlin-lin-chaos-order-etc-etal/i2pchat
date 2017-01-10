@@ -85,23 +85,20 @@ public slots:
     void eventNicknameChanged();
 
 private slots:
-    //Windows
+    //windows begin
     void openConfigWindow();
     void openAdduserWindow();
     void openDebugMessagesWindow();
     void openAboutDialog();
     void openUserListeClicked ();
-    void openChatWindow(QString Destination);
+    void openChatWindow(QString rosterEntryMapId);
     void openFileReciveWindow(qint32 StreamID);
     void openFileSendWindow(qint32 StreamID);
     //void openUserSearchWindow();
     void openTopicSubscribeWindow();
     void openDialog_creatNewSwarm();
+    //windows end
 
-
-
-
-    //Windows end
     void namingMe();
     void copyDestination();
     void SendFile();
@@ -141,7 +138,7 @@ private:
     QAction* toggleVisibilityAction, *toolAct;
     QAction* toggleMuteAction;
     QMenu *menu;
-    QString mLastDestinationWithUnreadMessages;
+    QString mLastRosterEntryMapIdWithUnreadMessages;
 
     //windows
     QMap <QString,form_ChatWidget*> mAllOpenChatWindows;
@@ -157,5 +154,7 @@ private:
     QByteArray avatarImageByteArray2;
 
     bool Mute;
+
+    QString getCurrentUserDest();
 };
 #endif

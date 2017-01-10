@@ -23,7 +23,14 @@ public:
     virtual QString getClassTag();
     virtual QString getMapIdQString();
     virtual void save(QTextStream& out, CUnsentChatMessageStorage& offlineMessagesStorage);
+    CUser& getUser();
 
+    //typecasts
+    virtual AbstractGroupRosterEntry * asGroup(){return nullptr;}//FIXME bad design: actor can be group
+    virtual ActorRosterEntry * asActor(){return this;}
+    virtual SwarmType1RosterEntry * asSwarmType1(){return nullptr;}//FIXME bad design: swarm type 1 can be actor
+
+    virtual bool hasUnreadChatMessages(){return getUser().getHaveNewUnreadChatmessages();}
 private:
     CUser* user;
 };

@@ -279,6 +279,7 @@ bool CUserManager::deleteUserByI2PDestination(QString I2PDestination){
 			if(mCore.getConnectionManager()->isComponentStopped()==false){
 				mCore.getConnectionManager()->doDestroyStreamObjectByID(mUsers.at(i)->getI2PStreamID());
 			}
+            mCore.getRosterController().removeActorByI2PDestination(I2PDestination);
 			mUsers.at(i)->deleteLater();
 			mUsers.removeAt(i);
 			saveUserList();

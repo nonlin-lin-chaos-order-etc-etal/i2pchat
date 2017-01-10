@@ -2,6 +2,7 @@
 
 #include "form_chatwidget.h"
 #include "User.h"
+#include "main.h"
 
 bool ChatEventEater::eventFilter(QObject *obj, QEvent *event)
 {
@@ -39,17 +40,28 @@ bool ChatEventEater::eventFilter(QObject *obj, QEvent *event)
 }
 
 
-form_ChatWidget::form_ChatWidget(CUser& user,CCore& Core,QDialog* parent /* = 0 */)
-:QMainWindow(parent,0), user(user),Core(Core)
-{
-	setupUi(this);
+form_ChatWidget::form_ChatWidget(AbstractGroupRosterEntry& groupRosterEntry_,CCore& Core,QDialog* parent /* = 0 */)
+    :QMainWindow(parent,0), user(nullptr),group(&groupRosterEntry_),Core(Core),
+      rosterController(Core.getRosterController()),actorRosterEntry(nullptr) {
+    setupUi(this);
+    init();
+}
+
+
+form_ChatWidget::form_ChatWidget(CUser& user,ActorRosterEntry &actorRosterEntry_, CCore& Core,QDialog* parent /* = 0 */)
+:QMainWindow(parent,0), user(&user),group(nullptr),Core(Core),
+  rosterController(Core.getRosterController()),actorRosterEntry(&actorRosterEntry_) {
+    setupUi(this);
+    init();
+}
+
+void form_ChatWidget::init() {
 
 	QTextEdit *message=this->message;
 	QTextBrowser *chat=this->chat;
 	QToolButton *txtBold=this->txtBold;
 	QToolButton *txtItalic=this->txtItalic;
 	QToolButton *txtUnder=this->txtUnder;
-
 
 	m_event_eater = new ChatEventEater(this);
 	
@@ -63,23 +75,27 @@ form_ChatWidget::form_ChatWidget(CUser& user,CCore& Core,QDialog* parent /* = 0 
 
 	message->installEventFilter(m_event_eater);
 
-	connect(&user,SIGNAL(signNewMessageRecived()),this,
-		SLOT(newMessageRecived()));
+    if(user){
+        connect(user,SIGNAL(signNewMessageRecived()),this,
+            SLOT(newMessageRecived()));
 
-	connect(&user,SIGNAL(signOnlineStateChanged()),this,
-		SLOT(changeWindowsTitle()));
-		
-	connect(&user,SIGNAL(signUserDeleted()),this,
-		SLOT(close()));
-		
-	connect(&user,SIGNAL(signNewAvatarImage()),this,
-		SLOT(remoteAvatarImageChanged()));
+        connect(user,SIGNAL(signOnlineStateChanged()),this,
+            SLOT(changeWindowsTitle()));
 
-	connect(this,SIGNAL(sendChatMessage(QString)),&user,
-		SLOT(slotSendChatMessage(QString)));
+        connect(user,SIGNAL(signUserDeleted()),this,
+            SLOT(close()));
 
-	connect(cmd_SendFile,SIGNAL(clicked()),this,
-		SLOT(newFileTransfer()));
+        connect(user,SIGNAL(signNewAvatarImage()),this,
+            SLOT(remoteAvatarImageChanged()));
+
+        connect(this,SIGNAL(sendChatMessage(QString)),user,
+            SLOT(slotSendChatMessage(QString)));
+        connect(cmd_SendFile,SIGNAL(clicked()),this,
+            SLOT(newFileTransfer()));
+    }else{
+        cmd_SendFile->hide();
+    }
+
 
 	connect(chat, SIGNAL(anchorClicked(const QUrl &)), this,
 		SLOT(anchorClicked(const QUrl &)));
@@ -108,17 +124,24 @@ form_ChatWidget::form_ChatWidget(CUser& user,CCore& Core,QDialog* parent /* = 0 
 	
 	chat->setOpenLinks(false);
 	
-			
-  	mCurrentFont = user.getTextFont();
-	mCurrentFont2= user.getTextFont();
-	textColor = user.getTextColor();
-	textColor2 = user.getTextColor();
+
+    if(user){
+        mCurrentFont = (user->getTextFont());
+        mCurrentFont2= (user->getTextFont());
+        textColor = (user->getTextColor());
+        textColor2 = (user->getTextColor());
+    }else{
+        mCurrentFont = (group->getTextFont());
+        mCurrentFont2= (group->getTextFont());
+        textColor = (group->getTextColor());
+        textColor2 = (group->getTextColor());
+    }
+    QPixmap pxm(22,22);
+    pxm.fill(textColor);
+    //txtColor->setIcon(pxm);
+
 	mHaveFocus=false;
 
-	QPixmap pxm(22,22);
-	pxm.fill(textColor);
-	//txtColor->setIcon(pxm);
-	
 	connect(send, SIGNAL(clicked()), SLOT(sendMessageSignal()));
 	connect(txtColor, SIGNAL(clicked()), SLOT(setTextColor()));
 	connect(txtColor_2, SIGNAL(clicked()), SLOT(setTextColor_2()));
@@ -143,7 +166,7 @@ form_ChatWidget::form_ChatWidget(CUser& user,CCore& Core,QDialog* parent /* = 0 
 
 	
 	QPalette pal = message->palette(); 
-	pal.setBrush(QPalette::Text,QBrush(textColor));
+    pal.setBrush(QPalette::Text,QBrush(textColor));
 	message->setPalette(pal);
 
 	message->setCurrentFont(mCurrentFont);
@@ -180,7 +203,7 @@ void form_ChatWidget::newMessageRecived(){
 		restoreOldVerticalScrollBarValue=true;
 	}
 
-	QStringList Messages=user.getNewMessages(mHaveFocus);
+    QStringList Messages=user?user->getNewMessages(mHaveFocus):group?rosterController.getNewMessages(group):QStringList();
 	int i=0;
 	QString temp;	
 	while(i<Messages.count()){
@@ -199,13 +222,13 @@ void form_ChatWidget::newMessageRecived(){
 	
 }
 
-void form_ChatWidget::addAllMessages(){
+void form_ChatWidget::addAllMessages() { //FIXME WTF??
 	QTextBrowser *chat=this->chat;
 	QScrollBar *sb=chat->verticalScrollBar();
 	chat->clear();
 
-	QStringList Messages=user.getAllChatMessages();
-	int i=0;	
+    QStringList Messages=user?user->getAllChatMessages():group?rosterController.getNewMessages(group):QStringList();
+    int i=0;
 	while(i<Messages.count()){
 		QString tmp =Messages.at(i);
 		this->addMessage(tmp);
@@ -213,8 +236,6 @@ void form_ChatWidget::addAllMessages(){
 	}
 	
 	sb->setValue(sb->maximum());
-	
-	
 }
 
 
@@ -292,19 +313,19 @@ void form_ChatWidget::addMessage(QString text){
 
 void form_ChatWidget::setTextColor(){
 	QTextEdit *message=this->message;
-	textColor = QColorDialog::getColor(user.getTextColor(), this);
+    textColor = QColorDialog::getColor(user?user->getTextColor():group->getTextColor(), this);
 	
 	//textColor = QColorDialog::getColor(message->textColor(), this);
 	QPixmap pxm(22,22);
 	pxm.fill(textColor);
 	//txtColor->setIcon(pxm);
-	user.setTextColor(textColor);
-	
 
+    if(user)user->setTextColor(textColor);
+    else group->setTextColor(textColor);
+	
 	QPalette pal = message->palette(); 
 	pal.setBrush(QPalette::Text,QBrush(textColor));
 	message->setPalette(pal);
-
 }
 
 void form_ChatWidget::setFont()
@@ -313,7 +334,7 @@ void form_ChatWidget::setFont()
     	bool ok;
     	mCurrentFont = QFontDialog::getFont(&ok, mCurrentFont, this);
     	
-	user.setTextFont(mCurrentFont);
+    if(user)user->setTextFont(mCurrentFont);else group->setTextFont(mCurrentFont);
 	message->setCurrentFont(mCurrentFont);
 	message->setFont(mCurrentFont);
 	message->setFocus();
@@ -325,17 +346,23 @@ void form_ChatWidget::setBold(bool t){
 	QTextEdit *message=this->message;
 
 	mCurrentFont.setBold(t);
-	user.setTextFont(mCurrentFont);
+    if(user)user->setTextFont(mCurrentFont);else group->setTextFont(mCurrentFont);
 
 	message->setCurrentFont(mCurrentFont);
 	message->setFont(mCurrentFont);
 }
 
 void form_ChatWidget::closeEvent(QCloseEvent *e){
-	disconnect(&user,SIGNAL(signNewMessageRecived()),this,
-		SLOT(newMessageRecived()));
-		
-	emit closingChatWindow(user.getI2PDestination());
+    if(user){
+        if(!quitting) {
+            disconnect(user,SIGNAL(signNewMessageRecived()), this, SLOT(newMessageRecived()));
+            emit closingChatWindow(actorRosterEntry->getMapIdQString());
+        }
+    }else{
+        if(!quitting) {
+            emit closingChatWindow(group->getMapIdQString());
+        }
+    }
 	e->ignore();
 }
 
@@ -347,7 +374,7 @@ void form_ChatWidget::sendMessageSignal(){
 	mControllForChange.selectAll();
 	mControllForChange.setCurrentFont(mCurrentFont);
 	mControllForChange.setFont(mCurrentFont);
-	mControllForChange.setTextColor(user.getTextColor());
+    mControllForChange.setTextColor(user?user->getTextColor():group->getTextColor());
 
 	mControllForChange.setFontUnderline(mCurrentFont.underline());
 	mControllForChange.setFontItalic(mCurrentFont.italic());
@@ -356,7 +383,8 @@ void form_ChatWidget::sendMessageSignal(){
 	QString NewMessage=mControllForChange.toHtml();
 
 	if(NewMessage.length()<65535){
-	    user.slotSendChatMessage(NewMessage);
+        if(user)user->slotSendChatMessage(NewMessage);
+        else group->sendChatMessage(NewMessage);
 	    message->clear();
 	    newMessageRecived();
 	}
@@ -375,73 +403,77 @@ void form_ChatWidget::sendMessageSignal(){
 
 void form_ChatWidget::changeWindowsTitle()
 {
-	QString OnlineStatus;
-	QString OnlineStatusIcon;
-	switch(user.getOnlineState())
-		{
-			
-			case USERTRYTOCONNECT:
-			case USERINVISIBLE:
-			case USEROFFLINE:{
-						OnlineStatus=tr("Offline");
-						this->setWindowIcon(QIcon(ICON_USER_OFFLINE));
-						break;
-					}
-			case USERONLINE:	
-					{
-						OnlineStatus=tr("Online");
-						this->setWindowIcon(QIcon(ICON_USER_ONLINE));
-						break;
-					}
-			case USERWANTTOCHAT:
-					{
-						OnlineStatus=tr("Want to chat");
-						this->setWindowIcon(QIcon(ICON_USER_WANTTOCHAT));
-						break;
-					}
-			case USERAWAY:
-					{
-						OnlineStatus=tr("Away");
-						this->setWindowIcon(QIcon(ICON_USER_AWAY));	
-						break;
-					}
-			case USERDONT_DISTURB:
-					{
-						OnlineStatus=tr("Don't disturb");
-						this->setWindowIcon(QIcon(ICON_USER_DONT_DUSTURB));
-						break;
-					}
-			case USERBLOCKEDYOU:
-					{
-						OnlineStatus=tr("You were blocked");
-						this->setWindowIcon(QIcon(ICON_USER_BLOCKED_YOU));
-						break;
-			    
-					}
-		}
-	this->setWindowTitle(user.getName() +"       ("+ OnlineStatus +")");
+    if(user) {
+        QString OnlineStatus;
+        QString OnlineStatusIcon;
+        switch(user->getOnlineState())
+        {
+
+        case USERTRYTOCONNECT:
+        case USERINVISIBLE:
+        case USEROFFLINE:{
+            OnlineStatus=tr("Offline");
+            this->setWindowIcon(QIcon(ICON_USER_OFFLINE));
+            break;
+        }
+        case USERONLINE:
+        {
+            OnlineStatus=tr("Online");
+            this->setWindowIcon(QIcon(ICON_USER_ONLINE));
+            break;
+        }
+        case USERWANTTOCHAT:
+        {
+            OnlineStatus=tr("Want to chat");
+            this->setWindowIcon(QIcon(ICON_USER_WANTTOCHAT));
+            break;
+        }
+        case USERAWAY:
+        {
+            OnlineStatus=tr("Away");
+            this->setWindowIcon(QIcon(ICON_USER_AWAY));
+            break;
+        }
+        case USERDONT_DISTURB:
+        {
+            OnlineStatus=tr("Don't disturb");
+            this->setWindowIcon(QIcon(ICON_USER_DONT_DUSTURB));
+            break;
+        }
+        case USERBLOCKEDYOU:
+        {
+            OnlineStatus=tr("You were blocked");
+            this->setWindowIcon(QIcon(ICON_USER_BLOCKED_YOU));
+            break;
+
+        }
+        }
+        setWindowTitle(user->getName() +" ("+ OnlineStatus +")");
+    }else{
+        setWindowTitle(rosterController.getDisplayNameQStringForRosterEntry(group) +tr(" (group)"));
+    }
 }
 
 void form_ChatWidget::newFileTransfer()
 {
-	if(user.getConnectionStatus()==ONLINE){
-		QString FilePath=QFileDialog::getOpenFileName(this,tr("Open File"), ".", tr("all Files (*)"));
-		QString Destination= user.getI2PDestination();
+    if(!user)return;
+    if(user->getConnectionStatus()==ONLINE){
+        QString FilePath=QFileDialog::getOpenFileName(this,tr("Choose a file"), ".", tr("All files (*)"));
+        QString Destination= user->getI2PDestination();
 		
-		if(FilePath.endsWith("/")==true){
-		  //only a directory ,- dont send it
-		  return;
-	      }
-		
-		if(!FilePath.isEmpty())
-			Core.getFileTransferManager()->addNewFileTransfer(FilePath,Destination);
+        if(FilePath.endsWith("/")==true){
+            //only a directory ,- dont send it
+            return;//TODO send folders
+        }
+
+        if(!FilePath.isEmpty())
+            Core.getFileTransferManager()->addNewFileTransfer(FilePath,Destination);
 			
-	}
-	else{
+    } else {
 		QMessageBox* msgBox= new QMessageBox(this);
 		msgBox->setIcon(QMessageBox::Information);
-		msgBox->setText(tr("Sendfile"));
-		msgBox->setInformativeText(tr("The other user must be online, filesend abborted"));
+        msgBox->setText(tr("Send file aborted"));
+        msgBox->setInformativeText(tr("The other user must be online, file send aborted"));
 		msgBox->setStandardButtons(QMessageBox::Ok);
 		msgBox->setDefaultButton(QMessageBox::Ok);
 		msgBox->setWindowModality(Qt::NonModal);
@@ -469,9 +501,13 @@ void form_ChatWidget::focusEvent(bool b)
 {
 	mHaveFocus=b;
 
-	if(user.getHaveNewUnreadMessages()==true){
+    if(user&&user->getHaveNewUnreadMessages()){
 		newMessageRecived();
-	}
+    }else{
+        if(group&& group->hasUnreadChatMessages()){
+            newMessageRecived();
+        }
+    }
 }
 
 void form_ChatWidget::getFocus()
@@ -484,7 +520,8 @@ void form_ChatWidget::getFocus()
 void form_ChatWidget::setUnderline(bool t)
 {
 	mCurrentFont.setUnderline(t);
-	user.setTextFont(mCurrentFont);
+    if(user)user->setTextFont(mCurrentFont);
+    else group->setTextFont(mCurrentFont);
 
 	message->setCurrentFont(mCurrentFont);
 	message->setFont(mCurrentFont);
@@ -494,7 +531,8 @@ void form_ChatWidget::setUnderline(bool t)
 void form_ChatWidget::setItalic(bool t)
 {
 	mCurrentFont.setItalic(t);
-	user.setTextFont(mCurrentFont);
+    if(user)user->setTextFont(mCurrentFont);
+    else group->setTextFont(mCurrentFont);
 
 	message->setCurrentFont(mCurrentFont);
 	message->setFont(mCurrentFont);
@@ -532,15 +570,15 @@ void form_ChatWidget::showAvatarFrame(bool show)
 
 void form_ChatWidget::remoteAvatarImageChanged()
 {
-	if(user.getRecivedUserInfos().AvatarImage.size()>0){
-	    mUserAvatar.loadFromData(user.getRecivedUserInfos().AvatarImage);
+    if(user&&user->getRecivedUserInfos().AvatarImage.size() > 0){
+        mUserAvatar.loadFromData(user->getRecivedUserInfos().AvatarImage);
 	    useravatar_label->setPixmap(mUserAvatar);
 	}
 }
 
 void form_ChatWidget::messageTextChanged()
 {
-      if(user.getProtocolVersion_D()<0.5) {return;}
+      if(user&&user->getProtocolVersion_D()<0.5) {return;}
       
       QTextCursor tmpCursor = message->textCursor();
       int cursorPos=tmpCursor.position();
@@ -559,12 +597,13 @@ void form_ChatWidget::messageTextChanged()
       int maxPos=tmpCursor.position();
       
       if(cursorPos<=maxPos){
-	tmpCursor.setPosition(cursorPos);
+          tmpCursor.setPosition(cursorPos);
       }else{
-	tmpCursor.setPosition(maxPos);
+          tmpCursor.setPosition(maxPos);
       }
       message->setTextCursor(tmpCursor);
 }
+
 void form_ChatWidget::centerDialog()
 {
     QRect scr = QApplication::desktop()->screenGeometry(0);
@@ -634,13 +673,17 @@ void form_ChatWidget::tabIndexChanged(int tabIndex)
 
 void form_ChatWidget::reloadOfflineMessages()
 {
-  offlineMessages=offlineMessages=user.getUnsentedMessages();
-  OfflineMessageCount=offlineMessages.count();
-  if(currentOfflineMessageIndex==0 && OfflineMessageCount>0){
-     currentOfflineMessageIndex=1; 
-     Ui_form_chatwidget::cmd_next->setEnabled(true);
-  }
-  displayOfflineMessages(currentOfflineMessageIndex);
+    if(user){
+        offlineMessages=user->getUnsentedMessages();
+    }else{
+        offlineMessages=group->getUnsentMessages();
+    }
+    OfflineMessageCount=offlineMessages.count();
+    if(currentOfflineMessageIndex==0 && OfflineMessageCount>0){
+       currentOfflineMessageIndex=1;
+       Ui_form_chatwidget::cmd_next->setEnabled(true);
+    }
+    displayOfflineMessages(currentOfflineMessageIndex);
 }
 
 
@@ -690,7 +733,8 @@ void form_ChatWidget::saveChangedOfflineMessages()
 	    offlineMessages.replace(currentOfflineMessageIndex-1,NewMessage);
     
 	    //qDebug()<<textEdit->toHtml()<<endl;
-	    user.setUnsentedMessages(offlineMessages);
+        if(user)user->setUnsentedMessages(offlineMessages);
+        else group->setEditedUnsentMessages(offlineMessages);
 	}
 	else{
 	    QMessageBox* msgBox= new QMessageBox(NULL);
@@ -733,7 +777,8 @@ void form_ChatWidget::cmd_delete()
     currentOfflineMessageIndex=OfflineMessageCount;
   }
   
-  user.setUnsentedMessages(offlineMessages);
+  if(user)user->setUnsentedMessages(offlineMessages);
+  else group->setEditedUnsentMessages(offlineMessages);
   reloadOfflineMessages();
 }
 

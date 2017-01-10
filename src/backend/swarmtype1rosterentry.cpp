@@ -2,14 +2,15 @@
 #include "SwarmType1.h"
 #include "QtNumeric"
 #include "UnsentChatMessageStorage.h"
+#include "Core.h"
 
-SwarmType1RosterEntry::SwarmType1RosterEntry(SwarmType1&swarm_):swarm(swarm_) {}
+SwarmType1RosterEntry::SwarmType1RosterEntry(SwarmType1&swarm_,CCore&chatCore):AbstractGroupRosterEntry(chatCore),swarm(swarm_) {}
 
 SwarmType1RosterEntry::~SwarmType1RosterEntry() {}
 
 
-SwarmType1RosterEntry* SwarmType1RosterEntry::createRosterEntryForSwarmType1(SwarmType1&swarm) {
-    return new SwarmType1RosterEntry(swarm);
+SwarmType1RosterEntry* SwarmType1RosterEntry::createRosterEntryForSwarmType1(SwarmType1&swarm,CCore&chatCore) {
+    return new SwarmType1RosterEntry(swarm,chatCore);
 }
 
 
@@ -59,6 +60,9 @@ AbstractRosterEntry* SwarmType1RosterEntry::loadRosterEntry(
       }
     }
     */
-    return new SwarmType1RosterEntry(*swarm);
+    return new SwarmType1RosterEntry(*swarm,chatCore);
 }
 
+SwarmType1& SwarmType1RosterEntry::getSwarm() {
+    return swarm;
+}

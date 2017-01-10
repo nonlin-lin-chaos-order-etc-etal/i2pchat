@@ -16,6 +16,8 @@ QString ActorRosterEntry::getMapIdQString() {
     return QString("user_")+user->getI2PDestination();
 }
 
+CUser& ActorRosterEntry::getUser() { return *user; }
+
 
 void ActorRosterEntry::save(QTextStream& out, CUnsentChatMessageStorage& offlineMessagesStorage){
     QString InvisibleText = user->getIsInvisible() ? "true" : "false";

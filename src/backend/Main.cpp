@@ -31,13 +31,15 @@
 #include "form_Main.h"
 
 QString debugLogDir;
+bool quitting;
 
 void enableDebugLogging(QString configPath);
 //void myMessageHandler(QtMsgType type, const char *msg);
 void myMessageHandler(QtMsgType type,const QMessageLogContext &context,const QString &msg);
 int main(int argc, char *argv[])
 {
-	QApplication app(argc, argv);
+    quitting=false;
+    QApplication app(argc, argv);
 	QString configPath;
 #ifdef ANDROID
     QStringList loc = QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation);
@@ -47,6 +49,7 @@ int main(int argc, char *argv[])
             "I2P-Messenger",
             "Error: no USER folder found");
         app.exec();
+        quitting=true;
         app.closeAllWindows();
         return 1;
     }
@@ -60,6 +63,7 @@ int main(int argc, char *argv[])
             "I2P-Messenger",
             "Error: mkpath for config dir returned false");
         app.exec();
+        quitting=true;
         app.closeAllWindows();
         return 1;
     }
@@ -94,8 +98,9 @@ int main(int argc, char *argv[])
 	QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
     form_MainWindow* mainForm= new form_MainWindow(configPath);
 	mainForm->show();
-        app.exec();
-	app.closeAllWindows();
+    app.exec();
+    quitting=true;
+    app.closeAllWindows();
 
 	return 0;
 }
