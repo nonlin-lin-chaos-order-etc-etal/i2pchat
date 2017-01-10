@@ -35,7 +35,7 @@ namespace User
 		OFFLINE,
 		ONLINE,
 		TRYTOCONNECT,
-		ERROR
+        CONNECTION_ERROR
 	};
 
 	enum ONLINESTATE{
