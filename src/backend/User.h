@@ -17,8 +17,8 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef USER_H
-#define USER_H
+#ifndef I2P_CHAT_USER_H
+#define I2P_CHAT_USER_H
 
 #include <QtGui>
 #include <QStringList>
@@ -181,4 +181,4 @@ class CUser: public QObject
 	//</Settings for the chatwindow>
 		void 			SendAllunsendedMessages();
 };
-#endif 
+#endif //of ifdef I2P_CHAT_USER_H
