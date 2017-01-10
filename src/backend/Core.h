@@ -61,8 +61,8 @@ public:
     const 	QString 		getMyDestination() 		const;
     const 	QString 		getMyDestinationB32() 		const;
     ONLINESTATE 		getOnlineStatus()		const;
-    QString 		getClientName()			const 	{return QString("0.3-")+GIT_VERSION;};
-    QString 		getClientVersion()		const	{return "I2PChat (Qt), hypnotic fork";};
+    QString 		getClientName()			const 	{return "I2PChat (Qt), hypnotic fork";};
+    QString 		getClientVersion()		const	{return QString("0.3-")+GIT_VERSION;};
     QString 		getProtocolVersion()		const	{return mProtocol->getProtocolVersion();};
     CI2PStream* 		getI2PStreamObjectByID(qint32 ID)const;
     const CRecivedInfos	getUserInfos()			const;

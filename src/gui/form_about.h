@@ -33,7 +33,7 @@ class form_About : public QDialog
   Q_OBJECT
 
 	public:
-		form_About(QString ApplicationVersion,
+        form_About(QString ApplicationName, QString ApplicationVersion,
 				QString Protoclversion,
 				QString FiletransferversionMin,
 				QString FiletransferversionMax,

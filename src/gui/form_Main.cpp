@@ -696,8 +696,10 @@ void form_MainWindow::OnlineStateChanged()
 void form_MainWindow::openAboutDialog()
 {
     if(mAboutWindow==NULL){
-        mAboutWindow = new form_About(Core->getClientVersion(),Core->getProtocolVersion(),
-                                      FileTransferProtocol::MINPROTOCOLVERSION,FileTransferProtocol::MAXPROTOCOLVERSION);
+        mAboutWindow = new form_About(
+                    Core->getClientName(),
+                    Core->getClientVersion(),Core->getProtocolVersion(),
+                    FileTransferProtocol::MINPROTOCOLVERSION,FileTransferProtocol::MAXPROTOCOLVERSION);
         connect(this,SIGNAL(closeAllWindows()),mAboutWindow,
                 SLOT(close()));
 

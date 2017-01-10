@@ -74,7 +74,7 @@ AbstractRosterEntry* ActorRosterEntry::loadRosterEntry(QTextStream& in, CUserMan
     return nullptr;
 }
 
-AbstractRosterEntry* ActorRosterEntry::createRosterEntryForOldStyleUser(CUser& user, CUserManager & userManager, CUnsentChatMessageStorage& mUnsentMessageStorage) {
+AbstractRosterEntry* ActorRosterEntry::createRosterEntryForOldStyleUser(CUser& user, CUserManager & /*userManager*/, CUnsentChatMessageStorage& mUnsentMessageStorage) {
     //load unsent ChatMessages
     QStringList message=mUnsentMessageStorage.getMessagesForDest(user.getI2PDestination());
     for(int i=0;i<message.count();i++){

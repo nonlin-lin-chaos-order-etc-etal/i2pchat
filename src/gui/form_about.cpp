@@ -20,7 +20,7 @@
 
 #include "form_about.h"
 
-form_About::form_About(QString ApplicationVersion, 
+form_About::form_About(QString ApplicationName, QString ApplicationVersion,
 		       QString Protoclversion,
 		       QString FiletransferversionMin,
 		       QString FiletransferversionMax,
@@ -33,6 +33,7 @@ form_About::form_About(QString ApplicationVersion,
     //connect(ui.cmd_destCopy,SIGNAL(clicked()),this,
     //	SLOT(copyDestToClipboard()));
 
+    ui.appNameLabel->setText(ApplicationName);
 	ui.label_9->setText(ApplicationVersion);
 	ui.label_10->setText(Protoclversion);
     ui.label_supportedVersion->setText(FiletransferversionMin+tr("…")+FiletransferversionMax);
