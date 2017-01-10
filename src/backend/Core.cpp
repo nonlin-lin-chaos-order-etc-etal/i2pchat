@@ -31,7 +31,9 @@
 #include <QApplication>
 #include <QStandardPaths>
 
-CCore::CCore(QString configPath)
+#include "rostermodel.h"
+
+CCore::CCore(QString configPath) : rosterModel(nullptr)
 {	
     mConfigPath=configPath;
 
@@ -108,6 +110,8 @@ CCore::CCore(QString configPath)
     connect(mFileTransferManager,SIGNAL(signUserStatusChanged()),this,
             SIGNAL(signUserStatusChanged()));
 
+    rosterModel = new RosterModel(*this, *mUserManager, *mUnsentChatMessageStorage);
+    mUserManager->setRosterModel(rosterModel);
 }
 
 CCore::~CCore(){
@@ -132,7 +136,7 @@ CCore::~CCore(){
     delete mUserBlockManager;
     delete mDebugMessageHandler;
     delete mFileTransferManager;
-
+    delete rosterModel;
 }
 
 void CCore::doNamingLookUP(QString Name)const{

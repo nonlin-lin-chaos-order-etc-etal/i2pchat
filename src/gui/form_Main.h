@@ -45,6 +45,7 @@
 #include "form_about.h"
 #include "form_UserSearch.h"
 #include "form_TopicSubscribe.h"
+#include "form_createNewSwarmType1.h"
 
 #include "Core.h"
 #include "User.h"
@@ -78,6 +79,7 @@ public slots:
     void eventTryIconDoubleClicked(enum QSystemTrayIcon::ActivationReason Reason);
     void eventUserSearchWindowClosed();
     void eventTopicSubscribeWindowClosed();
+    void eventDialogCreateNewSwarmClosed();
     void eventDebugWindowClosed();
     void eventAvatarImageChanged();
     void eventNicknameChanged();
@@ -94,6 +96,7 @@ private slots:
     void openFileSendWindow(qint32 StreamID);
     //void openUserSearchWindow();
     void openTopicSubscribeWindow();
+    void openDialog_creatNewSwarm();
 
 
 
@@ -147,6 +150,7 @@ private:
 
     form_userSearch*                mUserSearchWindow;
     form_topicSubscribe*            mTopicSubscribeWindow;
+    form_createNewSwarmType1*       mDialogCreatNewSwarm;
     form_About*                     mAboutWindow;
     form_DebugMessages*             mDebugWindow;
 

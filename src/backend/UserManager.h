@@ -24,23 +24,28 @@
 #include <QObject>
 #include "User.h"
 #include "Core.h"
-
 #include "UnsentChatMessageStorage.h"
+#include "rostermodel.h"
 
 class CUserManager: public QObject
 {
 	     Q_OBJECT
       public:
-				CUserManager(CCore& Core,QString UserFileWithPath,CUnsentChatMessageStorage& UnsentChatMessageStorage);
+                CUserManager(CCore& Core,QString UserFileWithPath,
+                             CUnsentChatMessageStorage& UnsentChatMessageStorage);
 				~CUserManager();
 
 				//forbid some operators
 				CUserManager(const CUserManager&)=delete;
 				CUserManager& operator=(const CUserManager&)=delete;
 
+                void setRosterModel(RosterModel* rosterModel);
+
 		void 		saveUserList()const;
 		void 		loadUserList();
-		bool 		addNewUser (QString Name,QString I2PDestination,qint32 I2PStream_ID=0,bool SaveUserList=true);
+        bool 		addNewUser (
+                QString Name,QString I2PDestination,qint32 I2PStream_ID=0,bool SaveUserList=true,
+                CUser**resultingNewUser = nullptr, bool isSwarmUser = false);
 		bool 		checkIfUserExitsByI2PDestination ( QString I2PDestination )const;
 		void 		changeUserPositionInUserList(int oldPos,int newPos);
 		bool 		renameUserByI2PDestination (const QString Destination, const QString newNickname);
@@ -64,8 +69,9 @@ class CUserManager: public QObject
 		
       private:
 		CCore&	      	mCore;
-	const 	QString 	mUserFileWithPath;
+        const QString 	mUserFileWithPath;
 		CUnsentChatMessageStorage& mUnsentMessageStorage;
 		QList<CUser*> 	mUsers;	
+        RosterModel* rosterModel;
 };
 #endif // CUSERMANAGER_H

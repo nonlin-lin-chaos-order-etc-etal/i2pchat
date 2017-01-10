@@ -54,6 +54,7 @@ form_MainWindow::form_MainWindow(QString configDir, QWidget* parent)
 
     mUserSearchWindow=NULL;
     mTopicSubscribeWindow=NULL;
+    mDialogCreatNewSwarm=NULL;
     mAboutWindow=NULL;
     mDebugWindow=NULL;
 
@@ -159,6 +160,9 @@ void form_MainWindow::initToolBars()
         settings.endGroup();
     }
 */
+    toolBar->addAction(QIcon(ICON_USERSEARCH), tr("Create new swarm"), this, SLOT(openDialog_creatNewSwarm()));
+
+#if 0
     {
         settings.beginGroup("Topics");
         if((settings.value("Enabled",true).toBool())){
@@ -167,6 +171,7 @@ void form_MainWindow::initToolBars()
         settings.endGroup();
         settings.sync();
     }
+#endif
 
     toolBar->addAction(QIcon(ICON_SETTINGS)		,tr("Settings")		,this,SLOT(openConfigWindow() ) );
     toolBar->addAction(QIcon(ICON_DEBUGMESSAGES)	,tr("DebugMessages")	,this,SLOT(openDebugMessagesWindow() ) );
@@ -1072,6 +1077,12 @@ void form_MainWindow::eventTopicSubscribeWindowClosed()
     mTopicSubscribeWindow=NULL;
 }
 
+void form_MainWindow::eventDialogCreateNewSwarmClosed()
+{
+    delete mDialogCreatNewSwarm;
+    mDialogCreatNewSwarm=NULL;
+}
+
 void form_MainWindow::eventAboutWindowClosed()
 {
     delete mAboutWindow;
@@ -1120,6 +1131,23 @@ void form_MainWindow::openTopicSubscribeWindow() {
         mTopicSubscribeWindow->show();
     } else {
         mTopicSubscribeWindow->requestFocus();
+    }
+
+}
+
+void form_MainWindow::openDialog_creatNewSwarm() {
+    if(mDialogCreatNewSwarm == NULL) {
+
+    	mDialogCreatNewSwarm = new form_createNewSwarmType1(*Core);
+
+        connect(this, SIGNAL(closeAllWindows()), mDialogCreatNewSwarm,
+                SLOT(close()));
+
+        connect(mDialogCreatNewSwarm, SIGNAL(signClosingWindow()), this,
+                SLOT(eventDialogCreateNewSwarmClosed()));
+        mDialogCreatNewSwarm->show();
+    } else {
+    	mDialogCreatNewSwarm->requestFocus();
     }
 
 }

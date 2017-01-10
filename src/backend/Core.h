@@ -35,9 +35,7 @@
 #include "UserBlockManager.h"
 #include "FileTransferManager.h"
 #include "UnsentChatMessageStorage.h"
-
-#define CLIENTVERSION "0.2.28"
-#define CLIENTNAME "I2PChat (Qt), hypnotic fork"
+#include "rostermodel.h"
 
 using namespace SAM_Message_Types;
 using namespace User;
@@ -46,6 +44,8 @@ class CUserManager;
 class CConnectionManager;
 class CFileTransferManager;
 class CPacketManager;
+class RosterModel;
+
 class CCore :public QObject
 {
     Q_OBJECT
@@ -61,8 +61,8 @@ public:
     const 	QString 		getMyDestination() 		const;
     const 	QString 		getMyDestinationB32() 		const;
     ONLINESTATE 		getOnlineStatus()		const;
-    QString 		getClientName()			const 	{return CLIENTNAME;};
-    QString 		getClientVersion()		const	{return CLIENTVERSION;};
+    QString 		getClientName()			const 	{return QString("0.3-")+GIT_VERSION;};
+    QString 		getClientVersion()		const	{return "I2PChat (Qt), hypnotic fork";};
     QString 		getProtocolVersion()		const	{return mProtocol->getProtocolVersion();};
     CI2PStream* 		getI2PStreamObjectByID(qint32 ID)const;
     const CRecivedInfos	getUserInfos()			const;
@@ -130,11 +130,15 @@ private:
     ONLINESTATE                 mCurrentOnlineStatus;
     ONLINESTATE                 mNextOnlineStatus;
 
+    RosterModel* rosterModel;
+
 
     void init();
     void stopCore();
     void restartCore();
     void closeAllActiveConnections();
 
+public:
+    RosterModel& getRosterModel() { return *rosterModel; }
 };
 #endif

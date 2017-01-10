@@ -25,8 +25,9 @@
 #include "Core.h"
 
 
-CUserManager::CUserManager(CCore& Core, QString UserFileWithPath,CUnsentChatMessageStorage& UnsentChatMessageStorage) 
-:mCore(Core),mUserFileWithPath(UserFileWithPath),mUnsentMessageStorage(UnsentChatMessageStorage)
+CUserManager::CUserManager(CCore& Core, QString UserFileWithPath,CUnsentChatMessageStorage& UnsentChatMessageStorage)
+:
+  mCore(Core),mUserFileWithPath(UserFileWithPath),mUnsentMessageStorage(UnsentChatMessageStorage),rosterModel(nullptr)
 {
   
 }
@@ -40,81 +41,15 @@ CUserManager::~CUserManager()
       }
       
       mUsers.clear();
+      if(rosterModel)rosterModel->invalidateContents();
 }
 
 void CUserManager::loadUserList(){
-	QFile file(mUserFileWithPath);
-     	if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-		return;
-	
-	QString NickName;
-	QString I2PDest;
-	
-	QString line;
-	QStringList temp;
-
-	QByteArray bUserList=file.readAll();
-        QTextStream in(bUserList);
-	in.skipWhiteSpace();
-	
-     	while (!in.atEnd()) {
-		line = in.readLine(550);
-		temp=line.split("\t");
-	
-		if(temp[0]=="Nick:"){
-			NickName=temp[1];
-			}
-		else if(temp[0]=="I2PDest:"){
-			I2PDest=temp[1];
-			this->addNewUser(NickName,I2PDest,0,false);
-			
-			//load unsent ChatMessages
-			QStringList message=mUnsentMessageStorage.getMessagesForDest(I2PDest);
-			for(int i=0;i<message.count();i++){
-			  if(message.at(i).isEmpty()==false){
-			    getUserByI2P_Destination(I2PDest)->slotSendChatMessage(message.at(i));
-			  }
-			}
-		}
-		else if(temp[0]=="Invisible:"){
-			if(temp[1]=="true"){
-				getUserByI2P_Destination(I2PDest)->setInvisible(true);
-			}
-		}
-		else if(temp[0]=="TorDest:"){
-			//ignore it
-		}
-	}
-	file.close();	
+    if(rosterModel)rosterModel->load();
 }
 
 void CUserManager::saveUserList()const{
-     QFile file(mCore.getConfigPath()+"/users.config");
-     file.open(QIODevice::WriteOnly | QIODevice::Text);
-     QTextStream out(&file);
-     QString InvisibleText;
-     
-     mUnsentMessageStorage.clearStorage();
-
-	for(int i=0;i<this->mUsers.count();i++){
-		if(mUsers.at(i)->getIsInvisible()==true){
-			InvisibleText="true";
-		}
-		else{
-			InvisibleText="false";
-		}
-
-		out<<"Nick:\t"<<(mUsers.at(i)->getName())<<endl
-		   <<"I2PDest:\t"<<(mUsers.at(i)->getI2PDestination())<<endl
-		   <<"Invisible:\t"<<InvisibleText<<endl;
-		    
-		//save unsent ChatMessages for this users
-		const QString Dest=mUsers.at(i)->getI2PDestination();
-		const QStringList Messages=mUsers.at(i)->getUnsentedMessages();
-		mUnsentMessageStorage.saveChatMessagesForDest(Dest,Messages);
-	}
-	out.flush();
-	file.close();
+    if(rosterModel)rosterModel->save();
 }
 
 CUser* CUserManager::getUserByI2P_ID(qint32 ID)const{
@@ -224,7 +159,11 @@ bool CUserManager::validateI2PDestination(const QString I2PDestination) const
       return false;
 }
 
-bool CUserManager::addNewUser(QString Name,QString I2PDestination,qint32 I2PStream_ID,bool SaveUserList){
+bool CUserManager::addNewUser(QString Name,QString I2PDestination,qint32 I2PStream_ID,bool SaveUserList,
+                              CUser**resultingNewUser, bool /*isSwarmUser*/){
+    if(resultingNewUser){
+        (*resultingNewUser)=nullptr;
+    }
 	CUserBlockManager& UserBlockManager=*(mCore.getUserBlockManager());
 	CProtocol& Protocol=*(mCore.getProtocol());
 	
@@ -277,6 +216,10 @@ bool CUserManager::addNewUser(QString Name,QString I2PDestination,qint32 I2PStre
 	//add newuser
 	CSoundManager& SoundManager=*(mCore.getSoundManager());
 	CUser* newuser=new CUser(mCore, Protocol,Name,I2PDestination,I2PStream_ID);
+
+    if(resultingNewUser) {
+        (*resultingNewUser)=newuser;
+    }
 	connect(newuser,SIGNAL(signNewMessageSound()),&SoundManager,
 		SLOT(slotNewChatMessage()));
 
@@ -293,7 +236,7 @@ bool CUserManager::addNewUser(QString Name,QString I2PDestination,qint32 I2PStre
 		SLOT(slotSaveUnsentMessageForDest(QString)));
 
 
-	this->mUsers.append(newuser);
+    this->mUsers.append(newuser);
 	if(SaveUserList==true){
 		saveUserList();
 	}
@@ -387,4 +330,8 @@ void CUserManager::slotSaveUnsentMessageForDest(QString I2PDest)
 		<<"Message:\t"<<"No User found with this dest"<<endl
 		<<"I2PDest.:\t"<<I2PDest<<endl;
   }
+}
+
+void CUserManager::setRosterModel(RosterModel* rosterModel_) {
+    rosterModel = rosterModel_;
 }
