@@ -112,3 +112,8 @@ User requested to join swarm <swarm local label>. [Allow] [Deny] [Allow Automati
 Edit swarm properties [ ] Allow joining automatically without questions [ ] Deny joining automatically without questions [            ] Local swarm label
 
 Incoming message from non-swarm-member ignored
+
+
+DRAFT for RESOURCE IDENTIFIERS
+
+swarm?id=1231312123&user=b64dest
