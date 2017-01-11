@@ -82,3 +82,8 @@
 <anon1> так вообще органы побреются с трассировкой свармов
 <anon1> что даже центрального ида у сварма нету
 
+a swarm has multiple ids
+
+Each id is a pair : < «subject A`s i2p destination», «A`s local swarm id» >
+Subject B would keep link to A with the above pair, and have also a different id of the same shape:
+< «subject B`s i2p destination», «B`s local swarm id» > which corresponds to the above A`s swarm id (a pair).
