@@ -98,3 +98,17 @@ swarm_receiver_id is remote subject`s swarm id (a pair of the shape depicted abo
 message_payload is a message text (currently, HTML formatted) linked to both local_sender and remote_receiver ids
 
 a triple <swarm_sender_id, swarm_receiver_id, message_payload> gets sent on each message
+
+
+
+DRAFTS for GUIS 
+
+
+A list of users allowed to receive messages from you (whitelisted members):
+A list of users denied from receiving messages from you (blacklisted members):
+
+User requested to join swarm <swarm local label>. [Allow] [Deny] [Allow Automatically From Now On] [Deny Automatically From Now On]
+
+Edit swarm properties [ ] Allow joining automatically without questions [ ] Deny joining automatically without questions [            ] Local swarm label
+
+Incoming message from non-swarm-member ignored
