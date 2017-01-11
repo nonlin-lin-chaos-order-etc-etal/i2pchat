@@ -107,7 +107,7 @@ DRAFTS for GUIS
 A list of users allowed to receive messages from you (whitelisted members):
 A list of users denied from receiving messages from you (blacklisted members):
 
-User requested to join swarm <swarm local label>. [Allow] [Deny] [Allow Automatically From Now On] [Deny Automatically From Now On]
+User requested to join swarm <swarm local label>. [Allow] [Deny] [Allow Automatically From Now On] [Deny Automatically From Now On] [Close]
 
 Edit swarm properties [ ] Allow joining automatically without questions [ ] Deny joining automatically without questions [            ] Local swarm label
 
