@@ -82,9 +82,19 @@
 <anon1> так вообще органы побреются с трассировкой свармов
 <anon1> что даже центрального ида у сварма нету
 
+DRAFTS for the SWARMS_TYPE_1 PROTOCOL
+
 a swarm has multiple ids
 
 Each id is a pair : < «subject A`s i2p destination», «A`s local swarm id» >
 Subject B would keep link to A with the above pair, and have also a different id of the same shape:
 < «subject B`s i2p destination», «B`s local swarm id» > which is linked to the above A`s swarm id (a pair). 
 Such linked ids form an informal set of ids for one swarm.
+
+swarm_sender_id is local subject`s swarm id (a pair of the shape depicted above).
+
+swarm_receiver_id is remote subject`s swarm id (a pair of the shape depicted above) linked to swarm_source_id
+
+message_payload is a message text (currently, HTML formatted) linked to both local_sender and remote_receiver ids
+
+a triple <swarm_sender_id, swarm_receiver_id, message_payload> gets sent on each message
