@@ -7,14 +7,16 @@
 #include <QString>
 #include <QTextStream>
 
+#include "parseerrors.h"
+
 RosterEntryFactory::RosterEntryFactory()
 {}
 
 AbstractRosterEntry* RosterEntryFactory::loadRosterEntry(QString& classTag, QTextStream& input,
                                                          CUserManager & cum, CUnsentChatMessageStorage& mUnsentMessageStorage,
-                                                         CCore & chatCore) {
+                                                         CCore & chatCore, parsed_item_file parsedItem) {
     if(classTag == ActorRosterEntry_CLASS_TAG) {
-        return ActorRosterEntry::loadRosterEntry(input, cum, mUnsentMessageStorage);
+        return ActorRosterEntry::loadRosterEntry(input, cum, mUnsentMessageStorage, parsedItem);
     }
     if(classTag == SwarmType1RosterEntry_CLASS_TAG) {
         return SwarmType1RosterEntry::loadRosterEntry(input, mUnsentMessageStorage, cum, chatCore);

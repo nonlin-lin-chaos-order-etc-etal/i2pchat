@@ -43,7 +43,7 @@ private:
 
     void loadNewActor(QString& nickName,QString& i2pDest);
 
-    void loadRosterEntry(QStringList& lookaheadTokens, QTextStream& input);
+    void loadRosterEntry(QStringList& lookaheadTokens, QTextStream& input, parsed_item_file);
 public:
     void createNewSwarmType1(SwarmType1&swarm);
     AbstractRosterEntry* operator [](QString mapId) { return entryIdQStrToRosterEntry[mapId]; }

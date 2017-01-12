@@ -3,6 +3,8 @@
 
 #include "User.h"
 #include "abstractrosterentry.h"
+#include "parseerror.h"
+#include "parseerrors.h"
 
 class QString;
 class CUserManager;
@@ -17,7 +19,7 @@ public:
 
 #define ActorRosterEntry_CLASS_TAG "ActorRosterEntry"
 
-    static AbstractRosterEntry* loadRosterEntry(QTextStream& in, CUserManager & userManager, CUnsentChatMessageStorage& mUnsentMessageStorage);
+    static AbstractRosterEntry* loadRosterEntry(QTextStream& in, CUserManager & userManager, CUnsentChatMessageStorage& mUnsentMessageStorage, parsed_item_file parsedItem);
     static AbstractRosterEntry* createRosterEntryForOldStyleUser(CUser& user, CUserManager & userManager, CUnsentChatMessageStorage& mUnsentMessageStorage);
 
     virtual QString getClassTag();

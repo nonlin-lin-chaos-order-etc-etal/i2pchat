@@ -1,3 +1,6 @@
+#include "parseerrors.h"
+#include "parseerror.h"
+
 #include <QTextStream>
 
 #include "rostermodel.h"
@@ -45,10 +48,9 @@ void RosterModel::load() {
                 line = in.readLine();
                 tokens = line.split("\t");
                 if(tokens.isEmpty()) {
-                    //skip empty line
-                    continue;
+                    reportParseError("Empty lines are not allowed", roster_conf);
                 }
-                loadRosterEntry(tokens, in);
+                loadRosterEntry(tokens, in, roster_conf);
             }
 
             //finishing migration
@@ -78,7 +80,7 @@ void RosterModel::load() {
             line = in.readLine(550);
             temp=line.split("\t");
 
-            if(temp.size()<2)continue;
+            if(temp.size()<2)reportParseError(QObject::tr("line must have two tokens"), users_config);
 
             if(temp[0]=="Nick:"){
                 nickName=temp[1];
@@ -92,7 +94,7 @@ void RosterModel::load() {
                     if(user)user->setInvisible(true);
                 }
             } else {
-                //ignore garbage
+                reportParseError(QObject::tr("garbage"), users_config);
             }
         }
     }
@@ -102,16 +104,21 @@ void RosterModel::load() {
 void RosterModel::loadNewActor(QString& nickName,QString& i2pDest) {
     CUser* resultingNewUser = nullptr;
     userManager.addNewUser(nickName,i2pDest,0,false, &resultingNewUser);
-    if(!resultingNewUser)return;
+    if(!resultingNewUser){
+        QString errMsg = QObject::tr("Failed to add an user: nick='")+nickName+QObject::tr("'");
+        QMessageBox::critical(0,QObject::tr("Error"),errMsg);
+        throw std::runtime_error(errMsg.toStdString());
+    }
 
     AbstractRosterEntry* entry = RosterEntryFactory::createRosterEntryForOldStyleUser(*resultingNewUser, userManager, offlineMessagesStorage);
     insertRosterEntry(entry);
 }
 
-void RosterModel::loadRosterEntry(QStringList& lookaheadTokens, QTextStream& input) {
-    if(lookaheadTokens.isEmpty())return;
+void RosterModel::loadRosterEntry(QStringList& lookaheadTokens, QTextStream& input, parsed_item_file item) {
+    if(lookaheadTokens.isEmpty())reportParseError(QObject::tr("lookaheadTokens.isEmpty : not allowed"), item);
+
     QString& rosterEntryClassTag=lookaheadTokens[0];
-    AbstractRosterEntry* entry = RosterEntryFactory::loadRosterEntry(rosterEntryClassTag,input,userManager, offlineMessagesStorage, chatCore);
+    AbstractRosterEntry* entry = RosterEntryFactory::loadRosterEntry(rosterEntryClassTag,input,userManager, offlineMessagesStorage, chatCore, item);
     insertRosterEntry(entry);
 }
 

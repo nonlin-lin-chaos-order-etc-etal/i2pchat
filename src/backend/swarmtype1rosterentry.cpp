@@ -33,18 +33,18 @@ AbstractRosterEntry* SwarmType1RosterEntry::loadRosterEntry(
     QString LocalNick;
     QString LocalId;
     int WhiteListLength;
-    if(temp.size()<2)return nullptr;
+    if(temp.size()<2)reportParseError(QObject::tr("line must have two tokens"),roster_conf);
     if(temp[0]=="LocalNick:"){
         LocalNick=temp[1];
         line = in.readLine();
         temp=line.split("\t");
-        if(temp.size()<2)return nullptr;
+        if(temp.size()<2)reportParseError(QObject::tr("line must have two tokens"),roster_conf);
     }
     if(temp[0]=="LocalId:"){
         LocalId=temp[1];
         line = in.readLine();
         temp=line.split("\t");
-        if(temp.size()<2)return nullptr;
+        if(temp.size()<2)reportParseError(QObject::tr("line must have two tokens"),roster_conf);
     }
     if(temp[0]=="WhiteListLength:"){
         WhiteListLength=temp[1].toInt();

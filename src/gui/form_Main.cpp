@@ -882,6 +882,7 @@ QString form_MainWindow::getCurrentUserDest() {
 void form_MainWindow::showUserInfos()
 {
     QString Destination = getCurrentUserDest();
+    if(Destination.isEmpty())return;
     QString UserInfos;
     QPixmap avatar;
     CUser*  user;

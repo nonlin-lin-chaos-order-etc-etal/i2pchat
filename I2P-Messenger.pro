@@ -18,9 +18,9 @@ DEPENDPATH += . \
         src/controller/
 
 INCLUDEPATH += . \
-	      src/gui \
-              src/backend/ \
-              src/controller/
+               src/gui \
+               src/backend/ \
+               src/controller/
 
 SOURCES += \
         src/backend/Main.cpp \
@@ -63,7 +63,10 @@ SOURCES += \
 	src/backend/actorrosterentry.cpp \
 	src/backend/abstractgrouprosterentry.cpp \
 	src/backend/swarmtype1rosterentry.cpp \
-	src/backend/rosterentryfactory.cpp
+	src/backend/rosterentryfactory.cpp \
+        src/controller/rostercontroller.cpp \
+    src/backend/parseerrors.cpp \
+    src/backend/parseerror.cpp
 
 HEADERS += src/backend/Core.h \
 	src/backend/User.h \
@@ -107,7 +110,10 @@ HEADERS += src/backend/Core.h \
 	src/backend/actorrosterentry.h \
 	src/backend/abstractgrouprosterentry.h \
 	src/backend/swarmtype1rosterentry.h \
-	src/backend/rosterentryfactory.h
+	src/backend/rosterentryfactory.h \
+        src/controller/rostercontroller.h \
+    src/backend/parseerrors.h \
+    src/backend/parseerror.h
 
 FORMS += src/gui/form_Main.ui \
 	src/gui/form_chatwidget.ui \

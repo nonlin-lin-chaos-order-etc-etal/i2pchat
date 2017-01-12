@@ -6,6 +6,8 @@
 #include "SwarmType1.h"
 #include "Core.h"
 
+#include "parseerrors.h"
+
 class CUser;
 class CUserManager;
 class CUnsentChatMessageStorage;
@@ -15,7 +17,7 @@ class RosterEntryFactory
 public:
     static AbstractRosterEntry* loadRosterEntry(QString& classTag, QTextStream& input,
                                                 CUserManager & cum, CUnsentChatMessageStorage& mUnsentMessageStorage,
-                                                CCore & chatCore);
+                                                CCore & chatCore, parsed_item_file parsedItem);
     static AbstractRosterEntry* createRosterEntryForOldStyleUser(CUser&user, CUserManager & cum, CUnsentChatMessageStorage& mUnsentMessageStorage);
     static SwarmType1RosterEntry* createRosterEntryForSwarmType1(SwarmType1&swarm,CCore&chatCore);
 

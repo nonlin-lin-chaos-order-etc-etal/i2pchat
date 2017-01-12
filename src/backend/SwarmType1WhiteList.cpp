@@ -11,6 +11,8 @@
 #include <QList>
 #include "UserManager.h"
 
+#include "parseerrors.h"
+
 SwarmType1WhiteList::SwarmType1WhiteList():i2pdestqstr2cuser() {
 }
 
@@ -37,12 +39,12 @@ SwarmType1WhiteList* SwarmType1WhiteList::loadFromRosterConf(
         QStringList temp=line.split("\t");
         QString NickName;
         QString I2PDest;
-        if(temp.size()<2)return whitelist;
+        if(temp.size()<2)reportParseError(QObject::tr("line must have two tokens"), roster_conf);
         if(temp[0]=="WhiteListEntry_Nick:"){
             NickName=temp[1];
             line = in.readLine();
             temp=line.split("\t");
-            if(temp.size()<2)return whitelist;
+            if(temp.size()<2)reportParseError(QObject::tr("line must have two tokens"), roster_conf);
         }
 
         if(temp[0]=="WhiteListEntry_I2PDest:"){
@@ -61,6 +63,11 @@ SwarmType1WhiteList* SwarmType1WhiteList::loadFromRosterConf(
                 }
 
                 whitelist->addUser(*resultingNewUser);
+            }else{
+                QString errMsg = QObject::tr("Failed to add an user: nick='")+NickName+
+                        QObject::tr("' while parsing roster.conf");
+                QMessageBox::critical(0,QObject::tr("Error"),errMsg);
+                throw std::runtime_error(errMsg.toStdString());
             }
         }
     }

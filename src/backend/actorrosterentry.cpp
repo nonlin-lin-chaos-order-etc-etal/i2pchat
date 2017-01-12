@@ -2,6 +2,8 @@
 #include "UserManager.h"
 #include "UnsentChatMessageStorage.h"
 
+#include <stdexcept>
+
 ActorRosterEntry::ActorRosterEntry(CUser& user_): user(&user_) {
 
 }
@@ -33,17 +35,17 @@ void ActorRosterEntry::save(QTextStream& out, CUnsentChatMessageStorage& offline
 }
 
 
-AbstractRosterEntry* ActorRosterEntry::loadRosterEntry(QTextStream& in, CUserManager & userManager, CUnsentChatMessageStorage& mUnsentMessageStorage) {
+AbstractRosterEntry* ActorRosterEntry::loadRosterEntry(QTextStream& in, CUserManager & userManager, CUnsentChatMessageStorage& mUnsentMessageStorage, parsed_item_file parsedItem) {
     QString line = in.readLine();
     QStringList temp=line.split("\t");
     QString NickName;
     QString I2PDest;
-    if(temp.size()<2)return nullptr;
+    if(temp.size()<2)reportParseError(QObject::tr("line must have two tokens"), parsedItem);
     if(temp[0]=="Nick:"){
         NickName=temp[1];
         line = in.readLine();
         temp=line.split("\t");
-        if(temp.size()<2)return nullptr;
+        if(temp.size()<2)reportParseError(QObject::tr("line must have two tokens"), parsedItem);
     }
 
     if(temp[0]=="I2PDest:"){
@@ -52,7 +54,12 @@ AbstractRosterEntry* ActorRosterEntry::loadRosterEntry(QTextStream& in, CUserMan
         CUser* resultingNewUser;
 
         userManager.addNewUser(NickName,I2PDest,0,false, &resultingNewUser);
-        if(!resultingNewUser)return nullptr;
+        if(!resultingNewUser){
+            QString errMsg = QObject::tr("Failed to add an user: nick='")+NickName+QObject::tr("' while parsing a file type: ")+QString::number((int)parsedItem);
+            QMessageBox::critical(0,QObject::tr("Error"),errMsg);
+            throw std::runtime_error(errMsg.toStdString());
+        }
+
 
         //load unsent ChatMessages
         QStringList message=mUnsentMessageStorage.getMessagesForDest(I2PDest);
@@ -69,7 +76,7 @@ AbstractRosterEntry* ActorRosterEntry::loadRosterEntry(QTextStream& in, CUserMan
                     resultingNewUser->setInvisible(true);
                 }
             }
-        }
+        }else reportParseError(QObject::tr("line must have two tokens"), parsedItem);
 
         return new ActorRosterEntry(*resultingNewUser);
     }
