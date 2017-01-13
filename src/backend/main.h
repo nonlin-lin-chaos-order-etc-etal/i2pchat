@@ -3,4 +3,7 @@
 
 extern bool quitting;
 
+void installLanguage(QString langCode);
+
+
 #endif // MAIN_H

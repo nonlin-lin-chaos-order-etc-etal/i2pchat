@@ -30,16 +30,49 @@
 
 #include "form_Main.h"
 
+#include "main.h"
+
+#ifdef DEBUGLOGGING
 QString debugLogDir;
+#endif
 bool quitting;
 
+
+#ifdef DEBUGLOGGING
 void enableDebugLogging(QString configPath);
+#endif
+
+QApplication* app_ptr;
+QTranslator * translator;
+
+void setLanguage(QString langCode) {
+    qDebug() << "setLanguage:" << langCode;
+    if(translator) {
+        app_ptr->removeTranslator(translator);
+        delete translator;
+        translator = nullptr;
+    }
+    if(langCode=="en"){
+        qDebug() << "setLanguage exiting ok (en).";
+        return;
+    }
+    translator = new QTranslator;
+    translator->load(langCode);//loads file langCode+".qm" produced by lrelease or qt linguist
+    app_ptr->installTranslator(translator);
+    qDebug() << "setLanguage exiting ok (not en).";
+}
+
+#ifdef DEBUGLOGGING
 //void myMessageHandler(QtMsgType type, const char *msg);
 void myMessageHandler(QtMsgType type,const QMessageLogContext &context,const QString &msg);
+#endif
+
 int main(int argc, char *argv[])
 {
     quitting=false;
+    translator=nullptr;
     QApplication app(argc, argv);
+    app_ptr = &app;
 	QString configPath;
 #ifdef ANDROID
     QStringList loc = QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation);
@@ -94,8 +127,21 @@ int main(int argc, char *argv[])
 		}
 	}
 #endif
-	enableDebugLogging(configPath);
-	QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
+#ifdef DEBUGLOGGING
+    enableDebugLogging(configPath);
+#endif
+    QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
+
+    {
+        QSettings settings(configPath+"/application.ini",QSettings::IniFormat);
+        settings.beginGroup("General");
+        QString langCode=settings.value("languageCode","en").toString();
+        qDebug() << "LangCode.init:" << langCode;
+        settings.endGroup();
+        setLanguage(langCode);
+    }
+
+
     form_MainWindow* mainForm= new form_MainWindow(configPath);
 	mainForm->show();
     app.exec();
@@ -105,6 +151,7 @@ int main(int argc, char *argv[])
 	return 0;
 }
 
+#ifdef DEBUGLOGGING
 void enableDebugLogging(QString configPath)
 {
 	//is DebugPrint = enabled ?
@@ -151,3 +198,4 @@ void myMessageHandler(QtMsgType type,const QMessageLogContext &context,const QSt
 	QTextStream ts(&outFile);
 	ts << txt << endl;
 }
+#endif

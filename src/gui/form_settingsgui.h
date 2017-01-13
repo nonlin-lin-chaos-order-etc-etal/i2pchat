@@ -54,6 +54,7 @@ private slots:
 	void saveSettings();
 	void on_styleCombo_activated(const QString &styleName);
 	void on_styleSheetCombo_activated(const QString &styleSheetName);
+    void onLanguageChange(int);
 	void showUserBlockList();
 	
 	void clicked_openFile();

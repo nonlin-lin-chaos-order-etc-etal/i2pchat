@@ -376,7 +376,7 @@
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>100</y>
+          <y>110</y>
           <width>421</width>
           <height>80</height>
          </rect>
@@ -434,7 +434,7 @@
           <rect>
            <x>10</x>
            <y>30</y>
-           <width>241</width>
+           <width>262</width>
            <height>29</height>
           </rect>
          </property>
@@ -528,17 +528,63 @@ p, li { white-space: pre-wrap; }
          </item>
         </layout>
        </widget>
+       <widget class="QGroupBox" name="groupBox_22">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>380</y>
+          <width>421</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Debug Logging</string>
+        </property>
+        <widget class="QCheckBox" name="checkBox_DebugLog">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>20</y>
+           <width>81</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Enable</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_37">
+         <property name="geometry">
+          <rect>
+           <x>120</x>
+           <y>0</y>
+           <width>301</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Write logs to the file DebugLog.txt
+in the settings directory</string>
+         </property>
+        </widget>
+       </widget>
        <widget class="QGroupBox" name="groupBox_16">
         <property name="geometry">
          <rect>
           <x>10</x>
           <y>180</y>
           <width>421</width>
-          <height>181</height>
+          <height>141</height>
          </rect>
         </property>
         <property name="title">
-         <string>Autoaccept Filerecive</string>
+         <string>Autoaccept File Receive</string>
         </property>
         <widget class="QWidget" name="layoutWidget_19">
          <property name="geometry">
@@ -546,12 +592,18 @@ p, li { white-space: pre-wrap; }
            <x>10</x>
            <y>20</y>
            <width>401</width>
-           <height>151</height>
+           <height>121</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_5">
+          <property name="sizeConstraint">
+           <enum>QLayout::SetMinimumSize</enum>
+          </property>
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_2">
+            <property name="sizeConstraint">
+             <enum>QLayout::SetMinimumSize</enum>
+            </property>
             <item>
              <widget class="QCheckBox" name="checkBox_AutoAcceptFileRecive">
               <property name="enabled">
@@ -566,14 +618,23 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_16">
-              <property name="text">
-               <string>Incoming Filefolder:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
              <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <property name="sizeConstraint">
+               <enum>QLayout::SetMinimumSize</enum>
+              </property>
+              <item>
+               <widget class="QLabel" name="label_16">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>Incoming Files folder:</string>
+                </property>
+               </widget>
+              </item>
               <item>
                <widget class="QLineEdit" name="txt_IncomingFileFolder">
                 <property name="enabled">
@@ -601,7 +662,7 @@ p, li { white-space: pre-wrap; }
              <bool>true</bool>
             </property>
             <property name="text">
-             <string>Enable Incomingsubfolders</string>
+             <string>Enable Incoming subfolders</string>
             </property>
             <property name="checkable">
              <bool>true</bool>
@@ -611,51 +672,50 @@ p, li { white-space: pre-wrap; }
          </layout>
         </widget>
        </widget>
-       <widget class="QGroupBox" name="groupBox_22">
+       <widget class="QWidget" name="horizontalLayoutWidget">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>360</y>
-          <width>421</width>
-          <height>61</height>
+          <x>9</x>
+          <y>330</y>
+          <width>411</width>
+          <height>41</height>
          </rect>
         </property>
-        <property name="title">
-         <string>Debug  - Logging</string>
-        </property>
-        <widget class="QCheckBox" name="checkBox_DebugLog">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>20</y>
-           <width>58</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Enable</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_37">
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>20</y>
-           <width>251</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>write debuginformations to the file DebugLog.txt
-in your settingsdirectory</string>
-         </property>
-        </widget>
+        <layout class="QHBoxLayout" name="horizontalLayout_9">
+         <item>
+          <widget class="QLabel" name="label_38">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Language:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="languageComboBox">
+           <item>
+            <property name="text">
+             <string>English</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Russian</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </widget>
       <widget class="QWidget" name="network_Page">
@@ -776,7 +836,7 @@ p, li { white-space: pre-wrap; }
            <x>10</x>
            <y>60</y>
            <width>391</width>
-           <height>107</height>
+           <height>118</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_10">
@@ -2443,7 +2503,7 @@ p, li { white-space: pre-wrap; }
            <x>10</x>
            <y>310</y>
            <width>211</width>
-           <height>26</height>
+           <height>29</height>
           </rect>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_8">

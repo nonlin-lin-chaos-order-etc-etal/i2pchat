@@ -22,6 +22,11 @@
 #include "UserBlockManager.h"
 #include "form_settingsgui.h"
 
+void form_settingsgui::onLanguageChange(int) {
+    QMessageBox::information(this,tr("App restart needed"),tr("Save settings and restart the app to use the new language."));
+}
+
+
 form_settingsgui::form_settingsgui(CCore& Core,QWidget *parent, Qt::WindowFlags flags)
 	: QDialog(parent, flags),mCore(Core),mConfigPath(Core.getConfigPath())
 {
@@ -34,6 +39,8 @@ form_settingsgui::form_settingsgui(CCore& Core,QWidget *parent, Qt::WindowFlags 
 	styleCombo->addItems(QStyleFactory::keys());
 	loadSettings();
 	showUserBlockList();
+
+    connect(languageComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(onLanguageChange(int)));
 
 	connect(ok_Button,SIGNAL(clicked(bool)),
 		this,SLOT(saveSettings()));
@@ -136,6 +143,9 @@ void form_settingsgui::loadSettings()
 		spinBox->setValue(settings->value("Debug_Max_Message_count","20").toInt());
         waitTimeBetweenCheckingForOfflineUsersSecondsSpinBox->setValue(settings->value("Waittime_between_rechecking_offline_users","1000").toInt()/1000);
 		checkBox_DebugLog->setChecked(settings->value(("DebugLogging"),"true").toBool());
+        QString langCode=settings->value("languageCode","en").toString();
+        if(langCode=="ru")languageComboBox->setCurrentIndex(1);
+        else languageComboBox->setCurrentIndex(0);
 
 		if(settings->value("current_Style","").toString().isEmpty()==false)
 			styleCombo->setCurrentIndex(styleCombo->findText(settings->value("current_Style","").toString()));
@@ -346,8 +356,13 @@ void form_settingsgui::saveSettings()
 		settings->setValue("current_Style_sheet",styleSheetCombo->currentText());
 		settings->setValue("AutoAcceptFileRecive",checkBox_AutoAcceptFileRecive->isChecked());
 		settings->setValue("IncomingFileFolder",txt_IncomingFileFolder->text());
-		settings->setValue("UseIncomingSubFolderForEveryUser",checkBox_IncomingSubFolders->isChecked());
+		settings->setValue("UseIncomingSubFolderForEveryUser",checkBox_IncomingSubFolders->isChecked());        
 		settings->setValue("DebugLogging",checkBox_DebugLog->isChecked());
+
+        QString langCode="en";
+        if(languageComboBox->currentIndex()==1)langCode="ru";
+        settings->setValue("languageCode",langCode);
+
 	settings->endGroup();
 
 	settings->beginGroup("Network");

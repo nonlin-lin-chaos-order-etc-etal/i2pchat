@@ -22,8 +22,9 @@ INCLUDEPATH += . \
                src/backend/ \
                src/controller/
 
+TRANSLATIONS = ru.ts
+               
 SOURCES += \
-        src/backend/Main.cpp \
 	src/backend/Core.cpp \
 	src/backend/User.cpp \
 	src/backend/I2PSamMessageAnalyser.cpp \
@@ -66,7 +67,8 @@ SOURCES += \
 	src/backend/rosterentryfactory.cpp \
         src/controller/rostercontroller.cpp \
     src/backend/parseerrors.cpp \
-    src/backend/parseerror.cpp
+    src/backend/parseerror.cpp \
+    src/backend/main.cpp
 
 HEADERS += src/backend/Core.h \
 	src/backend/User.h \
@@ -113,7 +115,8 @@ HEADERS += src/backend/Core.h \
 	src/backend/rosterentryfactory.h \
         src/controller/rostercontroller.h \
     src/backend/parseerrors.h \
-    src/backend/parseerror.h
+    src/backend/parseerror.h \
+    src/backend/main.h
 
 FORMS += src/gui/form_Main.ui \
 	src/gui/form_chatwidget.ui \
