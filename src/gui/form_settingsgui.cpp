@@ -32,6 +32,9 @@ form_settingsgui::form_settingsgui(CCore& Core,QWidget *parent, Qt::WindowFlags 
 {
     	setupUi(this);
 	this->setAttribute(Qt::WA_DeleteOnClose,true);
+#ifndef DEBUGLOGGING
+        debugLoggingGroupBox->hide();
+#endif
 	
 	settings= new QSettings(mConfigPath+"/application.ini",QSettings::IniFormat);
 

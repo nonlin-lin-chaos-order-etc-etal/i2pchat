@@ -528,7 +528,7 @@ p, li { white-space: pre-wrap; }
          </item>
         </layout>
        </widget>
-       <widget class="QGroupBox" name="groupBox_22">
+       <widget class="QGroupBox" name="debugLoggingGroupBox">
         <property name="geometry">
          <rect>
           <x>10</x>
