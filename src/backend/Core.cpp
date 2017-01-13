@@ -519,9 +519,10 @@ void CCore::setOnlineStatus(const ONLINESTATE newStatus)
         this->mCurrentOnlineStatus=newStatus;
         QList<CUser*> Users=mUserManager->getUserList();
 
+        bool dataWasTruncatedTo0xffffMinus4Bool;
         for(int i=0;i<Users.size();i++){
             if(Users.at(i)->getIsInvisible()==true){
-                mProtocol->send(USER_ONLINESTATUS_OFFLINE,Users.at(i)->getI2PStreamID(),QString(""));
+                mProtocol->send(USER_ONLINESTATUS_OFFLINE,Users.at(i)->getI2PStreamID(),QString(""),dataWasTruncatedTo0xffffMinus4Bool);
             }else{
                 if(Users.at(i)->getConnectionStatus()==ONLINE)
                 {
@@ -529,7 +530,7 @@ void CCore::setOnlineStatus(const ONLINESTATE newStatus)
                     {
                     case USERONLINE:
                     {
-                        mProtocol->send(USER_ONLINESTATUS_ONLINE,Users.at(i)->getI2PStreamID(),QString(""));
+                        mProtocol->send(USER_ONLINESTATUS_ONLINE,Users.at(i)->getI2PStreamID(),QString(""),dataWasTruncatedTo0xffffMinus4Bool);
                         break;
                     }
                     case USEROFFLINE:
@@ -538,23 +539,23 @@ void CCore::setOnlineStatus(const ONLINESTATE newStatus)
                     }
                     case USERINVISIBLE:
                     {
-                        mProtocol->send(USER_ONLINESTATUS_OFFLINE,Users.at(i)->getI2PStreamID(),QString(""));
+                        mProtocol->send(USER_ONLINESTATUS_OFFLINE,Users.at(i)->getI2PStreamID(),QString(""),dataWasTruncatedTo0xffffMinus4Bool);
                         break;
                     }
                     case USERAWAY:
                     {
-                        mProtocol->send(USER_ONLINESTATUS_AWAY,Users.at(i)->getI2PStreamID(),QString(""));
+                        mProtocol->send(USER_ONLINESTATUS_AWAY,Users.at(i)->getI2PStreamID(),QString(""),dataWasTruncatedTo0xffffMinus4Bool);
                         break;
 
                     }
                     case USERWANTTOCHAT:
                     {
-                        mProtocol->send(USER_ONLINESTATUS_WANTTOCHAT,Users.at(i)->getI2PStreamID(),QString(""));
+                        mProtocol->send(USER_ONLINESTATUS_WANTTOCHAT,Users.at(i)->getI2PStreamID(),QString(""),dataWasTruncatedTo0xffffMinus4Bool);
                         break;
                     }
                     case USERDONT_DISTURB:
                     {
-                        mProtocol->send(USER_ONLINESTATUS_DONT_DISTURB,Users.at(i)->getI2PStreamID(),QString(""));
+                        mProtocol->send(USER_ONLINESTATUS_DONT_DISTURB,Users.at(i)->getI2PStreamID(),QString(""),dataWasTruncatedTo0xffffMinus4Bool);
                         break;
                     }
                     case USERTRYTOCONNECT:

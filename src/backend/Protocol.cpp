@@ -57,46 +57,51 @@ using namespace Protocol_Info;
 	
 		//COMMANDS
 			if(ProtocolInfoTag=="1000"){//PING:
-				send(ECHO_OF_PING,ID,QString(""));
+                bool dataWasTruncatedTo0xffffMinus4Bool;
+                send(ECHO_OF_PING,ID,QString(""),dataWasTruncatedTo0xffffMinus4Bool);
 			}
 			else if(ProtocolInfoTag=="1001"){//GET_CLIENTVERSION:
-				send(ANSWER_OF_GET_CLIENTVERSION,ID,mCore.getClientVersion());
+                bool dataWasTruncatedTo0xffffMinus4Bool;
+                send(ANSWER_OF_GET_CLIENTVERSION,ID,mCore.getClientVersion(),dataWasTruncatedTo0xffffMinus4Bool);
 			}
 			else if(ProtocolInfoTag=="1002"){//GET_CLIENTNAME:
-				send(ANSWER_OF_GET_CLIENTNAME,ID,mCore.getClientName());
+                bool dataWasTruncatedTo0xffffMinus4Bool;
+                send(ANSWER_OF_GET_CLIENTNAME,ID,mCore.getClientName(),dataWasTruncatedTo0xffffMinus4Bool);
 			}
 			else if(ProtocolInfoTag=="1003"){//GET_USER_ONLINESTATUS:
-				if(mCore.getUserManager()->getUserByI2P_ID(ID)->getIsInvisible()==true){
-					send(USER_ONLINESTATUS_OFFLINE,ID,QString(""));
+                bool dataWasTruncatedTo0xffffMinus4Bool;
+                if(mCore.getUserManager()->getUserByI2P_ID(ID)->getIsInvisible()==true){
+                    send(USER_ONLINESTATUS_OFFLINE,ID,QString(""),dataWasTruncatedTo0xffffMinus4Bool);
 				}
 				else{
+                    bool dataWasTruncatedTo0xffffMinus4Bool;
 					switch(mCore.getOnlineStatus())
 					{
 						case USERONLINE:
-						{
-							send(USER_ONLINESTATUS_ONLINE,ID,QString(""));
+                        {
+                            send(USER_ONLINESTATUS_ONLINE,ID,QString(""),dataWasTruncatedTo0xffffMinus4Bool);
 							break;
 						}
 						case USEROFFLINE:
 						case USERINVISIBLE:
 						{
-							send(USER_ONLINESTATUS_OFFLINE,ID,QString(""));
+                            send(USER_ONLINESTATUS_OFFLINE,ID,QString(""),dataWasTruncatedTo0xffffMinus4Bool);
 							break;
 						}
 						case USERAWAY:
 						{
-							send(USER_ONLINESTATUS_AWAY,ID,QString(""));
+                            send(USER_ONLINESTATUS_AWAY,ID,QString(""),dataWasTruncatedTo0xffffMinus4Bool);
 							break;
 							
 						}
 						case USERWANTTOCHAT:
 						{
-							send(USER_ONLINESTATUS_WANTTOCHAT,ID,QString(""));
+                            send(USER_ONLINESTATUS_WANTTOCHAT,ID,QString(""),dataWasTruncatedTo0xffffMinus4Bool);
 							break;
 						}
 						case USERDONT_DISTURB:
 						{
-							send(USER_ONLINESTATUS_DONT_DISTURB,ID,QString(""));
+                            send(USER_ONLINESTATUS_DONT_DISTURB,ID,QString(""),dataWasTruncatedTo0xffffMinus4Bool);
 							break;
 						}
 						default:
@@ -116,36 +121,41 @@ using namespace Protocol_Info;
 
 			}
 			else if(ProtocolInfoTag=="1004"){//GET_PROTOCOLVERSION,
-				send(ANSWER_OF_GET_PROTOCOLVERSION,ID,mCore.getProtocolVersion());
+                bool dataWasTruncatedTo0xffffMinus4Bool;
+                send(ANSWER_OF_GET_PROTOCOLVERSION,ID,mCore.getProtocolVersion(),dataWasTruncatedTo0xffffMinus4Bool);
 			}
 			else if(ProtocolInfoTag=="1005"){//GET_MAX_PROTOCOLVERSION_FILETRANSFER
 				CUser* thisUser=mCore.getUserManager()->getUserByI2P_ID(ID);
 				
 				if(thisUser!=NULL){
+                    bool dataWasTruncatedTo0xffffMinus4Bool;
 				     if(thisUser->getProtocolVersion()=="0.3"){
 					  //BUG in Messenger_0.2.15 BETA :(
-					  send(ANSWER_OF_GET_MAX_PROTOCOLVERSION_FILETRANSFER,ID,QString("0.2"));
+                      send(ANSWER_OF_GET_MAX_PROTOCOLVERSION_FILETRANSFER,ID,QString("0.2"),dataWasTruncatedTo0xffffMinus4Bool);
 				      }else{
-					  send(ANSWER_OF_GET_MAX_PROTOCOLVERSION_FILETRANSFER,ID,FileTransferProtocol::MAXPROTOCOLVERSION);
+                      send(ANSWER_OF_GET_MAX_PROTOCOLVERSION_FILETRANSFER,ID,FileTransferProtocol::MAXPROTOCOLVERSION,dataWasTruncatedTo0xffffMinus4Bool);
 				      }
 				}
 			}
 			else if(ProtocolInfoTag=="1006"){//GET_USER_INFOS
+                bool dataWasTruncatedTo0xffffMinus4Bool;
 				using namespace User;
 				QString sAge;
 				CRecivedInfos Infos= mCore.getUserInfos();
-				send(USER_INFO_NICKNAME	,ID,Infos.Nickname);
-				send(USER_INFO_GENDER	,ID,Infos.Gender);
-				send(USER_INFO_INTERESTS,ID,Infos.Interests);
+                send(USER_INFO_NICKNAME	,ID,Infos.Nickname,dataWasTruncatedTo0xffffMinus4Bool);
+                send(USER_INFO_GENDER	,ID,Infos.Gender,dataWasTruncatedTo0xffffMinus4Bool);
+                send(USER_INFO_INTERESTS,ID,Infos.Interests,dataWasTruncatedTo0xffffMinus4Bool);
 				
 				sAge.setNum(Infos.Age,10);
-				send(USER_INFO_AGE	,ID,sAge);
+                send(USER_INFO_AGE	,ID,sAge,dataWasTruncatedTo0xffffMinus4Bool);
 			}
 			else if(ProtocolInfoTag=="1007"){//GET_MIN_PROTOCOLVERSION_FILETRANSFER
-				send(ANSWER_OF_GET_MIN_PROTOCOLVERSION_FILETRANSFER,ID,FileTransferProtocol::MINPROTOCOLVERSION);
+                bool dataWasTruncatedTo0xffffMinus4Bool;
+                send(ANSWER_OF_GET_MIN_PROTOCOLVERSION_FILETRANSFER,ID,FileTransferProtocol::MINPROTOCOLVERSION,dataWasTruncatedTo0xffffMinus4Bool);
 			}
 			else if(ProtocolInfoTag=="1008"){//GET_AVATARIMAGE
-				send(ANSWER_OF_GET_AVATARIMAGE_IMAGE,ID, mCore.getUserInfos().AvatarImage);
+                bool dataWasTruncatedTo0xffffMinus4Bool;
+                send(ANSWER_OF_GET_AVATARIMAGE_IMAGE,ID, mCore.getUserInfos().AvatarImage,dataWasTruncatedTo0xffffMinus4Bool);
 			}
 
 			
@@ -337,19 +347,21 @@ using namespace Protocol_Info;
 				    //is blocked
 				    
 				    if(versiond<0.4){
-					  send(CHATMESSAGE,ID,QString("You were blocked,all Packets will be ignored !"));
+                      bool dataWasTruncatedTo0xffffMinus4Bool;
+                      send(CHATMESSAGE,ID,QString("You were blocked,all Packets will be ignored !"),dataWasTruncatedTo0xffffMinus4Bool);
 					  mCore.getConnectionManager()->doDestroyStreamObjectByID(ID);
 					  return;
 				    }
 				    else {
 				     	QSettings settings(mCore.getConfigPath()+"/application.ini",QSettings::IniFormat);
 					settings.beginGroup("Security");	
+                        bool dataWasTruncatedTo0xffffMinus4Bool;
 					      if(settings.value("BlockStyle","Normal").toString()=="Normal"){
-						    send(CHATMESSAGE,ID,QString("You were blocked ,all Packets will be ignored !"));
-						    send(USER_BLOCK_NORMAL,ID,QString(""));
+                            send(CHATMESSAGE,ID,QString("You were blocked ,all Packets will be ignored !"),dataWasTruncatedTo0xffffMinus4Bool);
+                            send(USER_BLOCK_NORMAL,ID,QString(""),dataWasTruncatedTo0xffffMinus4Bool);
 					      }else{
 						    //Block-Style Invisible
-						    send(USER_BLOCK_INVISIBLE,ID,QString(""));
+                            send(USER_BLOCK_INVISIBLE,ID,QString(""),dataWasTruncatedTo0xffffMinus4Bool);
 					      }
 					settings.endGroup();
 					settings.sync();
@@ -466,14 +478,14 @@ void CProtocol::send(const COMMANDS_TAGS TAG,const qint32 ID)const
 
 
 
-void CProtocol::send(const MESSAGES_TAGS TAG,const qint32 ID,QString Data) const 
+void CProtocol::send(const MESSAGES_TAGS TAG,const qint32 ID,QString Data,bool&dataWasTruncatedTo0xffffMinus4Bool) const
 {
 	QByteArray t="";
 	t.insert(0,Data);
 
-	send(TAG,ID,t);
+    send(TAG,ID,t,dataWasTruncatedTo0xffffMinus4Bool);
 }
-void CProtocol::send(const MESSAGES_TAGS TAG,const qint32 ID,QByteArray Data) const
+void CProtocol::send(const MESSAGES_TAGS TAG,const qint32 ID,QByteArray Data,bool&dataWasTruncatedTo0xffffMinus4Bool) const
 {
 	QString ProtocolInfoTag;
 
@@ -512,9 +524,15 @@ void CProtocol::send(const MESSAGES_TAGS TAG,const qint32 ID,QByteArray Data) co
 			exit(-1);
 		}	
 	}
+    dataWasTruncatedTo0xffffMinus4Bool=false;
 	QString temp;
-	
+    if(Data.length()>(0xffff-4)){
+        Data = Data.mid(0,(0xffff-4));
+        qCritical()<<"Outgoing data was truncated to"<<(0xffff-4)<<"bytes";
+        dataWasTruncatedTo0xffffMinus4Bool=true;
+    }
 	temp.setNum(Data.length()+4,16);//hex
+
 	QString Paketlength=QString("%1").arg(temp,4,'0');
 
 	Data.insert(0,ProtocolInfoTag);

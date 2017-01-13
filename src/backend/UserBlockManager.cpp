@@ -119,20 +119,21 @@ void CUserBlockManager::addNewBlockEntity(const QString NickName, const QString 
 			mUserBlockMap.insert(Destination,tmp);
 		}
 	}
+    bool dataWasTruncatedTo0xffffMinus4Bool;
 	if(User!=NULL){
 		if(User->getConnectionStatus() == ONLINE || User->getConnectionStatus() == TRYTOCONNECT ){
 			if(User->getProtocolVersion_D() <0.4){
-				 mCore.getProtocol()->send(CHATMESSAGE,User->getI2PStreamID(),QString("You were blocked,all Packets will be ignored !"));
+                 mCore.getProtocol()->send(CHATMESSAGE,User->getI2PStreamID(),QString("You were blocked,all Packets will be ignored !"),dataWasTruncatedTo0xffffMinus4Bool);
 			}else{
 				QSettings settings(mCore.getConfigPath()+"/application.ini",QSettings::IniFormat);
 				settings.beginGroup("Security");	
 				      if(settings.value("BlockStyle","Normal").toString()=="Normal"){
-					    mCore.getProtocol()->send(CHATMESSAGE,User->getI2PStreamID(),QString("You were blocked !"));
-					    mCore.getProtocol()->send(USER_BLOCK_NORMAL,User->getI2PStreamID(),QString(""));
+                        mCore.getProtocol()->send(CHATMESSAGE,User->getI2PStreamID(),QString("You were blocked !"),dataWasTruncatedTo0xffffMinus4Bool);
+                        mCore.getProtocol()->send(USER_BLOCK_NORMAL,User->getI2PStreamID(),QString(""),dataWasTruncatedTo0xffffMinus4Bool);
 					
 				      }else{
 					    //Block-Style Invisible
-					    mCore.getProtocol()->send(USER_BLOCK_INVISIBLE,User->getI2PStreamID(),QString(""));
+                        mCore.getProtocol()->send(USER_BLOCK_INVISIBLE,User->getI2PStreamID(),QString(""),dataWasTruncatedTo0xffffMinus4Bool);
 				      }
 				settings.endGroup();
 				settings.sync();

@@ -41,8 +41,8 @@
 
 
 namespace Protocol_Info{
-	const QString PROTOCOLVERSION  ="0.6";
-	const double  PROTOCOLVERSION_D= 0.6;
+    const QString PROTOCOLVERSION  ="0.7";
+    const double  PROTOCOLVERSION_D= 0.7;
 	const QString FIRSTPAKETCHAT="CHATSYSTEM\t"+PROTOCOLVERSION+"\n";
 	const QString HTTPPAGE="<html><header></header><body>This is not a eepsite,this is a I2P-Messenger Destination<br><br></body></html>\n\n\n";
 };
@@ -60,7 +60,7 @@ namespace PROTOCOL_TAGS{
 		//Protocolversion >= 0.5
 		  GET_AVATARIMAGE
 		//-----------------------
-		//Protocolversion >= 0.6
+        //Protocolversion >= 0.7
 		//-----------------------
 		
 	};
@@ -90,13 +90,16 @@ namespace PROTOCOL_TAGS{
 		USER_BLOCK_NORMAL,
 		
 		//Protocolversion >= 0.5
-		  ANSWER_OF_GET_AVATARIMAGE_IMAGE,
-		//-----------------------
-		//Protocolversion >= 0.6
-		  AVATARIMAGE_CHANGED,
+        ANSWER_OF_GET_AVATARIMAGE_IMAGE,
 		//-----------------------
 
-	};
+		//Protocolversion >= 0.6
+        AVATARIMAGE_CHANGED,
+		//-----------------------
+
+        //Protocolversion >= 0.7
+        CHAT_MESSAGE_SWARM,
+    };
 	
 
 };
@@ -117,8 +120,8 @@ public:
 	QString getProtocolVersion()const {return PROTOCOLVERSION;};
 	void newConnectionChat(const qint32 ID);
 
-	void send(const MESSAGES_TAGS TAG,const qint32 ID,QByteArray Data) const;
-	void send(const MESSAGES_TAGS TAG,const qint32 ID,QString Data) const;
+    void send(const MESSAGES_TAGS TAG,const qint32 ID,QByteArray Data,bool&dataWasTruncatedTo0xffffMinus4Bool) const;
+    void send(const MESSAGES_TAGS TAG,const qint32 ID,QString Data,bool&dataWasTruncatedTo0xffffMinus4Bool) const;
 	void send(const COMMANDS_TAGS TAG,const qint32 ID) const;
 
 public slots:

@@ -144,10 +144,14 @@ void CUser::slotSendChatMessage(QString Message){
 		mCurrentOnlineState != USERINVISIBLE
 	){
 		QByteArray ByteMessage=Message.toUtf8();
-		mProtocol.send(CHATMESSAGE,mI2PStream_ID,ByteMessage);
+        bool dataWasTruncatedTo0xffffMinus4Bool;
+        mProtocol.send(CHATMESSAGE,mI2PStream_ID,ByteMessage,dataWasTruncatedTo0xffffMinus4Bool);
+        if(dataWasTruncatedTo0xffffMinus4Bool){
+            QMessageBox::warning(0, QObject::tr("Warning: Data was truncated"),QObject::tr("Data was truncated to 0xffff-4 bytes."));//FIXME
+        }
 		
 		if(mCore.getUserInfos().Nickname.isEmpty()==true){
-		  Nickname=tr("Me ");
+          Nickname=tr("Me");
 		}else{
 		  Nickname=mCore.getUserInfos().Nickname;
 		}
@@ -180,8 +184,13 @@ void CUser::SendAllunsendedMessages()
 	if(mUnsentedMessages.empty())return;
 
 
-	for(int i=0;i<mUnsentedMessages.count();i++)
-		mProtocol.send(CHATMESSAGE,mI2PStream_ID,mUnsentedMessages.at(i));
+    for(int i=0;i<mUnsentedMessages.count();i++){
+        bool dataWasTruncatedTo0xffffMinus4Bool;
+        mProtocol.send(CHATMESSAGE,mI2PStream_ID,mUnsentedMessages.at(i),dataWasTruncatedTo0xffffMinus4Bool);
+        if(dataWasTruncatedTo0xffffMinus4Bool){
+            QMessageBox::warning(0, QObject::tr("Warning: Data was truncated"),QObject::tr("Data was truncated to 0xffff-4 bytes."));//FIXME
+        }
+    }
 	
 	mUnsentedMessages.clear();
 	slotIncomingMessageFromSystem("All previously unsent messages have been sent.",true);

@@ -312,7 +312,8 @@ void CUserManager::avatarImageChanged()
 	     User->getOnlineState()!= USERBLOCKEDYOU &&
 	     User->getProtocolVersion_D()>=0.6){
 		CProtocol& Protocol=*(mCore.getProtocol());
-		Protocol.send(AVATARIMAGE_CHANGED,mUsers.at(i)->getI2PStreamID(),QString());
+        bool dataWasTruncatedTo0xffffMinus4Bool;
+        Protocol.send(AVATARIMAGE_CHANGED,mUsers.at(i)->getI2PStreamID(),QString(),dataWasTruncatedTo0xffffMinus4Bool);
 	     }	  
 	}
 }
