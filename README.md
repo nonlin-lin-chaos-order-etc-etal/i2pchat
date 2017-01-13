@@ -10,7 +10,7 @@ You need to enable SAM in your router on <a href="http://127.0.0.1:7657/configcl
 
 ## Security measures
 
-If you do not want the app to log debug info (which includes all chat messages) to `configdir/DebugLog.txt`, set `DebugLogging` to `false` in `General` group in the app's configuration.
+When building this, make sure you do not define `DEBUGLOGGING`. If you do define it, the app will log debug info (which includes all chat messages) to `configdir/DebugLog.txt` if set `DebugLogging` to `true` in `General` group in the app's configuration.
     
 ## Project status, news and history
 
