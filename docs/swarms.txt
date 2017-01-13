@@ -82,3 +82,44 @@
 <anon1> так вообще органы побреются с трассировкой свармов
 <anon1> что даже центрального ида у сварма нету
 
+DRAFTS for the SWARMS_TYPE_1 PROTOCOL
+
+a swarm has multiple ids
+
+Each id is a pair : < «subject A`s i2p destination», «A`s local swarm id» >
+Subject B would keep link to A with the above pair, and have also a different id of the same shape:
+< «subject B`s i2p destination», «B`s local swarm id» > which is linked to the above A`s swarm id (a pair). 
+Such linked ids form an informal set of ids for one swarm.
+
+swarm_sender_id is local subject`s swarm id (a pair of the shape depicted above).
+
+swarm_receiver_id is remote subject`s swarm id (a pair of the shape depicted above) linked to swarm_source_id
+
+message_payload is a message text (currently, HTML formatted) linked to both local_sender and remote_receiver ids
+
+a triple <swarm_sender_id, swarm_receiver_id, message_payload> gets sent on each message
+
+
+
+
+наверно если к юзеру X поступит запрос на джойн к сварму, то чатег юзера X должен раздистрибутить этот запрос всем allowed мемберам — после того как юзер X саппрувит этот реквест, видимо.
+
+или если юзер X инвайтнул юзера Y в сварм Z , то если юзер Y согласился на инвайт, всем allowed мемберам юзера X тоже идёт реквест на джойн юзера Y к сварму
+
+
+DRAFTS for GUIS 
+
+
+A list of users allowed to receive messages from you (whitelisted members):
+A list of users denied from receiving messages from you (blacklisted members):
+
+User requested to join swarm <swarm local label>. [Allow] [Deny] [Allow Automatically From Now On] [Deny Automatically From Now On] [Close]
+
+Edit swarm properties [ ] Allow joining automatically without questions [ ] Deny joining automatically without questions [            ] Local swarm label
+
+Incoming message from non-swarm-member ignored
+
+
+DRAFT for RESOURCE IDENTIFIERS
+
+swarm?id=1231312123&user=b64dest

@@ -8,6 +8,10 @@
 
 You need to enable SAM in your router on <a href="http://127.0.0.1:7657/configclients">java i2p configclients page</a> or i2pd's i2pd.conf [sam] section to make I2P Chat work over your I2P router.
 
+## Security measures
+
+If you do not want the app to log debug info (which includes all chat messages) to `configdir/DebugLog.txt`, set `DebugLogging` to `false` in `General` group in the app's configuration.
+    
 ## Project status, news and history
 
 ### Project status
