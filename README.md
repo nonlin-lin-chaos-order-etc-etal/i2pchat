@@ -10,7 +10,13 @@ You need to enable SAM in your router on <a href="http://127.0.0.1:7657/configcl
 
 ## Security measures
 
-Since version 0.3.1 : When building this, make sure you do not define `DEBUGLOGGING`. If you do define it, the app will log debug info (which includes all chat messages) to `configdir/DebugLog.txt` if set `DebugLogging` to `true` in `General` group in the app's configuration. See `main.cpp` and `form_settingsgui.cpp` for more details on `DEBUGLOGGING`. All versions < 0.3.1 are affected by this and are less secure.
+### Version 0.3.2
+
+Buffer overflow fixed (see https://github.com/hypnosis-i2p/i2pchat/commit/22ce75b1ab846b2442798c5d178d9b8c04b1fe88#diff-3064ad54c2e1a821cc47705c00778c2eR529 ). All versions < 0.3.2 are affected by this and are less secure.
+
+### Since version 0.3.1
+
+When building this, make sure you do not define `DEBUGLOGGING`. If you do define it, the app will log debug info (which includes all chat messages) to `configdir/DebugLog.txt` if set `DebugLogging` to `true` in `General` group in the app's configuration. See `main.cpp` and `form_settingsgui.cpp` for more details on `DEBUGLOGGING`. All versions < 0.3.1 are affected by this and are less secure.
     
 ## Project status, news and history
 
