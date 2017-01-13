@@ -2,7 +2,7 @@ CONFIG += qt
 
 greaterThan(QT_MAJOR_VERSION, 4): CONFIG += c++11
 
-QT += network xml 
+QT += network xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia core
 
@@ -14,16 +14,16 @@ QMAKE_CXXFLAGS += -Wall
 
 DEPENDPATH += . \
 	src/gui/ \
-        src/backend/ \
-        src/controller/
+	src/backend/ \
+	src/controller/
 
 INCLUDEPATH += . \
-               src/gui \
-               src/backend/ \
-               src/controller/
+	src/gui \
+	src/backend/ \
+	src/controller/
 
-TRANSLATIONS = ru.ts
-               
+TRANSLATIONS = lang/ru.ts
+
 SOURCES += \
 	src/backend/Core.cpp \
 	src/backend/User.cpp \
@@ -65,10 +65,10 @@ SOURCES += \
 	src/backend/abstractgrouprosterentry.cpp \
 	src/backend/swarmtype1rosterentry.cpp \
 	src/backend/rosterentryfactory.cpp \
-        src/controller/rostercontroller.cpp \
-    src/backend/parseerrors.cpp \
-    src/backend/parseerror.cpp \
-    src/backend/main.cpp
+	src/controller/rostercontroller.cpp \
+	src/backend/parseerrors.cpp \
+	src/backend/parseerror.cpp \
+	src/backend/main.cpp
 
 HEADERS += src/backend/Core.h \
 	src/backend/User.h \
@@ -113,10 +113,10 @@ HEADERS += src/backend/Core.h \
 	src/backend/abstractgrouprosterentry.h \
 	src/backend/swarmtype1rosterentry.h \
 	src/backend/rosterentryfactory.h \
-        src/controller/rostercontroller.h \
-    src/backend/parseerrors.h \
-    src/backend/parseerror.h \
-    src/backend/main.h
+	src/controller/rostercontroller.h \
+	src/backend/parseerrors.h \
+	src/backend/parseerror.h \
+	src/backend/main.h
 
 FORMS += src/gui/form_Main.ui \
 	src/gui/form_chatwidget.ui \
@@ -127,7 +127,7 @@ FORMS += src/gui/form_Main.ui \
 	src/gui/form_rename.ui \
 	src/gui/form_settingsgui.ui \
 	src/gui/form_userSearch.ui \
-	src/gui/form_about.ui \  
+	src/gui/form_about.ui \
 	src/gui/form_topicSubscribe.ui \
 	src/gui/form_createSwarmType1.ui
 

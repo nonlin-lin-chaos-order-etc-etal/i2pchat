@@ -45,9 +45,9 @@ please change your userprofile in the settings</source>
         <source>Error convert QString to Quint64
 Value: %1
 Filerecive aborted)</source>
-        <translation>Ошибка перевода QString в Quint64
+        <translation type="unfinished">Ошибка перевода QString в Quint64
 Значение: %1
-Файловый приём прерван</translation>
+Получение файла прервано)</translation>
     </message>
     <message>
         <location filename="src/backend/FileTransferManager.cpp" line="143"/>
@@ -55,9 +55,9 @@ Filerecive aborted)</source>
 Incoming Protocolversion: %1 
 Highest supported Protocolversion: %2
 Filename: %3</source>
-        <translation>Игнорирую входящую файловую передачу, не подерживаеться версия протокола для передачи
-Версия входящиго: %1
-Нужная версия: %2
+        <translation type="unfinished">Игнорирую входящую файловую передачу, неподдерживаемая версия протокола передачи файлов
+Версия протокола: %1
+Необходимая версия: %2
 Имя файла: %3</translation>
     </message>
 </context>
@@ -66,12 +66,12 @@ Filename: %3</source>
     <message>
         <location filename="src/backend/FileTransferRecive.cpp" line="71"/>
         <source> Autoaccepted incoming Filetransfer&lt;br&gt;Filename: %1</source>
-        <translation>Автоприём входящей файлопередачи&lt;br&gt;Имя файла: %1</translation>
+        <translation type="unfinished">Автоприём входящей файлопередачи&lt;br&gt;Имя файла: %1</translation>
     </message>
     <message>
         <location filename="src/backend/FileTransferRecive.cpp" line="82"/>
         <source> Incoming Filetransfer&lt;br&gt;Filename: %1&lt;br&gt;please accept or reject it in the user list</source>
-        <translation>Входящая Файловая передача&lt;br&gt;Имя файла:%1&lt;br&gt;пожалуйста примите или выкиньте это в список пользователей</translation>
+        <translation type="unfinished">Входящая Файловая передача&lt;br&gt;Имя файла:%1&lt;br&gt;пожалуйста примите или выкиньте это в список пользователей</translation>
     </message>
     <message>
         <location filename="src/backend/FileTransferRecive.cpp" line="148"/>
@@ -81,32 +81,32 @@ Filename: %3</source>
     <message>
         <location filename="src/backend/FileTransferRecive.cpp" line="155"/>
         <source>The Sender abort the Filetransfer&lt;br&gt;FileName: %1&lt;br&gt;incomplead File deleted</source>
-        <translation>Отправитель прервал файловую передачу&lt;br&gt;Имя файла: %1&lt;br&gt;неполноценный файл удален</translation>
+        <translation type="unfinished">Отправитель прервал файловую передачу&lt;br&gt;Имя файла: %1&lt;br&gt;неполноценный файл удален</translation>
     </message>
     <message>
         <location filename="src/backend/FileTransferRecive.cpp" line="162"/>
         <source>You abborted the Filerecive&lt;br&gt;FileName: %1&lt;br&gt;incomplead File deleted</source>
-        <translation>Вы прервали приём файла&lt;br&gt;Имя файла:%1&lt;br&gt;Неполноценный файл удален</translation>
+        <translation type="unfinished">Вы прервали приём файла&lt;br&gt;Имя файла:%1&lt;br&gt;Неполноценный файл удален</translation>
     </message>
     <message>
         <location filename="src/backend/FileTransferRecive.cpp" line="176"/>
         <source>Filerecive: %1 Stream get a I2P_ERROR:&lt;br&gt;%2</source>
-        <translation>Файловый приём: %1 Потом получил внутрению ошибку протокола ш2з:&lt;br&gt;%2</translation>
+        <translation type="unfinished">Файловый приём: %1 Потом получил внутрению ошибку протокола ш2з:&lt;br&gt;%2</translation>
     </message>
     <message>
         <location filename="src/backend/FileTransferRecive.cpp" line="186"/>
         <source>Filerecive: %1 Stream get a INVALID_KEY ERROR:&lt;br&gt;%2</source>
-        <translation>Файловая передача: %1 потока получила ошибку невалидного ключа:&lt;br&gt;%2</translation>
+        <translation type="unfinished">Файловая передача: %1 потока получила ошибку невалидного ключа:&lt;br&gt;%2</translation>
     </message>
     <message>
         <location filename="src/backend/FileTransferRecive.cpp" line="198"/>
         <source>Filerecive: %1 Stream get a INVALID_ID ERROR:&lt;br&gt;%2</source>
-        <translation>Файловая передача: %1 поток получил ошибку невалидного ID, Вот ошибка, сир: &lt;br&gt;%2</translation>
+        <translation type="unfinished">Файловая передача: %1 поток получил ошибку невалидного ID, Вот ошибка, сир: &lt;br&gt;%2</translation>
     </message>
     <message>
         <location filename="src/backend/FileTransferRecive.cpp" line="371"/>
         <source>never or (&gt;24 h)</source>
-        <translation>непонятная чепуха.....</translation>
+        <translation type="unfinished">непонятная чепуха.....</translation>
     </message>
 </context>
 <context>
@@ -122,7 +122,7 @@ Filename: %3</source>
     <message>
         <location filename="src/backend/FileTransferSend.cpp" line="116"/>
         <source>Can&apos;t connect the User for Filetransfer&lt;br&gt;Filename: %1</source>
-        <translation>Мы не можем соедениться с пользователем для передачи данного файла&lt;br&gt;Имя файла:%1</translation>
+        <translation type="unfinished">Мы не можем соедениться с пользователем для передачи данного файла&lt;br&gt;Имя файла:%1</translation>
     </message>
     <message>
         <location filename="src/backend/FileTransferSend.cpp" line="121"/>
@@ -132,7 +132,7 @@ Filename: %3</source>
     <message>
         <location filename="src/backend/FileTransferSend.cpp" line="133"/>
         <source>Filetransfer: %1 Stream get a I2P_ERROR:&lt;br&gt;%2</source>
-        <translation>Файловая передача: %1 поток получил внутрению ошибку протокола I2P:&lt;br&gt; %2</translation>
+        <translation type="unfinished">Файловая передача: %1 поток получил внутрению ошибку протокола I2P:&lt;br&gt; %2</translation>
     </message>
     <message>
         <location filename="src/backend/FileTransferSend.cpp" line="143"/>
@@ -144,12 +144,12 @@ Filename: %3</source>
         <location filename="src/backend/FileTransferSend.cpp" line="193"/>
         <location filename="src/backend/FileTransferSend.cpp" line="218"/>
         <source>Filetransfer don&apos;t accepted,filesending abborted&lt;br&gt;Filename: %1</source>
-        <translation>Файловая передача не принята, файловый передача прервана&lt;br&gt;Имя файла:%1</translation>
+        <translation type="unfinished">Файловая передача не принята, файловый передача прервана&lt;br&gt;Имя файла:%1</translation>
     </message>
     <message>
         <location filename="src/backend/FileTransferSend.cpp" line="389"/>
         <source>never or (&gt;24 h)</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -157,12 +157,12 @@ Filename: %3</source>
     <message>
         <location filename="src/backend/Protocol.cpp" line="106"/>
         <source>cProtocol(inputKnown)</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="src/backend/Protocol.cpp" line="107"/>
         <source>Unknown USERSTATE</source>
-        <translation>Незивестная состояние пользователя</translation>
+        <translation type="unfinished">Незивестная состояние пользователя</translation>
     </message>
 </context>
 <context>
@@ -179,7 +179,7 @@ Filename: %3</source>
 Only one Messenger per Destination,
 or SAMv3 crashed(Tunnel stay if Messenger were closed)
  </source>
-        <translation>Сесия: ПОВТОРЯЮЩИЙСЯ_ПОЛ
+        <translation type="unfinished">Сесия: ПОВТОРЯЮЩИЙСЯ_ПОЛ
 или SAMv3 сломался(Туннель живет если сообщения были закрыты)
 </translation>
     </message>
@@ -189,12 +189,12 @@ or SAMv3 crashed(Tunnel stay if Messenger were closed)
     <message>
         <location filename="src/backend/User.cpp" line="150"/>
         <source>Me </source>
-        <translation>Мне</translation>
+        <translation type="unfinished">Мне</translation>
     </message>
     <message>
         <location filename="src/backend/User.cpp" line="163"/>
         <source>Sending the message when the user comes online.&lt;br&gt;If you close the client, the message will be lost.</source>
-        <translation>Отправка сообщения когда пользователь прибудет в сеть&lt;br&gt;Если вы закроете клиент сообщение будет потеряно.</translation>
+        <translation type="unfinished">Отправка сообщения когда пользователь прибудет в сеть&lt;br&gt;Если вы закроете клиент сообщение будет потеряно.</translation>
     </message>
     <message>
         <location filename="src/backend/User.cpp" line="213"/>
@@ -210,12 +210,12 @@ or SAMv3 crashed(Tunnel stay if Messenger were closed)
         <location filename="src/backend/User.cpp" line="246"/>
         <location filename="src/backend/User.cpp" line="247"/>
         <source>[System] </source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="src/backend/User.cpp" line="340"/>
         <source>No Nickname</source>
-        <translation>Нет прозвища</translation>
+        <translation type="unfinished">Нет прозвища</translation>
     </message>
 </context>
 <context>
@@ -308,12 +308,12 @@ or SAMv3 crashed(Tunnel stay if Messenger were closed)
     <message>
         <location filename="src/gui/form_about.ui" line="41"/>
         <source>About</source>
-        <translation>About</translation>
+        <translation type="unfinished">About</translation>
     </message>
     <message>
         <location filename="src/gui/form_about.ui" line="100"/>
         <source>App version:</source>
-        <translation>Версия приложения</translation>
+        <translation type="unfinished">Версия приложения</translation>
     </message>
     <message>
         <location filename="src/gui/form_about.ui" line="154"/>
@@ -323,7 +323,7 @@ or SAMv3 crashed(Tunnel stay if Messenger were closed)
     <message>
         <location filename="src/gui/form_about.ui" line="140"/>
         <source>Protocol version:</source>
-        <translation>Версия протокола</translation>
+        <translation type="unfinished">Версия протокола</translation>
     </message>
     <message>
         <location filename="src/gui/form_about.ui" line="168"/>
@@ -337,7 +337,7 @@ or SAMv3 crashed(Tunnel stay if Messenger were closed)
     <message>
         <location filename="src/gui/form_about.ui" line="147"/>
         <source>Git commit count:</source>
-        <translation>Git commit count:</translation>
+        <translation type="unfinished">Git commit count:</translation>
     </message>
     <message>
         <location filename="src/gui/form_about.ui" line="126"/>
@@ -362,17 +362,17 @@ or SAMv3 crashed(Tunnel stay if Messenger were closed)
     <message>
         <location filename="src/gui/form_about.ui" line="133"/>
         <source>Git commit hash:</source>
-        <translation>Git commit count:</translation>
+        <translation type="unfinished">Git commit count:</translation>
     </message>
     <message>
         <location filename="src/gui/form_about.ui" line="161"/>
         <source>Date built:</source>
-        <translation>Версия сборки</translation>
+        <translation type="unfinished">Версия сборки</translation>
     </message>
     <message>
         <location filename="src/gui/form_about.ui" line="189"/>
         <source>App name:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="src/gui/form_about.ui" line="196"/>
@@ -382,12 +382,12 @@ or SAMv3 crashed(Tunnel stay if Messenger were closed)
     <message>
         <location filename="src/gui/form_about.ui" line="222"/>
         <source>&amp;Close</source>
-        <translation>&amp;Закрыть</translation>
+        <translation type="unfinished">&amp;Закрыть</translation>
     </message>
     <message>
         <location filename="src/gui/form_about.cpp" line="39"/>
         <source>…</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>App version</source>
@@ -429,7 +429,7 @@ or SAMv3 crashed(Tunnel stay if Messenger were closed)
     <message>
         <location filename="src/gui/form_chatwidget.cpp" line="439"/>
         <source>Don&apos;t disturb</source>
-        <translation>Не беспокоить, я занят</translation>
+        <translation type="unfinished">Не беспокоить, я занят</translation>
     </message>
     <message>
         <location filename="src/gui/form_chatwidget.cpp" line="445"/>
@@ -503,7 +503,7 @@ or SAMv3 crashed(Tunnel stay if Messenger were closed)
     <message>
         <location filename="src/gui/form_DebugMessages.ui" line="14"/>
         <source>DebugMessages</source>
-        <translation>DebugMessenger</translation>
+        <translation type="unfinished">DebugMessenger</translation>
     </message>
     <message>
         <location filename="src/gui/form_DebugMessages.ui" line="42"/>
@@ -513,23 +513,23 @@ or SAMv3 crashed(Tunnel stay if Messenger were closed)
     <message>
         <location filename="src/gui/form_DebugMessages.ui" line="70"/>
         <source>&amp;Clear</source>
-        <translation>&amp;Очистить</translation>
+        <translation type="unfinished">&amp;Очистить</translation>
     </message>
     <message>
         <location filename="src/gui/form_DebugMessages.ui" line="77"/>
         <location filename="src/gui/form_DebugMessages.ui" line="125"/>
         <source>C&amp;lose</source>
-        <translation>&amp;Закрыть</translation>
+        <translation type="unfinished">&amp;Закрыть</translation>
     </message>
     <message>
         <location filename="src/gui/form_DebugMessages.ui" line="90"/>
         <source>Connection</source>
-        <translation>Соеденения</translation>
+        <translation type="unfinished">Соеденения</translation>
     </message>
     <message>
         <location filename="src/gui/form_DebugMessages.ui" line="118"/>
         <source>Do Connection Snapshot</source>
-        <translation>Сделать сником соеденения</translation>
+        <translation type="unfinished">Сделать сником соеденения</translation>
     </message>
 </context>
 <context>
@@ -537,7 +537,7 @@ or SAMv3 crashed(Tunnel stay if Messenger were closed)
     <message>
         <location filename="src/gui/form_fileRecive.ui" line="32"/>
         <source>File Download</source>
-        <translation>Скачка файла</translation>
+        <translation type="unfinished">Скачка файла</translation>
     </message>
     <message>
         <location filename="src/gui/form_fileRecive.ui" line="51"/>
@@ -547,12 +547,12 @@ or SAMv3 crashed(Tunnel stay if Messenger were closed)
     <message>
         <location filename="src/gui/form_fileRecive.ui" line="69"/>
         <source>Reciveing</source>
-        <translation>Прием</translation>
+        <translation type="unfinished">Прием</translation>
     </message>
     <message>
         <location filename="src/gui/form_fileRecive.ui" line="79"/>
         <source>Finished</source>
-        <translation>Передано</translation>
+        <translation type="unfinished">Передано</translation>
     </message>
     <message>
         <location filename="src/gui/form_fileRecive.ui" line="96"/>
@@ -567,7 +567,8 @@ or SAMv3 crashed(Tunnel stay if Messenger were closed)
     <message>
         <location filename="src/gui/form_fileRecive.ui" line="118"/>
         <source>Name</source>
-        <translation>Имя</translation>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished">Name</translation>
     </message>
     <message>
         <location filename="src/gui/form_fileRecive.ui" line="125"/>
@@ -578,12 +579,14 @@ or SAMv3 crashed(Tunnel stay if Messenger were closed)
         <location filename="src/gui/form_fileRecive.ui" line="132"/>
         <location filename="src/gui/form_fileRecive.ui" line="167"/>
         <source>Size</source>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
         <translation>Size</translation>
     </message>
     <message>
         <location filename="src/gui/form_fileRecive.ui" line="139"/>
         <location filename="src/gui/form_fileRecive.ui" line="174"/>
         <source>SizeTyp</source>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
         <translation>SizeTyp</translation>
     </message>
     <message>
@@ -594,21 +597,23 @@ or SAMv3 crashed(Tunnel stay if Messenger were closed)
     <message>
         <location filename="src/gui/form_fileRecive.ui" line="153"/>
         <source>Version</source>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
         <translation>Version</translation>
     </message>
     <message>
         <location filename="src/gui/form_fileRecive.ui" line="160"/>
         <source>Speed:</source>
-        <translation>Скорость</translation>
+        <translation type="unfinished">Скорость:</translation>
     </message>
     <message>
         <location filename="src/gui/form_fileRecive.ui" line="181"/>
         <source>ETA:</source>
-        <translation>ETA:</translation>
+        <translation type="unfinished">Осталось:</translation>
     </message>
     <message>
         <location filename="src/gui/form_fileRecive.ui" line="188"/>
         <source>value</source>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
         <translation>value</translation>
     </message>
     <message>
@@ -647,17 +652,17 @@ or SAMv3 crashed(Tunnel stay if Messenger were closed)
     <message>
         <location filename="src/gui/form_fileSend.ui" line="69"/>
         <source>Fileinfo sent</source>
-        <translation>Инфомрация о файле</translation>
+        <translation type="unfinished">Инфомрация о файле</translation>
     </message>
     <message>
         <location filename="src/gui/form_fileSend.ui" line="82"/>
         <source>Filetransfer Accepted</source>
-        <translation>Принято</translation>
+        <translation type="unfinished">Принято</translation>
     </message>
     <message>
         <location filename="src/gui/form_fileSend.ui" line="92"/>
         <source>Transfering</source>
-        <translation>Передаеца</translation>
+        <translation type="unfinished">Передаеца</translation>
     </message>
     <message>
         <location filename="src/gui/form_fileSend.ui" line="102"/>
@@ -677,49 +682,54 @@ or SAMv3 crashed(Tunnel stay if Messenger were closed)
     <message>
         <location filename="src/gui/form_fileSend.ui" line="141"/>
         <source>Name</source>
-        <translation>Name</translation>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished">Name</translation>
     </message>
     <message>
         <location filename="src/gui/form_fileSend.ui" line="148"/>
         <source>Filesize:</source>
-        <translation>Размер файла</translation>
+        <translation>Размер файла:</translation>
     </message>
     <message>
         <location filename="src/gui/form_fileSend.ui" line="155"/>
         <location filename="src/gui/form_fileSend.ui" line="190"/>
         <source>Size</source>
-        <translation></translation>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="src/gui/form_fileSend.ui" line="162"/>
         <location filename="src/gui/form_fileSend.ui" line="197"/>
         <source>SizeTyp</source>
-        <translation></translation>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="src/gui/form_fileSend.ui" line="169"/>
         <source>Using Protocolversion:</source>
-        <translation>Версия протокола</translation>
+        <translation>Версия протокола:</translation>
     </message>
     <message>
         <location filename="src/gui/form_fileSend.ui" line="176"/>
         <source>Version</source>
-        <translation></translation>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="src/gui/form_fileSend.ui" line="183"/>
         <source>Speed:</source>
-        <translation></translation>
+        <translation>Скорость:</translation>
     </message>
     <message>
         <location filename="src/gui/form_fileSend.ui" line="204"/>
         <source>ETA:</source>
-        <translation></translation>
+        <translation>Осталось:</translation>
     </message>
     <message>
         <location filename="src/gui/form_fileSend.ui" line="211"/>
         <source>value</source>
-        <translation></translation>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="src/gui/form_fileSend.ui" line="228"/>
@@ -752,12 +762,13 @@ or SAMv3 crashed(Tunnel stay if Messenger were closed)
         <location filename="src/gui/form_Main.cpp" line="540"/>
         <location filename="src/gui/form_Main.cpp" line="776"/>
         <source>I2P-Messenger</source>
-        <translation>I2P-Месседржер</translation>
+        <translation type="unfinished">I2P-Месседржер</translation>
     </message>
     <message>
         <location filename="src/gui/form_Main.ui" line="107"/>
         <source>TextLabel</source>
-        <translation></translation>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="src/gui/form_Main.cpp" line="95"/>
@@ -769,7 +780,7 @@ or SAMv3 crashed(Tunnel stay if Messenger were closed)
         <location filename="src/gui/form_Main.cpp" line="99"/>
         <location filename="src/gui/form_Main.cpp" line="658"/>
         <source>WantToChat</source>
-        <translation>Не против пообщаться</translation>
+        <translation type="unfinished">Не против пообщаться</translation>
     </message>
     <message>
         <location filename="src/gui/form_Main.cpp" line="103"/>
@@ -788,7 +799,7 @@ or SAMv3 crashed(Tunnel stay if Messenger were closed)
         <location filename="src/gui/form_Main.cpp" line="432"/>
         <location filename="src/gui/form_Main.cpp" line="661"/>
         <source>Invisible</source>
-        <translation>Невидимка</translation>
+        <translation type="unfinished">Невидимка</translation>
     </message>
     <message>
         <location filename="src/gui/form_Main.cpp" line="115"/>
@@ -801,7 +812,7 @@ or SAMv3 crashed(Tunnel stay if Messenger were closed)
         <location filename="src/gui/form_Main.cpp" line="124"/>
         <source>Sorry a File transfer or File receive is active,
 closing aborted</source>
-        <translation>Сорянчик-пацанчик, файловая передача или приём активны
+        <translation type="unfinished">Сорянчик-пацанчик, файловая передача или приём активны
 закрыто, прервано</translation>
     </message>
     <message>
@@ -833,12 +844,12 @@ closing aborted</source>
     <message>
         <location filename="src/gui/form_Main.cpp" line="180"/>
         <source>DebugMessages</source>
-        <translation>ПроверочноеСообщение</translation>
+        <translation type="unfinished">ПроверочноеСообщение</translation>
     </message>
     <message>
         <location filename="src/gui/form_Main.cpp" line="181"/>
         <source>Your Destination</source>
-        <translation>Ваш дистинейшен</translation>
+        <translation type="unfinished">Ваш дистинейшен</translation>
     </message>
     <message>
         <location filename="src/gui/form_Main.cpp" line="182"/>
@@ -848,45 +859,47 @@ closing aborted</source>
     <message>
         <location filename="src/gui/form_Main.cpp" line="183"/>
         <source>About</source>
-        <translation>Чо к чему</translation>
+        <translation type="unfinished">Чо к чему</translation>
     </message>
     <message>
         <location filename="src/gui/form_Main.cpp" line="228"/>
         <source>Your Destination has been copied to the clipboard</source>
-        <translation>Ваш дестинейшен был скопирован в буфер обмена, пиздуй вставлять его друганам</translation>
+        <translation type="unfinished">Ваш дестинейшен был скопирован в буфер обмена, пиздуй вставлять его друганам</translation>
     </message>
     <message>
         <location filename="src/gui/form_Main.cpp" line="232"/>
         <source>Your Client must be Online for that</source>
-        <translation>Ваш клиент ОБЯЗАН быть в онлайне для такого</translation>
+        <translation type="unfinished">Ваш клиент ОБЯЗАН быть в онлайне для такого</translation>
     </message>
     <message>
         <location filename="src/gui/form_Main.cpp" line="242"/>
         <source>Are you sure ?</source>
-        <translation>ТЫ УВЕРЕН БЛЯТЬ?!</translation>
+        <translation type="unfinished">ТЫ УВЕРЕН БЛЯТЬ?!</translation>
     </message>
     <message>
         <location filename="src/gui/form_Main.cpp" line="267"/>
         <source>Sorry a File transfer or File receive is active,
 Closing aborted</source>
-        <translation>Сорянчик, Анон, файловая передача или прийом активны
+        <translation type="unfinished">Сорянчик, Анон, файловая передача или прийом активны
 ЗАКРЫТО, ПРЕРВАНО</translation>
     </message>
     <message>
         <location filename="src/gui/form_Main.cpp" line="380"/>
         <source>form_Main(openChat_or_FileRecive_Dialog))</source>
-        <translation></translation>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="src/gui/form_Main.cpp" line="381"/>
         <location filename="src/gui/form_Main.cpp" line="399"/>
         <source>can&apos;t parse value: %1</source>
-        <translation>не могу парсануть значение: %1</translation>
+        <translation type="unfinished">не могу парсануть значение: %1</translation>
     </message>
     <message>
         <location filename="src/gui/form_Main.cpp" line="398"/>
         <source>form_Main(openChat_or_FileRecive_Dialog)</source>
-        <translation></translation>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="src/gui/form_Main.cpp" line="417"/>
@@ -896,37 +909,37 @@ Closing aborted</source>
     <message>
         <location filename="src/gui/form_Main.cpp" line="420"/>
         <source>Delete</source>
-        <translation>УДАЛИТЬ НАЪУЙ</translation>
+        <translation type="unfinished">УДАЛИТЬ НАЪУЙ</translation>
     </message>
     <message>
         <location filename="src/gui/form_Main.cpp" line="423"/>
         <source>Rename</source>
-        <translation>изменить название</translation>
+        <translation type="unfinished">изменить название</translation>
     </message>
     <message>
         <location filename="src/gui/form_Main.cpp" line="426"/>
         <source>Copy Destination</source>
-        <translation>СКОПИРОВАТЬ ДИСТИНЕЙШН</translation>
+        <translation type="unfinished">СКОПИРОВАТЬ ДИСТИНЕЙШН</translation>
     </message>
     <message>
         <location filename="src/gui/form_Main.cpp" line="429"/>
         <source>Userinfo</source>
-        <translation>ЮзерИНФО</translation>
+        <translation type="unfinished">ЮзерИНФО</translation>
     </message>
     <message>
         <location filename="src/gui/form_Main.cpp" line="436"/>
         <source>Block</source>
-        <translation>БЛОКИРОВАТЬ</translation>
+        <translation type="unfinished">БЛОКИРОВАТЬ</translation>
     </message>
     <message>
         <location filename="src/gui/form_Main.cpp" line="441"/>
         <source>Up</source>
-        <translation>ВВЕРХ</translation>
+        <translation type="unfinished">ВВЕРХ</translation>
     </message>
     <message>
         <location filename="src/gui/form_Main.cpp" line="443"/>
         <source>Down</source>
-        <translation>ВНИЗ</translation>
+        <translation type="unfinished">ВНИЗ</translation>
     </message>
     <message>
         <location filename="src/gui/form_Main.cpp" line="456"/>
@@ -955,12 +968,12 @@ Closing aborted</source>
     <message>
         <location filename="src/gui/form_Main.cpp" line="469"/>
         <source>SendFile</source>
-        <translation>Отплавить файл</translation>
+        <translation type="unfinished">Отплавить файл</translation>
     </message>
     <message>
         <location filename="src/gui/form_Main.cpp" line="541"/>
         <source>Do you really want to delete this contact?</source>
-        <translation>Вы реально хотите удалить эго нхой?</translation>
+        <translation type="unfinished">Вы реально хотите удалить эго нхой?</translation>
     </message>
     <message>
         <location filename="src/gui/form_Main.cpp" line="599"/>
@@ -986,7 +999,8 @@ Closing aborted</source>
     <message>
         <location filename="src/gui/form_Main.cpp" line="766"/>
         <source>&amp;Quit</source>
-        <translation>&amp;Выйти</translation>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished">&amp;Выйти</translation>
     </message>
     <message>
         <location filename="src/gui/form_Main.cpp" line="804"/>
@@ -1009,7 +1023,7 @@ Closing aborted</source>
     <message>
         <location filename="src/gui/form_Main.cpp" line="844"/>
         <source>The Destination is in the clipboard</source>
-        <translation>дист копирован</translation>
+        <translation type="unfinished">дист копирован</translation>
     </message>
     <message>
         <location filename="src/gui/form_Main.cpp" line="853"/>
@@ -1019,7 +1033,7 @@ Closing aborted</source>
     <message>
         <location filename="src/gui/form_Main.cpp" line="1196"/>
         <source>You must be connected for this</source>
-        <translation>ВЫ ОБЯЗАНЫ ПОДКЛЮЧИЦА Для тагого</translation>
+        <translation type="unfinished">ВЫ ОБЯЗАНЫ ПОДКЛЮЧИЦА Для тагого</translation>
     </message>
 </context>
 <context>
@@ -1027,7 +1041,7 @@ Closing aborted</source>
     <message>
         <location filename="src/gui/form_chatwidget.ui" line="14"/>
         <source>User Chat</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="src/gui/form_chatwidget.ui" line="177"/>
@@ -1043,13 +1057,13 @@ Closing aborted</source>
         <location filename="src/gui/form_chatwidget.ui" line="262"/>
         <location filename="src/gui/form_chatwidget.ui" line="671"/>
         <source>Bold</source>
-        <translation>Bold</translation>
+        <translation type="unfinished">Bold</translation>
     </message>
     <message>
         <location filename="src/gui/form_chatwidget.ui" line="265"/>
         <location filename="src/gui/form_chatwidget.ui" line="674"/>
         <source>B</source>
-        <translation>B</translation>
+        <translation type="unfinished">B</translation>
     </message>
     <message>
         <location filename="src/gui/form_chatwidget.ui" line="297"/>
@@ -1067,7 +1081,7 @@ Closing aborted</source>
         <location filename="src/gui/form_chatwidget.ui" line="332"/>
         <location filename="src/gui/form_chatwidget.ui" line="741"/>
         <source>Italic</source>
-        <translation>Italic</translation>
+        <translation type="unfinished">Italic</translation>
     </message>
     <message>
         <location filename="src/gui/form_chatwidget.ui" line="335"/>
@@ -1107,7 +1121,7 @@ Closing aborted</source>
         <location filename="src/gui/form_chatwidget.ui" line="508"/>
         <location filename="src/gui/form_chatwidget.ui" line="511"/>
         <source>reload message</source>
-        <translation>Перезапустить сообщение</translation>
+        <translation type="unfinished">Перезапустить сообщение</translation>
     </message>
     <message>
         <location filename="src/gui/form_chatwidget.ui" line="534"/>
@@ -1125,7 +1139,7 @@ Closing aborted</source>
         <location filename="src/gui/form_chatwidget.ui" line="589"/>
         <location filename="src/gui/form_chatwidget.ui" line="592"/>
         <source>save change</source>
-        <translation>сохронить измену</translation>
+        <translation type="unfinished">сохронить измену</translation>
     </message>
     <message>
         <location filename="src/gui/form_chatwidget.ui" line="628"/>
@@ -1135,7 +1149,8 @@ Closing aborted</source>
     <message>
         <location filename="src/gui/form_chatwidget.ui" line="635"/>
         <source>0 / 0</source>
-        <translation>0 / 0</translation>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished">0 / 0</translation>
     </message>
     <message>
         <location filename="src/gui/form_chatwidget.ui" line="642"/>
@@ -1199,7 +1214,7 @@ Closing aborted</source>
         <source>Do you want to accept it ?
 FileName: %1 
 FileSize: %2 %3</source>
-        <translation>Вы реально желаете принять вот это?
+        <translation type="unfinished">Вы реально желаете принять вот это?
 Имя файла: %1
 Размер: %2 %3</translation>
     </message>
@@ -1223,7 +1238,7 @@ FileSize: %2 %3</source>
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:22pt; color:#00007f;&quot;&gt;Add new User&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -1237,12 +1252,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="src/gui/form_newUser.ui" line="136"/>
         <source>Type here nickname</source>
-        <translation>Какойнить имя</translation>
+        <translation type="unfinished">Какойнить имя</translation>
     </message>
     <message>
         <location filename="src/gui/form_newUser.ui" line="145"/>
         <source>I2P Destination :</source>
-        <translation>ш2з дистинейшен</translation>
+        <translation type="unfinished">ш2з дистинейшен</translation>
     </message>
     <message>
         <location filename="src/gui/form_newUser.cpp" line="46"/>
@@ -1250,35 +1265,35 @@ p, li { white-space: pre-wrap; }
         <location filename="src/gui/form_newUser.cpp" line="75"/>
         <location filename="src/gui/form_newUser.cpp" line="88"/>
         <source>Adding User</source>
-        <translation>Добавление юзера</translation>
+        <translation type="unfinished">Добавление юзера</translation>
     </message>
     <message>
         <location filename="src/gui/form_newUser.cpp" line="47"/>
         <source>You must add a nick for the User
 adding abborted</source>
-        <translation>Вы должны написать хоть кое имя для пользователя
+        <translation type="unfinished">Вы должны написать хоть кое имя для пользователя
 добавление прервано</translation>
     </message>
     <message>
         <location filename="src/gui/form_newUser.cpp" line="60"/>
         <source>The Destination isn&apos;t valid
 adding abborted</source>
-        <translation>Дистинейшн не валидный, вас наебали/вы ошиблись</translation>
+        <translation type="unfinished">Дистинейшн не валидный, вас наебали/вы ошиблись</translation>
     </message>
     <message>
         <location filename="src/gui/form_newUser.cpp" line="76"/>
         <source>This Destination is yours, adding aborted !</source>
-        <translation>ЭТО ВАШЕ ДИСТ. ПРЕРВАНО!</translation>
+        <translation type="unfinished">ЭТО ВАШЕ ДИСТ. ПРЕРВАНО!</translation>
     </message>
     <message>
         <location filename="src/gui/form_newUser.cpp" line="89"/>
         <source>This Destination is the blocklist, adding aborted !</source>
-        <translation>Это дистинейшин в заблокированый, ПРЕРВАНО!</translation>
+        <translation type="unfinished">Это дистинейшин в заблокированый, ПРЕРВАНО!</translation>
     </message>
     <message>
         <location filename="src/gui/form_newUser.cpp" line="102"/>
         <source>There allready exits one user with the same Destination, adding aborted !</source>
-        <translation>Это уже есть у вас, прервано!</translation>
+        <translation type="unfinished">Это уже есть у вас, прервано!</translation>
     </message>
 </context>
 <context>
@@ -1302,12 +1317,14 @@ adding abborted</source>
     <message>
         <location filename="src/gui/form_rename.ui" line="116"/>
         <source>OK</source>
-        <translation>ОК</translation>
+        <translatorcomment>капс офф</translatorcomment>
+        <translation type="unfinished">ОК</translation>
     </message>
     <message>
         <location filename="src/gui/form_rename.ui" line="123"/>
         <source>Cancel</source>
-        <translation>ОТМЕНА</translation>
+        <translatorcomment>капс офф</translatorcomment>
+        <translation type="unfinished">ОТМЕНА</translation>
     </message>
 </context>
 <context>
@@ -1330,13 +1347,13 @@ adding abborted</source>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="215"/>
         <source>Help</source>
-        <translation>Скрыть</translation>
+        <translation type="unfinished">Скрыть</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="288"/>
         <location filename="src/gui/form_settingsgui.ui" line="1470"/>
         <source>General</source>
-        <translation>Общее</translation>
+        <translation type="unfinished">Общее</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="297"/>
@@ -1382,22 +1399,22 @@ adding abborted</source>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="385"/>
         <source>Wait time between rechecking for offline users</source>
-        <translation>Время для проверки человек в сети ли</translation>
+        <translation type="unfinished">Время для проверки человек в сети ли</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="400"/>
         <source>Time in sec.:</source>
-        <translation>время в секундх</translation>
+        <translation>время в секундах:</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="430"/>
         <source>SAM log</source>
-        <translation>Лог SAMа</translation>
+        <translation type="unfinished">Лог SAMа</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="445"/>
         <source>Max. number of log messages:</source>
-        <translation>Максимальное коллво</translation>
+        <translation type="unfinished">Максимальное коллво</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="506"/>
@@ -1405,7 +1422,8 @@ adding abborted</source>
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:16pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;
 &lt;p style=&quot; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;General&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished">&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:16pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;
 &lt;p style=&quot; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;Общее&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -1433,7 +1451,8 @@ p, li { white-space: pre-wrap; }
         <location filename="src/gui/form_settingsgui.ui" line="1822"/>
         <location filename="src/gui/form_settingsgui.ui" line="1877"/>
         <source>...</source>
-        <translation>...</translation>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished">...</translation>
     </message>
     <message>
         <source>Enable Incomingsubfolders</source>
@@ -1497,7 +1516,8 @@ in the settings directory</source>
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:16pt; font-weight:600; font-style:italic;&quot;&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; text-decoration: underline;&quot;&gt;&lt;span style=&quot; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;Network&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:16pt; font-weight:600; font-style:italic;&quot;&gt;
@@ -1516,22 +1536,23 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="852"/>
         <source>Backup Quantity:</source>
-        <translation>Backup Quantity:</translation>
+        <translation type="unfinished">Backup Quantity:</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="859"/>
         <source>Outbound</source>
-        <translation>Выходящие</translation>
+        <translation type="unfinished">Выходящие</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="878"/>
         <source>Length:                       </source>
-        <translation>Размер:                     </translation>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished">Размер: </translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="885"/>
         <source>Quantity:</source>
-        <translation>Quantity:</translation>
+        <translation type="unfinished">Quantity:</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="892"/>
@@ -1562,33 +1583,33 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="941"/>
         <source>Signaturetype </source>
-        <translation>Signaturetype </translation>
+        <translation type="unfinished">Signaturetype </translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="955"/>
         <source>SAM - Connection</source>
-        <translation>SAM - Connection</translation>
+        <translation type="unfinished">SAM - Connection</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="970"/>
         <source>Sam Host IP:                 </source>
-        <translation>Sam Host IP:                 </translation>
+        <translation type="unfinished">Sam Host IP:                 </translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="980"/>
         <source>Port:</source>
-        <translation>Port:</translation>
+        <translation type="unfinished">Port:</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="1007"/>
         <location filename="src/gui/form_settingsgui.cpp" line="725"/>
         <source>Destination</source>
-        <translation>Destination</translation>
+        <translation type="unfinished">Destination</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="1022"/>
         <source>Generate a new Dest.,- the old will lost:        </source>
-        <translation>Generate a new Dest.,- the old will lost:        </translation>
+        <translation type="unfinished">Generate a new Dest.,- the old will lost:        </translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="1029"/>
@@ -1618,7 +1639,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="1130"/>
         <source>Female</source>
-        <translation>Женчина</translation>
+        <translation type="unfinished">Женчина</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="1146"/>
@@ -1638,14 +1659,14 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="1218"/>
         <source>Clear</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="1231"/>
         <source>The selected AvatarImage
 will auto. resize to 90x90 pixel
 and is stored in your application.ini</source>
-        <translation>Выбрать аватар
+        <translation type="unfinished">Выбрать аватар
 он автоматически измениться в 90x90 пикселов
 и сохраница в вашем application.ini</translation>
     </message>
@@ -1655,7 +1676,8 @@ and is stored in your application.ini</source>
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:16pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;
 &lt;p style=&quot; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;User Details&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished">&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:16pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;
 &lt;p style=&quot; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;Детали юзера&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -1663,17 +1685,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="1318"/>
         <source>StyleSheet</source>
-        <translation>StyleSheet</translation>
+        <translation type="unfinished">StyleSheet</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="1367"/>
         <source>Style Sheet:</source>
-        <translation>Style Sheet:</translation>
+        <translation type="unfinished">Style Sheet:</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="1418"/>
         <source>Style:</source>
-        <translation>Стиль</translation>
+        <translation type="unfinished">Стиль</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="1435"/>
@@ -1682,7 +1704,8 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8pt;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Style     &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -1696,7 +1719,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="1498"/>
         <source>Request Authorization</source>
-        <translation>Требуеться авторизация</translation>
+        <translation type="unfinished">Требуеться авторизация</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="1531"/>
@@ -1705,7 +1728,8 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8pt;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Security&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -1714,7 +1738,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="1551"/>
         <source>User - BlockStyle</source>
-        <translation>Пользователь - БлокированныйСтиль</translation>
+        <translation type="unfinished">Пользователь - БлокированныйСтиль</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="1569"/>
@@ -1739,38 +1763,38 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="1631"/>
         <source>go Online:</source>
-        <translation>Выйти в онлайн</translation>
+        <translation type="unfinished">Выйти в онлайн</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="1647"/>
         <source>go Offline:</source>
-        <translation>Выйти в оффлайн</translation>
+        <translation type="unfinished">Выйти в оффлайн</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="1713"/>
         <source>FileSend</source>
-        <translation>Файл отправка</translation>
+        <translation type="unfinished">Файл отправка</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="1754"/>
         <location filename="src/gui/form_settingsgui.ui" line="1838"/>
         <source>Finished:</source>
-        <translation>Доставлено</translation>
+        <translation type="unfinished">Доставлено</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="1768"/>
         <source>FileRecive</source>
-        <translation>Файловый приём</translation>
+        <translation type="unfinished">Файловый приём</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="1783"/>
         <source>Incoming:</source>
-        <translation>Входящий:</translation>
+        <translation type="unfinished">Входящий:</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="1865"/>
         <source>Chatmessage</source>
-        <translation>ЧатСообщение</translation>
+        <translation type="unfinished">ЧатСообщение</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="1893"/>
@@ -1784,7 +1808,8 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8pt;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Sound&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -1797,7 +1822,8 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8pt;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Chat&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -1812,7 +1838,7 @@ p, li { white-space: pre-wrap; }
         <location filename="src/gui/form_settingsgui.ui" line="2044"/>
         <location filename="src/gui/form_settingsgui.ui" line="2275"/>
         <source>Underline</source>
-        <translation>подчеркивание</translation>
+        <translation type="unfinished">подчеркивание</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="2047"/>
@@ -1824,7 +1850,7 @@ p, li { white-space: pre-wrap; }
         <location filename="src/gui/form_settingsgui.ui" line="2085"/>
         <location filename="src/gui/form_settingsgui.ui" line="2316"/>
         <source>Italic</source>
-        <translation>Italic</translation>
+        <translation type="unfinished">Italic</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="2088"/>
@@ -1836,7 +1862,7 @@ p, li { white-space: pre-wrap; }
         <location filename="src/gui/form_settingsgui.ui" line="2126"/>
         <location filename="src/gui/form_settingsgui.ui" line="2357"/>
         <source>Bold</source>
-        <translation>Bold</translation>
+        <translation type="unfinished">Bold</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="2129"/>
@@ -1865,22 +1891,22 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="2241"/>
         <source>Overwrite remote Chatsettings</source>
-        <translation>Переписать Удаленные Настройки Чата</translation>
+        <translation type="unfinished">Переписать Удаленные Настройки Чата</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="2253"/>
         <source>Do - Override</source>
-        <translation>Сделать - отменить</translation>
+        <translation type="unfinished">Сделать - отменить</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="2497"/>
         <source>Log Online/Offline events from Users</source>
-        <translation>логировать онлайн/оффлайн события из пользователей</translation>
+        <translation type="unfinished">логировать онлайн/оффлайн события из пользователей</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="2516"/>
         <source>max. ACK-Time in sec:</source>
-        <translation>Максимальное ACK-Time в секундах</translation>
+        <translation type="unfinished">Максимальное ACK-Time в секундах</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="2555"/>
@@ -1889,7 +1915,8 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;DejaVu Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:16pt;&quot;&gt;Blocklist&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;DejaVu Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -1903,7 +1930,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="2587"/>
         <source>Unblock</source>
-        <translation>Разблакировать</translation>
+        <translation type="unfinished">Разблакировать</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="2640"/>
@@ -1912,7 +1939,8 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;DejaVu Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:16pt;&quot;&gt;Usersearch&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;DejaVu Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -1921,17 +1949,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="2678"/>
         <source>Activate</source>
-        <translation>Активный</translation>
+        <translation type="unfinished">Активный</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="2687"/>
         <source>Max. Log Messages</source>
-        <translation>Максимальное колл-во лог-сообщений</translation>
+        <translation type="unfinished">Максимальное колл-во лог-сообщений</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.ui" line="2697"/>
         <source>Reannouncetimer in hours</source>
-        <translation>Reannouncetimer in hours</translation>
+        <translation type="unfinished">Reannouncetimer in hours</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.cpp" line="26"/>
@@ -1963,7 +1991,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="src/gui/form_settingsgui.cpp" line="564"/>
         <source>Please restart the I2P-Messenger !</source>
-        <translation>Пожалуйста перезапустите программу!</translation>
+        <translation type="unfinished">Пожалуйста перезапустите программу!</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.cpp" line="575"/>
@@ -1973,12 +2001,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="src/gui/form_settingsgui.cpp" line="701"/>
         <source>Nicknames</source>
-        <translation>Имя пользователя</translation>
+        <translation type="unfinished">Имя пользователя</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.cpp" line="701"/>
         <source>values</source>
-        <translation>Значение</translation>
+        <translation type="unfinished">Значение</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.cpp" line="717"/>
@@ -1988,12 +2016,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="src/gui/form_settingsgui.cpp" line="721"/>
         <source>BlockDate</source>
-        <translation>Когда был заблокирован</translation>
+        <translation type="unfinished">Когда был заблокирован</translation>
     </message>
     <message>
         <location filename="src/gui/form_settingsgui.cpp" line="791"/>
         <source>Sorry you have to enter a Nickname(at User-details) for UserSearch</source>
-        <translation>К сожалению, вы должны ввести псевдоним (по желанию пользователя-деталей) для UserSearch
+        <translation type="unfinished">К сожалению, вы должны ввести псевдоним (по желанию пользователя-деталей) для UserSearch
 </translation>
     </message>
     <message>
@@ -2028,17 +2056,19 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="src/gui/form_topicSubscribe.ui" line="123"/>
         <source>Waiting for input</source>
-        <translation>Ожидаю ввода
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished">Ожидаю ввода
 </translation>
     </message>
     <message>
         <location filename="src/gui/form_topicSubscribe.ui" line="130"/>
         <source>Online State:</source>
-        <translation>Онлайн подписка:</translation>
+        <translation type="unfinished">Онлайн подписка:</translation>
     </message>
     <message>
         <location filename="src/gui/form_topicSubscribe.ui" line="137"/>
         <source>State</source>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
         <translation>Подписка</translation>
     </message>
     <message>
@@ -2049,17 +2079,20 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="src/gui/form_topicSubscribe.ui" line="162"/>
         <source>0</source>
-        <translation>0</translation>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished">0</translation>
     </message>
     <message>
         <location filename="src/gui/form_topicSubscribe.ui" line="189"/>
         <source>2</source>
-        <translation>2</translation>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished">2</translation>
     </message>
     <message>
         <location filename="src/gui/form_topicSubscribe.ui" line="212"/>
         <source>&amp;Close</source>
-        <translation>&amp;Закрыть</translation>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished">&amp;Закрыть</translation>
     </message>
     <message>
         <location filename="src/gui/form_TopicSubscribe.cpp" line="13"/>
@@ -2069,12 +2102,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="src/gui/form_TopicSubscribe.cpp" line="13"/>
         <source>values</source>
-        <translation>Значения</translation>
+        <translation type="unfinished">Значения</translation>
     </message>
     <message>
         <location filename="src/gui/form_TopicSubscribe.cpp" line="39"/>
         <source>Starting</source>
-        <translation>Начало</translation>
+        <translation type="unfinished">Начало</translation>
     </message>
     <message>
         <location filename="src/gui/form_TopicSubscribe.cpp" line="102"/>
@@ -2094,7 +2127,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="src/gui/form_TopicSubscribe.cpp" line="137"/>
         <source>I am offline or connecting</source>
-        <translation>Я не в сети или подключен</translation>
+        <translation type="unfinished">Я не в сети или подключен</translation>
     </message>
 </context>
 <context>
@@ -2102,12 +2135,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="src/gui/form_userSearch.ui" line="14"/>
         <source>User - Search</source>
-        <translation>Пользователь поиск</translation>
+        <translation type="unfinished">Пользователь поиск</translation>
     </message>
     <message>
         <location filename="src/gui/form_userSearch.ui" line="37"/>
         <source>Search - options</source>
-        <translation>Поиск опции</translation>
+        <translation type="unfinished">Поиск опции</translation>
     </message>
     <message>
         <location filename="src/gui/form_userSearch.ui" line="46"/>
@@ -2127,12 +2160,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="src/gui/form_userSearch.ui" line="76"/>
         <source>Female</source>
-        <translation>Женчина:</translation>
+        <translation type="unfinished">Женчина:</translation>
     </message>
     <message>
         <location filename="src/gui/form_userSearch.ui" line="95"/>
         <source>Male</source>
-        <translation>Мужчина:</translation>
+        <translation>Мужчина</translation>
     </message>
     <message>
         <location filename="src/gui/form_userSearch.ui" line="111"/>
@@ -2147,27 +2180,30 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="src/gui/form_userSearch.ui" line="181"/>
         <source>Search State:</source>
-        <translation>Поиск подписок:</translation>
+        <translation type="unfinished">Поиск подписок:</translation>
     </message>
     <message>
         <location filename="src/gui/form_userSearch.ui" line="188"/>
         <source>State</source>
-        <translation>Подписка</translation>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished">Подписка</translation>
     </message>
     <message>
         <location filename="src/gui/form_userSearch.ui" line="206"/>
         <source>Res. count:</source>
-        <translation>Res. рассчитывать:</translation>
+        <translation type="unfinished">Res. рассчитывать:</translation>
     </message>
     <message>
         <location filename="src/gui/form_userSearch.ui" line="213"/>
         <source>0</source>
-        <translation>0</translation>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished">0</translation>
     </message>
     <message>
         <location filename="src/gui/form_userSearch.ui" line="240"/>
         <source>2</source>
-        <translation>2</translation>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished">2</translation>
     </message>
     <message>
         <location filename="src/gui/form_userSearch.ui" line="248"/>
@@ -2177,7 +2213,8 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;DejaVu Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;; font-size:10pt; color:#ff0000;&quot;&gt;Caution: All information is provided by the &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;; font-size:10pt; color:#ff0000;&quot;&gt;respective&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;; font-size:10pt; color:#ff0000;&quot;&gt; user and hence untrusted. &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;; font-size:10pt; color:#ff0000;&quot;&gt;You have no proof that a given nick you find here is really the person you think it is.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;DejaVu Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -2187,7 +2224,8 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="src/gui/form_userSearch.ui" line="275"/>
         <source>&amp;Close</source>
-        <translation>&amp;Закрыть</translation>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished">&amp;Закрыть</translation>
     </message>
     <message>
         <location filename="src/gui/form_UserSearch.cpp" line="12"/>
@@ -2197,12 +2235,13 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="src/gui/form_UserSearch.cpp" line="12"/>
         <source>values</source>
-        <translation>Значения</translation>
+        <translation type="unfinished">Значения</translation>
     </message>
     <message>
         <location filename="src/gui/form_UserSearch.cpp" line="46"/>
         <source>Starting</source>
-        <translation>начало</translation>
+        <translatorcomment>Надо глянуть, чтобы оно не испортило форму</translatorcomment>
+        <translation type="unfinished">начало</translation>
     </message>
     <message>
         <location filename="src/gui/form_UserSearch.cpp" line="125"/>
@@ -2222,7 +2261,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="src/gui/form_UserSearch.cpp" line="173"/>
         <source>Offline</source>
-        <translation>не в сети</translation>
+        <translation type="unfinished">не в сети</translation>
     </message>
 </context>
 </TS>
