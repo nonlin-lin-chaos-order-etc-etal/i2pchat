@@ -5,23 +5,20 @@ echo "R = Release"
 echo "D = Debug"
 
 set auswahl=
- set /p auswahl="Option: "
-
-
-
+set /p auswahl="Option: "
 
 if "%auswahl%" == "R" GOTO RELEASE
 if "%auswahl%" == "D" GOTO DEBUG
 
-echo "Abort chose R or D ;)"	
+echo "Abort chose R or D ;)"
 pause
 exit 
 
 :DEBUG
 	qmake -win32 I2P-Messenger.pro
-	make
+	mingw32-make debug
 	exit
 :RELEASE
-	qmake I2P-Messenger_release.pro
-	make
+	qmake I2P-Messenger.pro
+	mingw32-make release
 	exit

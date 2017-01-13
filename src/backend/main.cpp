@@ -57,7 +57,7 @@ void setLanguage(QString langCode) {
         return;
     }
     translator = new QTranslator;
-    translator->load(langCode);//loads file langCode+".qm" produced by lrelease or qt linguist
+    translator->load(QString("lang/")+langCode);//loads file langCode+".qm" produced by lrelease or qt linguist
     app_ptr->installTranslator(translator);
     qDebug() << "setLanguage exiting ok (not en).";
 }
