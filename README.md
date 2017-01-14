@@ -10,7 +10,9 @@ You need to enable SAM in your router on <a href="http://127.0.0.1:7657/configcl
 
 ## Security measures
 
-Since version 0.3.1 : When building this, make sure you do not define `DEBUGLOGGING`. If you do define it, the app will log debug info (which includes all chat messages) to `configdir/DebugLog.txt` if set `DebugLogging` to `true` in `General` group in the app's configuration. See `main.cpp` and `form_settingsgui.cpp` for more details on `DEBUGLOGGING`. All versions < 0.3.1 are affected by this and are less secure.
+### Since version 0.3.1
+
+When building this, make sure you do not define `DEBUGLOGGING`. If you do define it, the app will log debug info (which includes all chat messages) to `configdir/DebugLog.txt` if set `DebugLogging` to `true` in `General` group in the app's configuration. See `main.cpp` and `form_settingsgui.cpp` for more details on `DEBUGLOGGING`. All versions < 0.3.1 are affected by this and are less secure.
     
 ## Project status, news and history
 
