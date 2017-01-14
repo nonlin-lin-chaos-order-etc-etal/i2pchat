@@ -1,0 +1,1 @@
+.zargo files open with ArgoUML http://argouml.tigris.org/
