@@ -22,6 +22,15 @@ Now the development was resumed by Hypnosis-i2p and R4SAS, with a lot more folks
 
 ### Current news
 
+11 Feb, 2017:
+
+```
+<Hypnosis> ну я там всё глобально перетусовывать взялся. очень плохой исх.код
+<Hypnosis> модифицировать невозможно такой хаос
+<Hypnosis> немецкий писатель оригинального и2пчата явно не знал ничего про ооп
+<Hypnosis> юниорский код
+```
+
 5 Jan, 2017: Original repo at http://git.repo.i2p/w/I2P-Messenger-QT.git was fully merged here.
   
 ### History
