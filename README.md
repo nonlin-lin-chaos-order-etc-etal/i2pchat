@@ -6,7 +6,10 @@
 
 ## How to run it
 
-You need to enable SAM in your router on <a href="http://127.0.0.1:7657/configclients">java i2p configclients page</a> or i2pd's i2pd.conf [sam] section to make I2P Chat work over your I2P router.
+To make I2P Chat work over your I2P router, you need to enable SAM in your router:
+
+ * for java i2p: at <a href="http://127.0.0.1:7657/configclients">configclients page</a>, or 
+ * for i2pd: at [sam] section of i2pd.conf.
 
 ## Security measures
 
