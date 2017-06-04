@@ -6,7 +6,10 @@
 
 ## How to run it
 
-You need to enable SAM in your router on <a href="http://127.0.0.1:7657/configclients">java i2p configclients page</a> or i2pd's i2pd.conf [sam] section to make I2P Chat work over your I2P router.
+To make I2P Chat work over your I2P router, you need to enable SAM in your router:
+
+ * for java i2p: at <a href="http://127.0.0.1:7657/configclients">configclients page</a>, or 
+ * for i2pd: at [sam] section of i2pd.conf.
 
 ## Security measures
 
@@ -21,6 +24,15 @@ When building this, make sure you do not define `DEBUGLOGGING`. If you do define
 Now the development was resumed by Hypnosis-i2p and R4SAS, with a lot more folks as testers &amp; bugs+issues reporters.
 
 ### Current news
+
+11 Feb, 2017:
+
+```
+<Hypnosis> ну я там всё глобально перетусовывать взялся. очень плохой исх.код
+<Hypnosis> модифицировать невозможно такой хаос
+<Hypnosis> немецкий писатель оригинального и2пчата явно не знал ничего про ооп
+<Hypnosis> юниорский код
+```
 
 5 Jan, 2017: Original repo at http://git.repo.i2p/w/I2P-Messenger-QT.git was fully merged here.
   
