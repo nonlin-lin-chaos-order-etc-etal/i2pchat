@@ -303,7 +303,7 @@
       </item>
       <item>
        <property name="text">
-        <string>User Details</string>
+        <string>AbstractUserLocalImage Details</string>
        </property>
        <property name="icon">
         <iconset resource="resourcen.qrc">
@@ -1294,7 +1294,7 @@ and is stored in your application.ini</string>
             <string>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:16pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;
-&lt;p style=&quot; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;User Details&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;AbstractUserLocalImage Details&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1548,7 +1548,7 @@ p, li { white-space: pre-wrap; }
          </rect>
         </property>
         <property name="title">
-         <string>User - BlockStyle</string>
+         <string>AbstractUserLocalImage - BlockStyle</string>
         </property>
         <widget class="QWidget" name="layoutWidget_15">
          <property name="geometry">
@@ -1613,7 +1613,7 @@ p, li { white-space: pre-wrap; }
           </rect>
          </property>
          <property name="title">
-          <string>User</string>
+          <string>AbstractUserLocalImage</string>
          </property>
          <widget class="QCheckBox" name="checkBoxSound">
           <property name="enabled">

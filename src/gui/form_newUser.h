@@ -21,14 +21,15 @@
 #define FORM_NEWUSER_H
 
 #include <QtGui>
+
+#include "AppContext.h"
 #include "ui_form_newUser.h"
-#include "Core.h"
 
 class form_newUserWindow : public QDialog, private Ui::form_newUserWindow
 {
 	Q_OBJECT
 	public:
-	form_newUserWindow(CCore& Core,QDialog *parent = 0);
+    form_newUserWindow(shared_ptr<AppContext> appCtx_,QDialog *parent = 0);
 	~form_newUserWindow();
 
 	//forbid some operators
@@ -40,7 +41,7 @@ class form_newUserWindow : public QDialog, private Ui::form_newUserWindow
 	
 	
 	private:
-	CCore& Core;
+    shared_ptr<AppContext> appCtx;
 
 	void closeEvent(QCloseEvent *e);
 };

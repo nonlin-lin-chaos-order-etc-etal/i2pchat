@@ -19,7 +19,7 @@
  ***************************************************************************/
 #include "form_DebugMessages.h"
 
-form_DebugMessages::form_DebugMessages(CCore& core,QDialog *parent)
+form_DebugMessages::form_DebugMessages(AppContext& core,QDialog *parent)
 :QDialog(parent),core(core)
 {
 	setupUi(this);

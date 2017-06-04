@@ -33,6 +33,8 @@
 #include <QMutex>
 #include <QMap>
 
+#include "AppContext.h"
+#include "FileTransferReceive.h"
 #include "ui_form_Main.h"
 #include "gui_icons.h"
 #include "form_settingsgui.h"
@@ -47,10 +49,8 @@
 #include "form_TopicSubscribe.h"
 #include "form_createNewSwarmType1.h"
 
-#include "Core.h"
-#include "User.h"
+#include "AbstractUserLocalImage.h"
 
-#include "FileTransferRecive.h"
 #include "FileTransferSend.h"
 
 class form_MainWindow : public QMainWindow, private Ui::form_MainWindow
@@ -129,7 +129,7 @@ private:
 
 
 
-    CCore* Core;
+    AppContext* appCtx;
     bool applicationIsClosing;
 
     form_newUserWindow* newUserWindow;

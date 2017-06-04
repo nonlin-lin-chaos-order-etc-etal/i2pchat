@@ -1,11 +1,12 @@
 #include <QMenu>
 #include "form_TopicSubscribe.h"
-#include "Core.h"
+
+#include "AppContext.h"
 
 
 
-form_topicSubscribe::form_topicSubscribe(CCore&Core)
-    : mCore(Core)
+form_topicSubscribe::form_topicSubscribe(AppContext&appCtx)
+    : mCore(appCtx)
 {
     setupUi(this);
     
@@ -125,7 +126,7 @@ void form_topicSubscribe::slot_openTopic()
 }
 void form_topicSubscribe::slot_onlineStateChanged()
 {
-    ONLINESTATE status=mCore.getOnlineStatus();
+    ONLINE_STATE status=mCore.getOnlineStatus();
     
     if(status!=USEROFFLINE && status!=USERTRYTOCONNECT) {
         label_ConnectednessStatus->setText(tr("I am online"));

@@ -38,7 +38,7 @@
 #define ICON_USER_AWAY			":/icons/xa.png"
 #define ICON_USER_DONT_DUSTURB		":/icons/dnd.png"
 #define ICON_USER_INVISIBLE		":/icons/invisible.png"
-#define ICON_USER_BLOCKED_YOU		":/icons/edit-delete.png"
+//#define ICON_USER_BLOCKED_YOU		":/icons/edit-delete.png"
 #define ICON_USER_DELETE		":/icons/edit-delete.png"
 #define ICON_USER_RENAME		":/icons/edit-rename.png"
 #define ICON_DEBUGMESSAGES		":/icons/status_unknown.png"

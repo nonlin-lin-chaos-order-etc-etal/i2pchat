@@ -18,7 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 #include "form_fileRecive.h"
-#include "FileTransferRecive.h"
+
+#include "FileTransferReceive.h"
 
 form_fileRecive::form_fileRecive(CFileTransferRecive& FileRecive)
 :FileRecive(FileRecive),mStreamID(FileRecive.getStreamID())

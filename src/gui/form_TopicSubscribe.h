@@ -29,14 +29,14 @@
 
 #include "gui_icons.h"
 
-class CCore;
+class AppContext;
 class form_topicSubscribe : public QDialog,private Ui::form_topicSubscribe
 {
 
     Q_OBJECT
 
 public:
-    form_topicSubscribe(CCore & Core);
+    form_topicSubscribe(AppContext & appCtx);
     ~form_topicSubscribe();
 
     //forbid some operators
@@ -55,7 +55,7 @@ private slots:
     void slot_onlineStateChanged();
 
 private:
-    CCore            & mCore;
+    AppContext            & mCore;
     void init();
     void closeEvent(QCloseEvent *e);
     void keyPressEvent(QKeyEvent* event);

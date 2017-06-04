@@ -24,9 +24,6 @@
 
 #include "ui_form_chatwidget.h"
 #include "gui_icons.h"
-#include "Core.h"
-#include "TextEmotionChanger.h"
-
 #include <QtGui>
 #include <Qt>
 #include <QClipboard>
@@ -41,6 +38,8 @@
 #include <QScrollBar>
 #include <QApplication>
 #include <QDesktopWidget>
+#include "AppContext.h"
+#include "TextEmotionChangerUtil.h"
 
 class ChatEventEater : public QObject
 {
@@ -57,13 +56,13 @@ protected:
 
 };
 
-class CUser;
+class AbstractUserLocalImage;
 class form_ChatWidget : public QMainWindow, public Ui::form_chatwidget
 {
 Q_OBJECT
 public:
-    form_ChatWidget(CUser& user,ActorRosterEntry &actorRosterEntry,CCore& Core,QDialog* parent = 0);
-    form_ChatWidget(AbstractGroupRosterEntry& groupRosterEntry,CCore& Core,QDialog* parent = 0);
+    form_ChatWidget(AbstractUserLocalImage& user,OneToOneRosterEntry &actorRosterEntry,AppContext& appCtx,QDialog* parent = 0);
+    form_ChatWidget(AbstractGroupRosterEntry& groupRosterEntry,AppContext& appCtx,QDialog* parent = 0);
     ~form_ChatWidget();
 
 	//forbid some operators
@@ -124,11 +123,11 @@ private:
     void keyPressEvent(QKeyEvent* event);
     void centerDialog();
 
-    CUser* user;
+    AbstractUserLocalImage* user;
     AbstractGroupRosterEntry* group;
-    CCore& Core;
+    AppContext& appCtx;
     RosterController& rosterController;
-    ActorRosterEntry *actorRosterEntry;
+    OneToOneRosterEntry *actorRosterEntry;
 
     QFont mCurrentFont;
     QFont mCurrentFont2;

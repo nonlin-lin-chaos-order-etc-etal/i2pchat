@@ -36,13 +36,13 @@
 
 #include "UserManager.h"
 
-class CCore;
+class AppContext;
 class form_settingsgui : public QDialog, private Ui::form_settingsgui
 {
     	Q_OBJECT
 
 public:
-	form_settingsgui(CCore& Core,QWidget *parent = 0, Qt::WindowFlags flags = 0);
+	form_settingsgui(AppContext& appCtx,QWidget *parent = 0, Qt::WindowFlags flags = 0);
 	~form_settingsgui();
 
 	//forbid some operators
@@ -90,7 +90,7 @@ private slots:
 	
 	
 private:
-	CCore& mCore;
+	AppContext& mCore;
 	const 	QString mConfigPath;
 	QSettings* settings;
 	QByteArray avatarImageByteArray;

@@ -21,8 +21,8 @@
 #include "form_rename.h"
 #include "UserManager.h"
 
-form_RenameWindow::form_RenameWindow(CCore& Core,QString OldNickname,QString Destination)
-:Core(Core)
+form_RenameWindow::form_RenameWindow(AppContext& appCtx,QString OldNickname,QString Destination)
+:appCtx(appCtx)
 {
 	setupUi(this);
 
@@ -44,7 +44,7 @@ form_RenameWindow::~form_RenameWindow()
 
 void form_RenameWindow::OK(){
 	QLineEdit* lineEdit_2 = this->lineEdit_2;
-	Core.getUserManager()->renameUserByI2PDestination(Destination,lineEdit_2->text());
+	appCtx.getUserManager()->renameUserByI2PDestination(Destination,lineEdit_2->text());
 	this->close();
 }
 

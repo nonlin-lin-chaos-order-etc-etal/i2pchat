@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Rename User</string>
+   <string>Rename AbstractUserLocalImage</string>
   </property>
   <property name="windowIcon">
    <iconset resource="resourcen.qrc">

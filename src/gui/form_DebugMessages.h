@@ -23,15 +23,15 @@
 #include <QtGui>
 #include <QtGlobal> 
 
+#include "AppContext.h"
 #include "ui_form_DebugMessages.h"
-#include "Core.h"
 #include "DebugMessageManager.h"
 
 class form_DebugMessages : public QDialog, private Ui::form_DebugMessages
 {
     	Q_OBJECT
 	public:
-	    form_DebugMessages(CCore& core,QDialog *parent = 0);
+	    form_DebugMessages(AppContext& core,QDialog *parent = 0);
 	    ~form_DebugMessages();
 
 	    //forbid some operators
@@ -49,8 +49,8 @@ class form_DebugMessages : public QDialog, private Ui::form_DebugMessages
 	    void closingDebugWindow();
 	
 	private:
-	    CCore& core;
-	    CDebugMessageManager* DebugMessageManager;
+	    AppContext& core;
+        DebugMessageManager* DebugMessageManager;
 
 	    void closeEvent(QCloseEvent *e);
 	    void keyPressEvent(QKeyEvent* event); 

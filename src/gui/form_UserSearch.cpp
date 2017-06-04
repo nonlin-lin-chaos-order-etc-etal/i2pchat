@@ -1,10 +1,11 @@
 #include "form_UserSearch.h"
-#include "Core.h"
+
+#include "AppContext.h"
 
 
 
-form_userSearch::form_userSearch(CCore&Core)
-  :mCore(Core)
+form_userSearch::form_userSearch(AppContext&appCtx)
+  :mCore(appCtx)
 {
     setupUi(this);
     
@@ -122,7 +123,7 @@ void form_userSearch::slot_showContextMenu(const QPoint& pos)
       if (!item)
          return;
       
-      QAction* UserAdd = new QAction(QIcon(ICON_NEWUSER),tr("Add User"),this);
+      QAction* UserAdd = new QAction(QIcon(ICON_NEWUSER),tr("Add AbstractUserLocalImage"),this);
       connect(UserAdd,SIGNAL(triggered()),this,
 	      SLOT(slot_addUser()));
       
@@ -164,7 +165,7 @@ void form_userSearch::slot_addUser()
 }
 void form_userSearch::slot_onlineStateChanged()
 {
-    ONLINESTATE status=mCore.getOnlineStatus();
+    ONLINE_STATE status=mCore.getOnlineStatus();
     
     if(status!=USEROFFLINE && status!=USERTRYTOCONNECT){
 	label_SearchState->setText(tr("Ready"));

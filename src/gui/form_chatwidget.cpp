@@ -1,8 +1,9 @@
 #include <QErrorMessage>
 
 #include "form_chatwidget.h"
-#include "User.h"
-#include "main.h"
+
+#include "Main.h"
+#include "AbstractUserLocalImage.h"
 
 bool ChatEventEater::eventFilter(QObject *obj, QEvent *event)
 {
@@ -40,17 +41,17 @@ bool ChatEventEater::eventFilter(QObject *obj, QEvent *event)
 }
 
 
-form_ChatWidget::form_ChatWidget(AbstractGroupRosterEntry& groupRosterEntry_,CCore& Core,QDialog* parent /* = 0 */)
-    :QMainWindow(parent,0), user(nullptr),group(&groupRosterEntry_),Core(Core),
-      rosterController(Core.getRosterController()),actorRosterEntry(nullptr) {
+form_ChatWidget::form_ChatWidget(AbstractGroupRosterEntry& groupRosterEntry_,AppContext& appCtx,QDialog* parent /* = 0 */)
+    :QMainWindow(parent,0), user(nullptr),group(&groupRosterEntry_),appCtx(appCtx),
+      rosterController(appCtx.getRosterController()),actorRosterEntry(nullptr) {
     setupUi(this);
     init();
 }
 
 
-form_ChatWidget::form_ChatWidget(CUser& user,ActorRosterEntry &actorRosterEntry_, CCore& Core,QDialog* parent /* = 0 */)
-:QMainWindow(parent,0), user(&user),group(nullptr),Core(Core),
-  rosterController(Core.getRosterController()),actorRosterEntry(&actorRosterEntry_) {
+form_ChatWidget::form_ChatWidget(AbstractUserLocalImage& user,OneToOneRosterEntry &actorRosterEntry_, AppContext& appCtx,QDialog* parent /* = 0 */)
+:QMainWindow(parent,0), user(&user),group(nullptr),appCtx(appCtx),
+  rosterController(appCtx.getRosterController()),actorRosterEntry(&actorRosterEntry_) {
     setupUi(this);
     init();
 }
@@ -382,7 +383,7 @@ void form_ChatWidget::sendMessageSignal(){
 	
 	QString NewMessage=mControllForChange.toHtml();
 
-	if(NewMessage.length()<65535){
+    if(NewMessage.length()<(((unsigned int)0xffff)-4)){
         if(user)user->slotSendChatMessage(NewMessage);
         else group->sendChatMessage(NewMessage);
 	    message->clear();
@@ -391,8 +392,8 @@ void form_ChatWidget::sendMessageSignal(){
 	else{
 	    QMessageBox* msgBox= new QMessageBox(NULL);
 	    msgBox->setIcon(QMessageBox::Critical);
-	    msgBox->setText("I2P-Messenger");
-	    msgBox->setInformativeText(tr("Sorry, the chatmessage is too long!"));
+        msgBox->setText(tr("I2P-Messenger"));
+        msgBox->setInformativeText(tr("Sorry, this message is too long!"));
 	    msgBox->setStandardButtons(QMessageBox::Ok);
 	    msgBox->setDefaultButton(QMessageBox::Ok);
 	    msgBox->setWindowModality(Qt::NonModal);
@@ -406,7 +407,7 @@ void form_ChatWidget::changeWindowsTitle()
     if(user) {
         QString OnlineStatus;
         QString OnlineStatusIcon;
-        switch(user->getOnlineState())
+        switch(user->getOnlineStatus())
         {
 
         case USERTRYTOCONNECT:
@@ -467,7 +468,7 @@ void form_ChatWidget::newFileTransfer()
         }
 
         if(!FilePath.isEmpty())
-            Core.getFileTransferManager()->addNewFileTransfer(FilePath,Destination);
+            appCtx.getFileTransferManager()->addNewFileTransfer(FilePath,Destination);
 			
     } else {
 		QMessageBox* msgBox= new QMessageBox(this);
@@ -614,7 +615,7 @@ void form_ChatWidget::centerDialog()
 void form_ChatWidget::slotLoadOwnAvatarImage()
 {
     ownavatar_label->setAlignment(Qt::AlignCenter);
-    mOwnAvatar.loadFromData(Core.getUserInfos().AvatarImage);
+    mOwnAvatar.loadFromData(appCtx.getUserInfos().AvatarImage);
     ownavatar_label->setPixmap(mOwnAvatar);
 }
 

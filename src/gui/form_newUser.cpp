@@ -20,8 +20,8 @@
 #include "form_newUser.h"
 #include "UserManager.h"
 
-form_newUserWindow::form_newUserWindow(CCore& Core,QDialog *parent)
-:QDialog(parent),Core(Core)
+form_newUserWindow::form_newUserWindow(AppContext& appCtx,QDialog *parent)
+:QDialog(parent),appCtx(appCtx)
 {
 	setupUi(this);	
 	//this->setAttribute(Qt::WA_DeleteOnClose,true);
@@ -43,8 +43,8 @@ void form_newUserWindow::addnewUser()
 	{
 		QMessageBox* msgBox= new QMessageBox(this);
 			msgBox->setIcon(QMessageBox::Warning);
-			msgBox->setText(tr("Adding User"));
-			msgBox->setInformativeText(tr("You must add a nick for the User\nadding abborted"));
+			msgBox->setText(tr("Adding AbstractUserLocalImage"));
+			msgBox->setInformativeText(tr("You must add a nick for the AbstractUserLocalImage\nadding abborted"));
 			msgBox->setStandardButtons(QMessageBox::Ok);
 			msgBox->setDefaultButton(QMessageBox::Ok);
 			msgBox->setWindowModality(Qt::NonModal);
@@ -52,11 +52,11 @@ void form_newUserWindow::addnewUser()
 		return;
 	}
 
-	if(Core.getUserManager()->validateI2PDestination(I2PDestination)==false){
+    if(appCtx.getUserManager()->validateI2PDestination(I2PDestination)==false){
 	
 		QMessageBox* msgBox= new QMessageBox(this);
 			msgBox->setIcon(QMessageBox::Warning);
-			msgBox->setText(tr("Adding User"));
+			msgBox->setText(tr("Adding AbstractUserLocalImage"));
 			msgBox->setInformativeText(tr("The Destination isn't valid\nadding abborted"));
 			msgBox->setStandardButtons(QMessageBox::Ok);
 			msgBox->setDefaultButton(QMessageBox::Ok);
@@ -68,11 +68,11 @@ void form_newUserWindow::addnewUser()
 	}
 	
 
-	if(I2PDestination==Core.getMyDestination())
+    if(I2PDestination==appCtx->getMyDestination())
 	{
 		QMessageBox* msgBox= new QMessageBox(this);
 			msgBox->setIcon(QMessageBox::Warning);
-			msgBox->setText(tr("Adding User"));
+			msgBox->setText(tr("Adding AbstractUserLocalImage"));
 			msgBox->setInformativeText(tr("This Destination is yours, adding aborted !"));
 			msgBox->setStandardButtons(QMessageBox::Ok);
 			msgBox->setDefaultButton(QMessageBox::Ok);
@@ -82,10 +82,10 @@ void form_newUserWindow::addnewUser()
 
 	}
 
-	if(Core.getUserBlockManager()->isDestinationInBlockList(I2PDestination)==true){
+    if(appCtx.getUserBlockManager()->isDestinationInBlockList(I2PDestination)==true){
 		QMessageBox* msgBox= new QMessageBox(this);
 			msgBox->setIcon(QMessageBox::Warning);
-			msgBox->setText(tr("Adding User"));
+			msgBox->setText(tr("Adding AbstractUserLocalImage"));
 			msgBox->setInformativeText(tr("This Destination is the blocklist, adding aborted !"));
 			msgBox->setStandardButtons(QMessageBox::Ok);
 			msgBox->setDefaultButton(QMessageBox::Ok);
@@ -95,7 +95,7 @@ void form_newUserWindow::addnewUser()
 	}
 
 
-	if(Core.getUserManager()->addNewUser(Name,I2PDestination,0,true)==false){
+    if(appCtx.getUserManager()->addNewUser(Name,I2PDestination,0,true)==false){
 
 		QMessageBox* msgBox= new QMessageBox(NULL);
 		msgBox->setIcon(QMessageBox::Warning);

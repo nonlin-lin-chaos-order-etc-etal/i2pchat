@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>User - Search</string>
+   <string>AbstractUserLocalImage - Search</string>
   </property>
   <property name="locale">
    <locale language="English" country="UnitedStates"/>

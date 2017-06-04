@@ -1,7 +1,8 @@
 #include "form_createNewSwarmType1.h"
-#include "Core.h"
+
+#include "AppContext.h"
+#include "Roster.h"
 #include "SwarmType1FactoryMethods.h"
-#include "rostermodel.h"
 
 void form_createNewSwarmType1::swarmLabelInputTextChanged(QString /*text*/) {
     updateCmdCreate();
@@ -18,8 +19,8 @@ QString  form_createNewSwarmType1::canonicalizedSwarmLabel() {
     return text.trimmed();
 }
 
-form_createNewSwarmType1::form_createNewSwarmType1(CCore&Core)
-    : mCore(Core)
+form_createNewSwarmType1::form_createNewSwarmType1(AppContext&appCtx)
+    : mCore(appCtx)
 {
     setupUi(this);
     updateCmdCreate();
@@ -45,7 +46,7 @@ void form_createNewSwarmType1::slot_cmdCreate() {
     QString swarmIdFolderFullPathStr;
     SwarmType1LocalIdType failedSwarmId;
 
-    SwarmType1 *swarm = SwarmType1FactoryMethods::createSwarmType1(
+    SwarmType1LocalImage *swarm = SwarmType1FactoryMethods::createSwarmType1(
                 canonicalizedSwarmLabel(), mCore, successBool, errorMsg, swarmIdFolderFullPathStr, failedSwarmId, new SwarmType1WhiteList(), 0, false);
     if(swarm && successBool){ mCore.getRosterModel().createNewSwarmType1(*swarm); close(); }
     else {

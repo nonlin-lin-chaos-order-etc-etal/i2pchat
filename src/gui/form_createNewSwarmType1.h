@@ -29,14 +29,14 @@
 
 #include "gui_icons.h"
 
-class CCore;
+class AppContext;
 class form_createNewSwarmType1: public QDialog,private Ui::form_createNewSwarmType1
 {
 
     Q_OBJECT
 
 public:
-    form_createNewSwarmType1(CCore & Core);
+    form_createNewSwarmType1(AppContext & appCtx);
     ~form_createNewSwarmType1();
 
     //forbid some operators
@@ -53,7 +53,7 @@ private slots:
     void swarmLabelInputTextChanged(QString text);
 
 private:
-    CCore            & mCore;
+    AppContext            & mCore;
     void closeEvent(QCloseEvent *e);
     void keyPressEvent(QKeyEvent* event);
     void updateCmdCreate();

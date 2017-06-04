@@ -30,14 +30,14 @@
 
 #include "gui_icons.h"
 
-class CCore;
+class AppContext;
 class form_userSearch : public QDialog,private Ui::form_userSearch
 {
 
   Q_OBJECT
 
   public:
-      form_userSearch(CCore& Core);
+      form_userSearch(AppContext& appCtx);
      ~form_userSearch();
 
      //forbid some operators
@@ -58,7 +58,7 @@ class form_userSearch : public QDialog,private Ui::form_userSearch
       void slot_genderFemale();
       
   private:
-      CCore&		mCore;
+      AppContext&		mCore;
       void init();
       void closeEvent(QCloseEvent *e);
       void keyPressEvent(QKeyEvent* event); 

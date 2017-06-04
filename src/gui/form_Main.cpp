@@ -21,10 +21,11 @@
 #include <QSystemTrayIcon>
 
 #include "form_Main.h"
+
+#include "OneToOneRosterEntry.h"
+#include "SwarmType1RosterEntry.h"
+#include "RosterController.h"
 #include "UserManager.h"
-#include "actorrosterentry.h"
-#include "rostercontroller.h"
-#include "swarmtype1rosterentry.h"
 
 
 form_MainWindow::form_MainWindow(QString configDir, QWidget* parent)
@@ -32,11 +33,11 @@ form_MainWindow::form_MainWindow(QString configDir, QWidget* parent)
     setupUi(this);
 
     QApplication::setQuitOnLastWindowClosed(false);
-    Core= new CCore(configDir);
-    connect (Core,SIGNAL(signUserStatusChanged()),this,
+    appCtx= new AppContext(configDir);
+    connect (appCtx,SIGNAL(signUserStatusChanged()),this,
              SLOT(eventUserChanged()));
 
-    connect(Core,SIGNAL(signOnlineStatusChanged()),this,
+    connect(appCtx,SIGNAL(signOnlineStatusChanged()),this,
             SLOT(OnlineStateChanged()));
 
     connect(listWidget,SIGNAL(itemDoubleClicked( QListWidgetItem* )),this,
@@ -49,10 +50,10 @@ form_MainWindow::form_MainWindow(QString configDir, QWidget* parent)
             SLOT(onlineComboBoxChanged()));
 
 
-    connect(Core,SIGNAL(signOwnAvatarImageChanged()),this,
+    connect(appCtx,SIGNAL(signOwnAvatarImageChanged()),this,
             SLOT(eventAvatarImageChanged()));
 
-    connect(Core,SIGNAL(signNicknameChanged()),this,
+    connect(appCtx,SIGNAL(signNicknameChanged()),this,
             SLOT(eventNicknameChanged()));
 
     mUserSearchWindow=NULL;
@@ -71,7 +72,7 @@ form_MainWindow::form_MainWindow(QString configDir, QWidget* parent)
     initToolBars();
 
 
-    Core->setOnlineStatus(USEROFFLINE);
+    appCtx->setOnlineStatus(USEROFFLINE);
     eventUserChanged();
     eventNicknameChanged();
     eventAvatarImageChanged();
@@ -82,7 +83,7 @@ form_MainWindow::form_MainWindow(QString configDir, QWidget* parent)
 form_MainWindow::~form_MainWindow(){
     applicationIsClosing=true;
 
-    delete Core;
+    delete appCtx;
     delete trayIcon;
     this->close();
 }
@@ -93,29 +94,29 @@ void form_MainWindow::onlineComboBoxChanged()
     QString text=comboBox->currentText();
 
     if(text.contains(tr("Online"),Qt::CaseInsensitive)==true){
-        if(Core->getOnlineStatus()!=User::USERONLINE)
-            Core->setOnlineStatus(User::USERONLINE);
+        if(appCtx->getOnlineStatus()!=AbstractUserLocalImage::USERONLINE)
+            appCtx->setOnlineStatus(AbstractUserLocalImage::USERONLINE);
     }
     else if(text.contains(tr("WantToChat"),Qt::CaseInsensitive)==true){
-        if(Core->getOnlineStatus()!=User::USERWANTTOCHAT)
-            Core->setOnlineStatus(User::USERWANTTOCHAT);
+        if(appCtx->getOnlineStatus()!=AbstractUserLocalImage::USERWANTTOCHAT)
+            appCtx->setOnlineStatus(AbstractUserLocalImage::USERWANTTOCHAT);
     }
     else if(text.contains(tr("Away"),Qt::CaseInsensitive)==true){
-        if(Core->getOnlineStatus()!=User::USERAWAY)
-            Core->setOnlineStatus(User::USERAWAY);
+        if(appCtx->getOnlineStatus()!=AbstractUserLocalImage::USERAWAY)
+            appCtx->setOnlineStatus(AbstractUserLocalImage::USERAWAY);
     }
     else if(text.contains(tr("Don't disturb"),Qt::CaseInsensitive)==true){
-        if(Core->getOnlineStatus()!=User::USERDONT_DISTURB)
-            Core->setOnlineStatus(User::USERDONT_DISTURB);
+        if(appCtx->getOnlineStatus()!=AbstractUserLocalImage::USERDONT_DISTURB)
+            appCtx->setOnlineStatus(AbstractUserLocalImage::USERDONT_DISTURB);
     }
     else if(text.contains(tr("Invisible"),Qt::CaseInsensitive)==true){
-        if(Core->getOnlineStatus()!=User::USERINVISIBLE)
-            Core->setOnlineStatus(User::USERINVISIBLE);
+        if(appCtx->getOnlineStatus()!=AbstractUserLocalImage::USERINVISIBLE)
+            appCtx->setOnlineStatus(AbstractUserLocalImage::USERINVISIBLE);
     }
     else if(text.contains(tr("Offline"),Qt::CaseInsensitive)==true){
-        if(Core->getFileTransferManager()->checkIfAFileTransferOrReciveisActive()==false){
-            if(Core->getOnlineStatus()!=User::USEROFFLINE)
-                Core->setOnlineStatus(User::USEROFFLINE);
+        if(appCtx->getFileTransferManager()->checkIfAFileTransferOrReciveisActive()==false){
+            if(appCtx->getOnlineStatus()!=AbstractUserLocalImage::USEROFFLINE)
+                appCtx->setOnlineStatus(AbstractUserLocalImage::USEROFFLINE);
         }
         else{
             QMessageBox* msgBox= new QMessageBox(NULL);
@@ -138,22 +139,22 @@ void form_MainWindow::onlineComboBoxChanged()
 void form_MainWindow::initToolBars()
 {
     //toolBar->setIconSize(QSize(24, 24));
-    QSettings settings(Core->getConfigPath()+"/application.ini",QSettings::IniFormat);
+    QSettings settings(appCtx->getConfigPath()+"/application.ini",QSettings::IniFormat);
     QToolBar* toolBar=this->toolBar;
 
     toolBar->setContextMenuPolicy(Qt::CustomContextMenu);
-    toolBar->addAction(QIcon(ICON_NEWUSER)		,tr("Add User")		,this,SLOT(openAdduserWindow() ) );
+    toolBar->addAction(QIcon(ICON_NEWUSER)		,tr("Add AbstractUserLocalImage")		,this,SLOT(openAdduserWindow() ) );
 /*
     {
         settings.beginGroup("Usersearch");
         if((settings.value("Enabled",true).toBool()) ==true){
-            if(Core->getUserInfos().Nickname.isEmpty()==false){
+            if(appCtx->getUserInfos().Nickname.isEmpty()==false){
                 toolBar->addAction(QIcon(ICON_USERSEARCH),tr("Users Search")	,this,SLOT(openUserSearchWindow()));
             }else{
                 QMessageBox* msgBox= new QMessageBox(NULL);
                 msgBox->setIcon(QMessageBox::Information);
                 msgBox->setText(tr("I2P-Messenger"));
-                msgBox->setInformativeText(tr("You have to enter a Nickname (at User Details) to use the User Search. User Search deactivated"));
+                msgBox->setInformativeText(tr("You have to enter a Nickname (at AbstractUserLocalImage Details) to use the AbstractUserLocalImage Search. AbstractUserLocalImage Search deactivated"));
                 msgBox->setStandardButtons(QMessageBox::Ok);
                 msgBox->setDefaultButton(QMessageBox::Ok);
                 msgBox->setWindowModality(Qt::NonModal);
@@ -187,7 +188,7 @@ void form_MainWindow::initToolBars()
 
 void form_MainWindow::openConfigWindow(){
 
-    form_settingsgui* dialog= new form_settingsgui(*Core);
+    form_settingsgui* dialog= new form_settingsgui(*appCtx);
     connect(this,SIGNAL(closeAllWindows()),dialog,
             SLOT(close()));
 
@@ -195,7 +196,7 @@ void form_MainWindow::openConfigWindow(){
 
 }
 void form_MainWindow::openAdduserWindow(){
-    form_newUserWindow* dialog= new form_newUserWindow(*Core);
+    form_newUserWindow* dialog= new form_newUserWindow(*appCtx);
 
     connect(this,SIGNAL(closeAllWindows()),dialog,
             SLOT(close()));
@@ -205,7 +206,7 @@ void form_MainWindow::openAdduserWindow(){
 
 void form_MainWindow::openDebugMessagesWindow(){
     if(mDebugWindow==NULL){
-        mDebugWindow= new form_DebugMessages(*Core);
+        mDebugWindow= new form_DebugMessages(*appCtx);
 
         connect(this,SIGNAL(closeAllWindows()),mDebugWindow,
                 SLOT(close()));
@@ -221,7 +222,7 @@ void form_MainWindow::openDebugMessagesWindow(){
 
 void form_MainWindow::namingMe(){
     QClipboard *clipboard = QApplication::clipboard();
-    QString Destination=Core->getMyDestination();
+    QString Destination=appCtx->getMyDestination();
     if(Destination!=""){
         clipboard->setText(Destination);
         QMessageBox::information(this, "",
@@ -234,7 +235,7 @@ void form_MainWindow::namingMe(){
 void form_MainWindow::closeApplication(){
 
 
-    if(Core->getFileTransferManager()->checkIfAFileTransferOrReciveisActive()==false){
+    if(appCtx->getFileTransferManager()->checkIfAFileTransferOrReciveisActive()==false){
 
         QMessageBox* msgBox= new QMessageBox(this);
         msgBox->setIcon(QMessageBox::Question);
@@ -252,8 +253,8 @@ void form_MainWindow::closeApplication(){
         applicationIsClosing=true;
         emit closeAllWindows();
 
-        delete Core;
-        Core = 0;
+        delete appCtx;
+        appCtx = 0;
         delete trayIcon;
         trayIcon = 0;
 
@@ -277,11 +278,11 @@ void form_MainWindow::closeApplication(){
 void form_MainWindow::eventUserChanged(){
     mLastRosterEntryMapIdWithUnreadMessages = "";
     bool showUnreadMessageAtTray = false;
-    //QList<CUser*> users = Core->getUserManager()->getUserList();
-    RosterModel & rosterModel = Core->getRosterModel();
-    RosterController & rosterController = Core->getRosterController();
-    QList<CFileTransferRecive*> FileRecives = Core->getFileTransferManager()->getFileTransferReciveList();
-    QList<CFileTransferSend*> FileSends = Core->getFileTransferManager()->getFileTransferSendsList();
+    //QList<AbstractUserLocalImage*> users = appCtx->getUserManager()->getUserList();
+    Roster & rosterModel = appCtx->getRosterModel();
+    RosterController & rosterController = appCtx->getRosterController();
+    QList<CFileTransferRecive*> FileRecives = appCtx->getFileTransferManager()->getFileTransferReciveList();
+    QList<CFileTransferSend*> FileSends = appCtx->getFileTransferManager()->getFileTransferSendsList();
 
     listWidget->clear();
 
@@ -451,27 +452,27 @@ void form_MainWindow::connecttreeWidgetCostumPopupMenu(QPoint point){
         t= listWidget->item(listWidget->currentRow()+1);
         QVariant mapIdVariant = t->data(RosterController::RosterEntryModelRole);
         QString rosterEntryModelMapId = qvariant_cast<QString>(mapIdVariant);
-        AbstractRosterEntry *rosterEntry = Core->getRosterModel()[rosterEntryModelMapId];
+        AbstractRosterEntry *rosterEntry = appCtx->getRosterModel()[rosterEntryModelMapId];
         if(!rosterEntry) {
             QMessageBox::critical(this,tr("Error: no rosterEntryModel found from variant"),tr("Error: no rosterEntryModel found from variant for ")+rosterEntryModelMapId);
             return;
         }
         {
-            ActorRosterEntry * actorRosterEntry = rosterEntry->asActor();
+            OneToOneRosterEntry * actorRosterEntry = rosterEntry->asOneToOne();
             if(actorRosterEntry){
-                CUser* User = &(actorRosterEntry->getUser());
-                QString Destination = User->getI2PDestination();
+                AbstractUserLocalImage* AbstractUserLocalImage = &(actorRosterEntry->getUser());
+                QString Destination = AbstractUserLocalImage->getI2PDestination();
 
                 contextMnu.addAction(UserChat);
 
-                if(User->getConnectionStatus()==ONLINE)
+                if(AbstractUserLocalImage->getConnectionStatus()==ONLINE)
                 {
                     QAction* UserSendFile = new QAction(QIcon(ICON_FILETRANSFER_SEND),tr("SendFile"),this);
                     connect(UserSendFile,SIGNAL(triggered()),this, SLOT(SendFile()));
                     contextMnu.addAction(UserSendFile);
                 }
 
-                if(User->getIsInvisible()==true){
+                if(AbstractUserLocalImage->getIsInvisible()==true){
                     UserInvisible->setChecked(true);
                 }
                 else{
@@ -524,16 +525,16 @@ void form_MainWindow::deleteUserClicked(){
     QListWidgetItem *t=listWidget->item(listWidget->currentRow()+1);
     QVariant mapIdVariant = t->data(RosterController::RosterEntryModelRole);
     QString rosterEntryModelMapId = qvariant_cast<QString>(mapIdVariant);
-    AbstractRosterEntry *rosterEntry = Core->getRosterModel()[rosterEntryModelMapId];
+    AbstractRosterEntry *rosterEntry = appCtx->getRosterModel()[rosterEntryModelMapId];
     if(!rosterEntry) {
         QMessageBox::critical(this,tr("Error: no rosterEntryModel found from variant"),tr("Error: no rosterEntryModel found from variant for ")+rosterEntryModelMapId);
         return;
     }
 
-    ActorRosterEntry * actorRosterEntry = rosterEntry->asActor();
+    OneToOneRosterEntry * actorRosterEntry = rosterEntry->asOneToOne();
     if(!actorRosterEntry)return;
-    CUser* User = &(actorRosterEntry->getUser());
-    QString Destination = User->getI2PDestination();
+    AbstractUserLocalImage* AbstractUserLocalImage = &(actorRosterEntry->getUser());
+    QString Destination = AbstractUserLocalImage->getI2PDestination();
 
     QMessageBox* msgBox= new QMessageBox(this);
     msgBox->setIcon(QMessageBox::Question);
@@ -544,7 +545,7 @@ void form_MainWindow::deleteUserClicked(){
     msgBox->setWindowModality(Qt::WindowModal);
     int ret = msgBox->exec();
     if(ret== QMessageBox::Yes){
-        Core->getUserManager()->deleteUserByI2PDestination(Destination);
+        appCtx->getUserManager()->deleteUserByI2PDestination(Destination);
     }
 
 
@@ -558,18 +559,18 @@ void form_MainWindow::renameUserCLicked(){
     QListWidgetItem *t=listWidget->item(listWidget->currentRow()+1);
     QVariant mapIdVariant = t->data(RosterController::RosterEntryModelRole);
     QString rosterEntryModelMapId = qvariant_cast<QString>(mapIdVariant);
-    AbstractRosterEntry *rosterEntry = Core->getRosterModel()[rosterEntryModelMapId];
+    AbstractRosterEntry *rosterEntry = appCtx->getRosterModel()[rosterEntryModelMapId];
     if(!rosterEntry) {
         QMessageBox::critical(this,tr("Error: no rosterEntryModel found from variant"),tr("Error: no rosterEntryModel found from variant for ")+rosterEntryModelMapId);
         return;
     }
 
-    ActorRosterEntry * actorRosterEntry = rosterEntry->asActor();
+    OneToOneRosterEntry * actorRosterEntry = rosterEntry->asOneToOne();
     if(!actorRosterEntry)return;
-    CUser* User = &(actorRosterEntry->getUser());
-    QString Destination = User->getI2PDestination();
+    AbstractUserLocalImage* AbstractUserLocalImage = &(actorRosterEntry->getUser());
+    QString Destination = AbstractUserLocalImage->getI2PDestination();
 
-    form_RenameWindow* Dialog= new form_RenameWindow(*Core,OldNickname,Destination);
+    form_RenameWindow* Dialog= new form_RenameWindow(*appCtx,OldNickname,Destination);
     Dialog->show();
 }
 
@@ -641,9 +642,9 @@ void form_MainWindow::OnlineStateChanged()
                SLOT(onlineComboBoxChanged()));
 
     QComboBox* comboBox = this->comboBox;
-    ONLINESTATE onlinestatus= Core->getOnlineStatus();
+    ONLINE_STATE onlinestatus= appCtx->getOnlineStatus();
 
-    if(onlinestatus==User::USERTRYTOCONNECT){
+    if(onlinestatus==AbstractUserLocalImage::USERTRYTOCONNECT){
         comboBox->clear();
         comboBox->addItem(QIcon(ICON_USER_TRYTOCONNECT)	, tr("TryToConnect"));		//index 0
         comboBox->addItem(QIcon(ICON_USER_OFFLINE)	, tr("Offline"));		//1
@@ -662,27 +663,27 @@ void form_MainWindow::OnlineStateChanged()
             comboBox->addItem(QIcon(ICON_USER_OFFLINE)	, tr("Offline"));	//5
         }
 
-        if(onlinestatus==User::USERONLINE){
+        if(onlinestatus==AbstractUserLocalImage::USERONLINE){
             comboBox->setCurrentIndex(0);
             trayIcon->setIcon(QIcon(ICON_USER_ONLINE));
         }
-        else if(onlinestatus==User::USERWANTTOCHAT){
+        else if(onlinestatus==AbstractUserLocalImage::USERWANTTOCHAT){
             comboBox->setCurrentIndex(1);
             trayIcon->setIcon(QIcon(ICON_USER_WANTTOCHAT));
         }
-        else if(onlinestatus==User::USERAWAY){
+        else if(onlinestatus==AbstractUserLocalImage::USERAWAY){
             comboBox->setCurrentIndex(2);
             trayIcon->setIcon(QIcon(ICON_USER_AWAY));
         }
-        else if(onlinestatus==User::USERDONT_DISTURB){
+        else if(onlinestatus==AbstractUserLocalImage::USERDONT_DISTURB){
             comboBox->setCurrentIndex(3);
             trayIcon->setIcon(QIcon(ICON_USER_DONT_DUSTURB));
         }
-        else if(onlinestatus==User::USERINVISIBLE){
+        else if(onlinestatus==AbstractUserLocalImage::USERINVISIBLE){
             comboBox->setCurrentIndex(4);
             trayIcon->setIcon(QIcon(ICON_USER_INVISIBLE));
         }
-        else if(onlinestatus==User::USEROFFLINE){
+        else if(onlinestatus==AbstractUserLocalImage::USEROFFLINE){
             comboBox->setCurrentIndex(5);
             trayIcon->setIcon(QIcon(ICON_USER_OFFLINE));
         }
@@ -695,8 +696,8 @@ void form_MainWindow::openAboutDialog()
 {
     if(mAboutWindow==NULL){
         mAboutWindow = new form_About(
-                    Core->getClientName(),
-                    Core->getClientVersion(),Core->getProtocolVersion(),
+                    appCtx->getClientName(),
+                    appCtx->getClientVersion(),appCtx->getProtocolVersion(),
                     FileTransferProtocol::MINPROTOCOLVERSION,FileTransferProtocol::MAXPROTOCOLVERSION);
         connect(this,SIGNAL(closeAllWindows()),mAboutWindow,
                 SLOT(close()));
@@ -714,7 +715,7 @@ void form_MainWindow::initStyle()
 {
     //commented out the style stuff as styles on "ubuntu 14.04 mate" make the tray icon not appear
     /*
-    QSettings * settings=new QSettings(Core->getConfigPath()+"/application.ini",QSettings::IniFormat);
+    QSettings * settings=new QSettings(appCtx->getConfigPath()+"/application.ini",QSettings::IniFormat);
     settings->beginGroup("General");
     //Load Style
     QString Style=(settings->value("current_Style","")).toString();
@@ -736,7 +737,7 @@ void form_MainWindow::initStyle()
     //Load Style end
 
     //Load Stylesheet
-    QFile file(Core->getConfigPath() + "/qss/" +
+    QFile file(appCtx->getConfigPath() + "/qss/" +
                settings->value("current_Style_sheet","Default").toString() + ".qss");
 
     file.open(QFile::ReadOnly);
@@ -791,16 +792,16 @@ void form_MainWindow::SendFile()
     QListWidgetItem *t=listWidget->item(listWidget->currentRow()+1);
     QVariant mapIdVariant = t->data(RosterController::RosterEntryModelRole);
     QString rosterEntryModelMapId = qvariant_cast<QString>(mapIdVariant);
-    AbstractRosterEntry *rosterEntry = Core->getRosterModel()[rosterEntryModelMapId];
+    AbstractRosterEntry *rosterEntry = appCtx->getRosterModel()[rosterEntryModelMapId];
     if(!rosterEntry) {
         QMessageBox::critical(this,tr("Error: no rosterEntryModel found from variant"),tr("Error: no rosterEntryModel found from variant for ")+rosterEntryModelMapId);
         return;
     }
 
-    ActorRosterEntry * actorRosterEntry = rosterEntry->asActor();
+    OneToOneRosterEntry * actorRosterEntry = rosterEntry->asOneToOne();
     if(!actorRosterEntry)return;
-    CUser* User = &(actorRosterEntry->getUser());
-    QString Destination = User->getI2PDestination();
+    AbstractUserLocalImage* AbstractUserLocalImage = &(actorRosterEntry->getUser());
+    QString Destination = AbstractUserLocalImage->getI2PDestination();
     QString FilePath=QFileDialog::getOpenFileName(this,tr("Select a file"), ".", tr("Any files (*)"));
 
     if(FilePath.endsWith("/")==true){
@@ -810,7 +811,7 @@ void form_MainWindow::SendFile()
 
     if(Destination.length()==516){
         if(!FilePath.isEmpty())
-            Core->getFileTransferManager()->addNewFileTransfer(FilePath,Destination);
+            appCtx->getFileTransferManager()->addNewFileTransfer(FilePath,Destination);
     }
     else{
         qWarning()<<"\nform_MainWindow::SendFile()\n"
@@ -826,16 +827,16 @@ void form_MainWindow::copyDestination()
     QListWidgetItem *t=listWidget->item(listWidget->currentRow()+1);
     QVariant mapIdVariant = t->data(RosterController::RosterEntryModelRole);
     QString rosterEntryModelMapId = qvariant_cast<QString>(mapIdVariant);
-    AbstractRosterEntry *rosterEntry = Core->getRosterModel()[rosterEntryModelMapId];
+    AbstractRosterEntry *rosterEntry = appCtx->getRosterModel()[rosterEntryModelMapId];
     if(!rosterEntry) {
         QMessageBox::critical(this,tr("Error: no rosterEntryModel found from variant"),tr("Error: no rosterEntryModel found from variant for ")+rosterEntryModelMapId);
         return;
     }
 
-    ActorRosterEntry * actorRosterEntry = rosterEntry->asActor();
+    OneToOneRosterEntry * actorRosterEntry = rosterEntry->asOneToOne();
     if(!actorRosterEntry)return;
-    CUser* User = &(actorRosterEntry->getUser());
-    QString Destination = User->getI2PDestination();
+    AbstractUserLocalImage* AbstractUserLocalImage = &(actorRosterEntry->getUser());
+    QString Destination = AbstractUserLocalImage->getI2PDestination();
 
     QClipboard *clipboard = QApplication::clipboard();
 
@@ -860,23 +861,23 @@ void form_MainWindow::muteSound()
         Mute=false;
 
     }
-    Core->getSoundManager()->doMute(Mute);
+    appCtx->getSoundManager()->doMute(Mute);
 }
 
 QString form_MainWindow::getCurrentUserDest() {
     QListWidgetItem *t=listWidget->item(listWidget->currentRow()+1);
     QVariant mapIdVariant = t->data(RosterController::RosterEntryModelRole);
     QString rosterEntryModelMapId = qvariant_cast<QString>(mapIdVariant);
-    AbstractRosterEntry *rosterEntry = Core->getRosterModel()[rosterEntryModelMapId];
+    AbstractRosterEntry *rosterEntry = appCtx->getRosterModel()[rosterEntryModelMapId];
     if(!rosterEntry) {
         QMessageBox::critical(this,tr("Error: no rosterEntryModel found from variant"),tr("Error: no rosterEntryModel found from variant for ")+rosterEntryModelMapId);
         return "";
     }
 
-    ActorRosterEntry * actorRosterEntry = rosterEntry->asActor();
+    OneToOneRosterEntry * actorRosterEntry = rosterEntry->asOneToOne();
     if(!actorRosterEntry)return "";
-    CUser* User = &(actorRosterEntry->getUser());
-    return User->getI2PDestination();
+    AbstractUserLocalImage* AbstractUserLocalImage = &(actorRosterEntry->getUser());
+    return AbstractUserLocalImage->getI2PDestination();
 }
 
 void form_MainWindow::showUserInfos()
@@ -885,10 +886,10 @@ void form_MainWindow::showUserInfos()
     if(Destination.isEmpty())return;
     QString UserInfos;
     QPixmap avatar;
-    CUser*  user;
+    AbstractUserLocalImage*  user;
 
-    user=Core->getUserManager()->getUserByI2P_Destination(Destination);
-    UserInfos=Core->getUserManager()->getUserInfosByI2P_Destination(Destination);
+    user=appCtx->getUserManager()->getUserByI2P_Destination(Destination);
+    UserInfos=appCtx->getUserManager()->getUserInfosByI2P_Destination(Destination);
 
     avatar.loadFromData(user->getRecivedUserInfos().AvatarImage);
 
@@ -910,14 +911,14 @@ void form_MainWindow::UserPositionUP()
 {
     QListWidget* listWidget=this->listWidget;
     if(listWidget->currentRow() >= 1)
-        Core->getUserManager()->changeUserPositionInUserList(listWidget->currentRow()/3,listWidget->currentRow()/3 -1);
+        appCtx->getUserManager()->changeUserPositionInUserList(listWidget->currentRow()/3,listWidget->currentRow()/3 -1);
 }
 
 void form_MainWindow::UserPositionDOWN()
 {
     QListWidget* listWidget=this->listWidget;
     if(listWidget->currentRow() < (listWidget->count()/3) -1)
-        Core->getUserManager()->changeUserPositionInUserList(listWidget->currentRow()/3,listWidget->currentRow()/3 +1);
+        appCtx->getUserManager()->changeUserPositionInUserList(listWidget->currentRow()/3,listWidget->currentRow()/3 +1);
 
 }
 
@@ -925,10 +926,10 @@ void form_MainWindow::UserInvisible(bool b)
 {
     QString Destination = getCurrentUserDest();
 
-    CUser* User;
-    User=Core->getUserManager()->getUserByI2P_Destination(Destination);
-    if(User!=NULL){
-        User->setInvisible(b);
+    AbstractUserLocalImage* AbstractUserLocalImage;
+    AbstractUserLocalImage=appCtx->getUserManager()->getUserByI2P_Destination(Destination);
+    if(AbstractUserLocalImage!=NULL){
+        AbstractUserLocalImage->setInvisible(b);
     }
 }
 
@@ -954,17 +955,17 @@ void form_MainWindow::eventTryIconDoubleClicked(enum QSystemTrayIcon::Activation
 
 void form_MainWindow::openChatWindow(QString rosterEntryMapId)
 {
-    AbstractRosterEntry *rosterEntry = Core->getRosterModel()[rosterEntryMapId];
+    AbstractRosterEntry *rosterEntry = appCtx->getRosterModel()[rosterEntryMapId];
     if(!rosterEntry) {
         QMessageBox::critical(this,tr("Error: no rosterEntryModel found from variant"),tr("Error: no rosterEntryModel found from variant for ")+rosterEntryMapId);
         return;
     }
     {
-        ActorRosterEntry * actorRosterEntry = rosterEntry->asActor();
+        OneToOneRosterEntry * actorRosterEntry = rosterEntry->asOneToOne();
         if(actorRosterEntry){
-            CUser* User = &(actorRosterEntry->getUser());
-            QString Destination = User->getI2PDestination();
-            if(User==NULL){
+            AbstractUserLocalImage* AbstractUserLocalImage = &(actorRosterEntry->getUser());
+            QString Destination = AbstractUserLocalImage->getI2PDestination();
+            if(AbstractUserLocalImage==NULL){
                 qCritical()<<"form_MainWindow::openChatWindow"<<"try to open a Chatwindow, but the user doesn't exist";
                 return;
             }
@@ -972,14 +973,14 @@ void form_MainWindow::openChatWindow(QString rosterEntryMapId)
             QString mapId=actorRosterEntry->getMapIdQString();
             if(mAllOpenChatWindows.contains(mapId)==false){
                 //create new chatWindow
-                form_ChatWidget* tmp= new form_ChatWidget(*User,*actorRosterEntry,*Core);
+                form_ChatWidget* tmp= new form_ChatWidget(*AbstractUserLocalImage,*actorRosterEntry,*appCtx);
                 connect(this,SIGNAL(closeAllWindows()),tmp,
                         SLOT(close()));
 
                 connect(tmp,SIGNAL(closingChatWindow(QString)),this,
                         SLOT(eventChatWindowClosed(QString)));
 
-                connect(Core,SIGNAL(signOwnAvatarImageChanged()),tmp,
+                connect(appCtx,SIGNAL(signOwnAvatarImageChanged()),tmp,
                         SLOT(slotLoadOwnAvatarImage()));
 
                 mAllOpenChatWindows.insert(mapId,tmp);
@@ -996,14 +997,14 @@ void form_MainWindow::openChatWindow(QString rosterEntryMapId)
             QString mapId=swarmType1RosterEntry->getMapIdQString();
             if(mAllOpenChatWindows.contains(mapId)==false){
                 //create new chatWindow
-                form_ChatWidget* tmp= new form_ChatWidget(*swarmType1RosterEntry,*Core);
+                form_ChatWidget* tmp= new form_ChatWidget(*swarmType1RosterEntry,*appCtx);
                 connect(this,SIGNAL(closeAllWindows()),tmp,
                         SLOT(close()));
 
                 connect(tmp,SIGNAL(closingChatWindow(QString)),this,
                         SLOT(eventChatWindowClosed(QString)));
 
-                //connect(Core,SIGNAL(signOwnAvatarImageChanged()),tmp,
+                //connect(appCtx,SIGNAL(signOwnAvatarImageChanged()),tmp,
                 //        SLOT(slotLoadOwnAvatarImage()));
 
                 mAllOpenChatWindows.insert(mapId,tmp);
@@ -1042,7 +1043,7 @@ void form_MainWindow::eventFileSendWindowClosed(qint32 StreamID)
 
 void form_MainWindow::openFileSendWindow(qint32 StreamID)
 {
-    CFileTransferSend* TransferSend=Core->getFileTransferManager()->getFileTransferSendsByID(StreamID);
+    CFileTransferSend* TransferSend=appCtx->getFileTransferManager()->getFileTransferSendsByID(StreamID);
 
 
     if(TransferSend==NULL){
@@ -1068,7 +1069,7 @@ void form_MainWindow::openFileSendWindow(qint32 StreamID)
 
 void form_MainWindow::openFileReciveWindow(qint32 StreamID)
 {
-    CFileTransferRecive* recive=Core->getFileTransferManager()->getFileTransferReciveByID(StreamID);
+    CFileTransferRecive* recive=appCtx->getFileTransferManager()->getFileTransferReciveByID(StreamID);
     if(recive==NULL){
         qCritical()<<"form_MainWindow::openFileReciveWindow\n"<<"Can't find FileRecive Object with ID: "<<StreamID<<"\nAction Ignored";
         return;
@@ -1100,28 +1101,28 @@ void form_MainWindow::addUserToBlockList()
         QListWidgetItem *t=listWidget->item(listWidget->currentRow()+1);
         QVariant mapIdVariant = t->data(RosterController::RosterEntryModelRole);
         QString rosterEntryModelMapId = qvariant_cast<QString>(mapIdVariant);
-        AbstractRosterEntry *rosterEntry = Core->getRosterModel()[rosterEntryModelMapId];
+        AbstractRosterEntry *rosterEntry = appCtx->getRosterModel()[rosterEntryModelMapId];
         if(!rosterEntry) {
             QMessageBox::critical(this,tr("Error: no rosterEntryModel found from variant"),tr("Error: no rosterEntryModel found from variant for ")+rosterEntryModelMapId);
             return;
         }
 
-        ActorRosterEntry * actorRosterEntry = rosterEntry->asActor();
+        OneToOneRosterEntry * actorRosterEntry = rosterEntry->asOneToOne();
         if(!actorRosterEntry)return;
-        CUser* User = &(actorRosterEntry->getUser());
-        QString Destination = User->getI2PDestination();
+        AbstractUserLocalImage* AbstractUserLocalImage = &(actorRosterEntry->getUser());
+        QString Destination = AbstractUserLocalImage->getI2PDestination();
 
-        CUserBlockManager* BlockManager= Core->getUserBlockManager();
+        UserBlockManager* BlockManager= appCtx->getUserBlockManager();
 
         if(BlockManager){
-            BlockManager->addNewBlockEntity(User->getName(),Destination);
+            BlockManager->addNewBlockEntity(AbstractUserLocalImage->getName(),Destination);
         }
     }
 }
 /*
 void form_MainWindow::openUserSearchWindow()
 {
-    ONLINESTATE currentState=Core->getOnlineStatus();
+    ONLINE_STATE currentState=appCtx->getOnlineStatus();
 
     if(currentState==USEROFFLINE || currentState==USERTRYTOCONNECT){
         QMessageBox::information(this, "",
@@ -1131,7 +1132,7 @@ void form_MainWindow::openUserSearchWindow()
 
     if(mUserSearchWindow==NULL){
 
-        mUserSearchWindow= new form_userSearch(*Core,*(Core->getSeedlessManager()));
+        mUserSearchWindow= new form_userSearch(*appCtx,*(appCtx->getSeedlessManager()));
         connect(this,SIGNAL(closeAllWindows()),mUserSearchWindow,
                 SLOT(close()));
 
@@ -1174,14 +1175,14 @@ void form_MainWindow::eventDebugWindowClosed()
 
 void form_MainWindow::eventNicknameChanged()
 {
-    nicknamelabel->setText(Core->getUserInfos().Nickname);
+    nicknamelabel->setText(appCtx->getUserInfos().Nickname);
 }
 
 void form_MainWindow::eventAvatarImageChanged()
 {
-    if(Core->getUserInfos().AvatarImage.isEmpty()==false){
+    if(appCtx->getUserInfos().AvatarImage.isEmpty()==false){
         QPixmap avatar;
-        avatar.loadFromData(Core->getUserInfos().AvatarImage);
+        avatar.loadFromData(appCtx->getUserInfos().AvatarImage);
         avatar=avatar.scaled(avatarlabel->width(),avatarlabel->height(),Qt::KeepAspectRatio);
         avatarlabel->setAlignment(Qt::AlignCenter);
         avatarlabel->setPixmap(avatar);
@@ -1189,7 +1190,7 @@ void form_MainWindow::eventAvatarImageChanged()
 }
 
 void form_MainWindow::openTopicSubscribeWindow() {
-    ONLINESTATE currentState=Core->getOnlineStatus();
+    ONLINE_STATE currentState=appCtx->getOnlineStatus();
 
     if(currentState==USEROFFLINE || currentState==USERTRYTOCONNECT) {
         QMessageBox::information(this, "",
@@ -1199,7 +1200,7 @@ void form_MainWindow::openTopicSubscribeWindow() {
 
     if(mTopicSubscribeWindow == NULL) {
 
-        mTopicSubscribeWindow = new form_topicSubscribe(*Core);
+        mTopicSubscribeWindow = new form_topicSubscribe(*appCtx);
 
         connect(this, SIGNAL(closeAllWindows()), mTopicSubscribeWindow,
                 SLOT(close()));
@@ -1216,7 +1217,7 @@ void form_MainWindow::openTopicSubscribeWindow() {
 void form_MainWindow::openDialog_creatNewSwarm() {
     if(mDialogCreatNewSwarm == NULL) {
 
-    	mDialogCreatNewSwarm = new form_createNewSwarmType1(*Core);
+        mDialogCreatNewSwarm = new form_createNewSwarmType1(*appCtx);
 
         connect(this, SIGNAL(closeAllWindows()), mDialogCreatNewSwarm,
                 SLOT(close()));

@@ -21,15 +21,16 @@
 #define FORM_RENAME_H
 
 #include <QtGui>
+
+#include "AppContext.h"
 #include "ui_form_rename.h"
-#include "Core.h"
 
 
 class form_RenameWindow : public QDialog, private Ui::form_renameWindow
 {
 	Q_OBJECT
 	public:
-	      form_RenameWindow(CCore& Core,QString OldNickname,QString Destination);	
+          form_RenameWindow(AppContext& appCtx,QString OldNickname,QString Destination);
 	      ~form_RenameWindow();
 
 	      //forbid some operators
@@ -39,7 +40,7 @@ class form_RenameWindow : public QDialog, private Ui::form_renameWindow
 	private slots:
 		void OK();
 	private:
-		CCore& Core;
+        AppContext& appCtx;
 		QString Destination;
 		void closeEvent(QCloseEvent *e);
 };

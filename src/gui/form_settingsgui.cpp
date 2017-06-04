@@ -18,17 +18,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "Core.h"
 #include "UserBlockManager.h"
 #include "form_settingsgui.h"
+#include "AppContext.h"
 
 void form_settingsgui::onLanguageChange(int) {
     QMessageBox::information(this,tr("App restart needed"),tr("Save settings and restart the app to use the new language."));
 }
 
 
-form_settingsgui::form_settingsgui(CCore& Core,QWidget *parent, Qt::WindowFlags flags)
-	: QDialog(parent, flags),mCore(Core),mConfigPath(Core.getConfigPath())
+form_settingsgui::form_settingsgui(AppContext& appCtx,QWidget *parent, Qt::WindowFlags flags)
+    : QDialog(parent, flags),mCore(appCtx),mConfigPath(appCtx.getConfigPath())
 {
     	setupUi(this);
 	this->setAttribute(Qt::WA_DeleteOnClose,true);
@@ -243,7 +243,7 @@ void form_settingsgui::loadSettings()
 	settings->endGroup();
 
 
-	settings->beginGroup("User-Infos");
+	settings->beginGroup("AbstractUserLocalImage-Infos");
 		txt_Nickname->setText(settings->value("Nickname","").toString());
 		spinAge->setValue(settings->value("Age","0").toInt());
 		
@@ -404,7 +404,7 @@ void form_settingsgui::saveSettings()
 		settings->endGroup();
 	settings->endGroup();
 
-	settings->beginGroup("User-Infos");
+	settings->beginGroup("AbstractUserLocalImage-Infos");
 		settings->setValue("Nickname",txt_Nickname->text());
 		settings->setValue("Age",spinAge->value());
 		if(checkGender_Male->isChecked()==true){
@@ -696,9 +696,9 @@ void form_settingsgui::showUserBlockList()
 {
 	QTreeWidget* UserBlockTreeWidget= this->UserBlockTreeWidget;
 	
-	QMap<QString,CUserBlockManager::CUserBlockEntity*> UserBlockMap;
+    QMap<QString,UserBlockManager::CUserBlockEntity*> UserBlockMap;
 	UserBlockMap=mCore.getUserBlockManager()->getBlockList();
-	QMapIterator<QString,CUserBlockManager::CUserBlockEntity*> i(UserBlockMap);
+    QMapIterator<QString,UserBlockManager::CUserBlockEntity*> i(UserBlockMap);
 
 	UserBlockTreeWidget->setColumnCount(2);
 	UserBlockTreeWidget->setHeaderLabels(QStringList()<<tr("Nicknames")<<tr("values"));
@@ -707,7 +707,7 @@ void form_settingsgui::showUserBlockList()
 
 	while(i.hasNext()){
 	  	i.next();
-		CUserBlockManager::CUserBlockEntity* currentEntity=i.value();
+        UserBlockManager::CUserBlockEntity* currentEntity=i.value();
 		
 		QTreeWidgetItem* itemTopLevel= new QTreeWidgetItem();
 		QTreeWidgetItem* itemNickname= new QTreeWidgetItem(); 
@@ -791,7 +791,7 @@ void form_settingsgui::clicked_EnableUserSearch(bool t)
 	    QMessageBox* msgBox= new QMessageBox(NULL);
 	    msgBox->setIcon(QMessageBox::Information);
 	    msgBox->setText(tr("I2P-Messenger"));
-	    msgBox->setInformativeText(tr("Sorry you have to enter a Nickname(at User-details) for UserSearch"));
+	    msgBox->setInformativeText(tr("Sorry you have to enter a Nickname(at AbstractUserLocalImage-details) for UserSearch"));
 	    msgBox->setStandardButtons(QMessageBox::Ok);
 	    msgBox->setDefaultButton(QMessageBox::Ok);
 	    msgBox->setWindowModality(Qt::NonModal);
