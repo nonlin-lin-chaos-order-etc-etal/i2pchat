@@ -1,5 +1,12 @@
 # I2P Chat AKA I2P Qt Messenger
 
+## Current project status: Wreckage
+
+## For plans description, see: https://github.com/hypnosis-i2p/i2pchat/issues/85
+
+
+# Older info is below. To be edited.
+
 ## Features
 
  * The communication goes «directly over i2p» from client to client, no server is required.[1] Note: The connections to the so-called «seedless» servers were removed from this project ; see : https://github.com/hypnosis-i2p/i2pchat/issues/40 . —hypn.
