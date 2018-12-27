@@ -1,15 +1,14 @@
-# 🌀 I2P Chat AKA I2P Qt Messenger
+# 🌀 Crypto Chat
+
+Previously I2P Chat AKA I2P Qt Messenger.
 
 ## Current project status: Wreckage
 
-## For plans description, see: https://github.com/hypnosis-i2p/i2pchat/issues/85
-
-
-# Older info is below. To be edited.
+## For plans description, see: https://github.com/hypnosis-i2p/CryptoChat/issues/85
 
 ## Features
 
- * The communication goes «directly over i2p» from client to client, no server is required.[1] Note: The connections to the so-called «seedless» servers were removed from this project ; see : https://github.com/hypnosis-i2p/i2pchat/issues/40 . —hypn.
+ * The communication goes «directly over i2p» from client to client, no server is required.[1] Note: The connections to the so-called «seedless» servers were removed from this project ; see : https://github.com/hypnosis-i2p/CryptoChat/issues/40 . —hypnosis.
 
 ## How to run it
 
@@ -26,7 +25,7 @@ When building this, make sure you do not define `DEBUGLOGGING`. If you do define
     
 ## Project status, news and history
 
-### Project status
+### Older Project status
 
 Now the development was resumed by Hypnosis-i2p and R4SAS, with a lot more folks as testers &amp; bugs+issues reporters.
 
@@ -35,10 +34,9 @@ Now the development was resumed by Hypnosis-i2p and R4SAS, with a lot more folks
 11 Feb, 2017:
 
 ```
-<Hypnosis> ну я там всё глобально перетусовывать взялся. очень плохой исх.код
-<Hypnosis> модифицировать невозможно такой хаос
-<Hypnosis> немецкий писатель оригинального и2пчата явно не знал ничего про ооп
-<Hypnosis> юниорский код
+<Hypnosis> I started a great overhaul of the code, I consider the old code junior very bad quality
+<Hypnosis> It's impossible to modify such a chaos
+<Hypnosis> A german coder of the original I2PQtMessenger knew nothing about OOP
 ```
 
 5 Jan, 2017: Original repo at http://git.repo.i2p/w/I2P-Messenger-QT.git was fully merged here.
@@ -87,9 +85,9 @@ http://forum.i2p/viewtopic.php?t=2474
 
 ## List of relevant repositories (in Russian)
  
-я два репа на гитхабе создал
- * один для антиквариата по части и2п массажника https://github.com/hypnosis-i2p/I2PQtMessengerLegacy ;
- * другой для разработки https://github.com/hypnosis-i2p/i2pchat .
+I created two repos of github:
+ * one for old files of I2P Messenger https://github.com/hypnosis-i2p/I2PQtMessengerLegacy ;
+ * another for development https://github.com/hypnosis-i2p/CryptoChat .
 
 ## Footnotes
 
