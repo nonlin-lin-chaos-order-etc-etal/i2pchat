@@ -10,7 +10,7 @@ Previously I2P Chat AKA I2P Qt Messenger.
 
 ## Features
 
- * The communication goes «directly over i2p» from client to client, no server is required.[1] Note: The connections to the so-called «seedless» servers were removed from this project ; see : https://github.com/hypnosis-i2p/famchat/issues/40 . —hypn.
+ * The communication goes «directly over i2p» from client to client, no server is required. Note: The connections to the so-called «seedless» servers were removed from this project; see: https://github.com/hypnosis-i2p/famchat/issues/40 . —hypn.
 
 ## How to run it
 
@@ -45,7 +45,7 @@ Original developer of this messenger went away.
 
 The license of this software is GPLv2.
 
-### Build instructions
+## Build instructions
 
  * Install prerequisites:
 ```
@@ -74,17 +74,9 @@ make
  * http://echelon.i2p/qti2pmessenger/ → old eche|on's site for I2P Chat (versions up to 0.2.24);
  * https://launchpad.net/~i2p.packages/+archive/ubuntu/i2p/+sourcepub/4824794/+listing-archive-extra → Kill Your TV's PPA (v.0.2.25).
  * http://git.repo.i2p/w/I2P-Messenger-QT.git/shortlog → original repo (fully merged into this /i2pchat)
- 
-## Forum thread
-
-http://forum.i2p/viewtopic.php?t=2474
 
 ## List of relevant repositories
  
 I created two repos of github:
  * one for old files of I2P Messenger: https://github.com/hypnosis-i2p/I2PQtMessengerLegacy ;
  * another for development: https://github.com/hypnosis-i2p/famchat .
-
-## Footnotes
-
-[1] http://forum.i2p/viewtopic.php?p=11071#11071
