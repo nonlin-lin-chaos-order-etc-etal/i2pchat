@@ -75,11 +75,11 @@ make
  * https://launchpad.net/~i2p.packages/+archive/ubuntu/i2p/+sourcepub/4824794/+listing-archive-extra → Kill Your TV's PPA (v.0.2.25).
  * http://git.repo.i2p/w/I2P-Messenger-QT.git/shortlog → original repo (fully merged into this /i2pchat)
  
-## Forum thread (English)
+## Forum thread
 
 http://forum.i2p/viewtopic.php?t=2474
 
-## List of relevant repositories (in Russian)
+## List of relevant repositories
  
 I created two repos of github:
  * one for old files of I2P Messenger: https://github.com/hypnosis-i2p/I2PQtMessengerLegacy ;
