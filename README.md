@@ -1,4 +1,4 @@
-# I2P Chat AKA I2P Qt Messenger
+# 🌀 I2P Chat AKA I2P Qt Messenger
 
 ## Current project status: Wreckage
 
