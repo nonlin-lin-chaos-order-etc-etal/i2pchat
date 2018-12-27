@@ -6,11 +6,11 @@ Previously I2P Chat AKA I2P Qt Messenger.
 
 ## Current project status: Wreckage
 
-## For plans description, see: https://github.com/hypnosis-i2p/CryptoChat/issues/85
+## For plans description, see: https://github.com/hypnosis-i2p/famchat/issues/85
 
 ## Features
 
- * The communication goes «directly over i2p» from client to client, no server is required.[1] Note: The connections to the so-called «seedless» servers were removed from this project ; see : https://github.com/hypnosis-i2p/CryptoChat/issues/40 . —hypnosis.
+ * The communication goes «directly over i2p» from client to client, no server is required.[1] Note: The connections to the so-called «seedless» servers were removed from this project ; see : https://github.com/hypnosis-i2p/famchat/issues/40 . —hypn.
 
 ## How to run it
 
@@ -29,7 +29,7 @@ When building this, make sure you do not define `DEBUGLOGGING`. If you do define
 
 ### Older Project status
 
-Now the development was resumed by Hypnosis-i2p and R4SAS, with a lot more folks as testers &amp; bugs+issues reporters.
+Now the development was resumed by Hypnosis and R4SAS, with a lot more folks as testers &amp; bugs+issues reporters.
 
 ### Current news
 
@@ -88,8 +88,8 @@ http://forum.i2p/viewtopic.php?t=2474
 ## List of relevant repositories (in Russian)
  
 I created two repos of github:
- * one for old files of I2P Messenger https://github.com/hypnosis-i2p/I2PQtMessengerLegacy ;
- * another for development https://github.com/hypnosis-i2p/CryptoChat .
+ * one for old files of I2P Messenger: https://github.com/hypnosis-i2p/I2PQtMessengerLegacy ;
+ * another for development: https://github.com/hypnosis-i2p/famchat .
 
 ## Footnotes
 
