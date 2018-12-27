@@ -1,4 +1,4 @@
-# 🌀 Crypto Chat
+# 🌀 PrivateChat
 
 Anonymous private secure opensource chat using end-to-end encrypted transport.
 
