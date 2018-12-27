@@ -1,4 +1,4 @@
-# 🌀 PrivateChat
+# 🌀 Fam Chat
 
 Anonymous private secure opensource chat using end-to-end encrypted transport.
 
