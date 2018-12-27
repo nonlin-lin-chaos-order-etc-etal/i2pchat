@@ -33,13 +33,7 @@ Now the development was resumed by Hypnosis and R4SAS, with a lot more folks as 
 
 ### Current news
 
-11 Feb, 2017:
-
-```
-<Hypnosis> I started a great overhaul of the code, I consider the old code junior very bad quality
-<Hypnosis> It's impossible to modify such a chaos
-<Hypnosis> A german coder of the original I2PQtMessenger knew nothing about OOP
-```
+11 Feb, 2017: I started a great overhaul of the code, I consider the old code junior very bad quality. It's impossible to modify such a chaos. A german coder of the original I2PQtMessenger seems to have known nothing about OOP.
 
 5 Jan, 2017: Original repo at http://git.repo.i2p/w/I2P-Messenger-QT.git was fully merged here.
   
