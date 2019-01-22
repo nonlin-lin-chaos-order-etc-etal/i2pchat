@@ -1,16 +1,16 @@
-# 🌀 Fam Chat
+# 🌀 i2pchat
 
 Anonymous private secure opensource chat using end-to-end encrypted transport.
 
-Previously I2P Chat AKA I2P Qt Messenger.
+Previously I2P Qt Messenger.
 
 ## Current project status: Wreckage
 
-## For plans description, see: https://github.com/drmagma/i2pchat/issues/85
+## For plans description, see <a href="https://github.com/drmagma/i2pchat/issues/85">issue 85</a>.
 
 ## Features
 
- * The communication goes «directly over i2p» from client to client, no server is required. Note: The connections to the so-called «seedless» servers were removed from this project; see: https://github.com/drmagma/i2pchat/issues/40 . —hypn.
+ * The communication goes «directly over i2p» from client to client, no server is required. Note: The connections to the so-called «seedless» servers were removed from this project; see <a href=https://github.com/drmagma/i2pchat/issues/40>issue 40</a>. —hypn.
 
 ## How to run it
 
@@ -70,13 +70,13 @@ make
 
 ## Old files and sites
 
- * http://echelon.i2p/qti2pmessenger/macos → Mac OS X versions, not tested;
- * http://echelon.i2p/qti2pmessenger/ → old eche|on's site for I2P Chat (versions up to 0.2.24);
- * https://launchpad.net/~i2p.packages/+archive/ubuntu/i2p/+sourcepub/4824794/+listing-archive-extra → Kill Your TV's PPA (v.0.2.25).
- * http://git.repo.i2p/w/I2P-Messenger-QT.git/shortlog → original repo (fully merged into this /i2pchat)
+ * <a href=http://echelon.i2p/qti2pmessenger/macos>Mac OS X versions</a>, not tested;
+ * <a href=http://echelon.i2p/qti2pmessenger/>old eche|on's site for I2P Chat</a> (versions up to 0.2.24);
+ * <a href=https://launchpad.net/~i2p.packages/+archive/ubuntu/i2p/+sourcepub/4824794/+listing-archive-extra>Kill Your TV's PPA</a> (v.0.2.25);
+ * <a href=http://git.repo.i2p/w/I2P-Messenger-QT.git/shortlog>original repo</a> (fully merged into this /i2pchat repo).
 
 ## List of relevant repositories
  
-I created two repos of github:
- * one for old files of I2P Messenger: https://github.com/drmagma/I2PQtMessengerLegacy ;
- * another for development: https://github.com/drmagma/i2pchat .
+Two repos:
+ * one for old files of I2P Messenger: <a href=https://github.com/drmagma/I2PQtMessengerLegacy>https://github.com/drmagma/I2PQtMessengerLegacy</a>;
+ * another for development: <a href=https://github.com/drmagma/i2pchat>https://github.com/drmagma/i2pchat</a>.
