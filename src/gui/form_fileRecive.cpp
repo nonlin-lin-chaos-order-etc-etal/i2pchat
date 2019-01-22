@@ -58,7 +58,7 @@ void form_fileRecive::init()
 	QString SType;
 	QLabel *label_4=this->label_4;
 	QLabel *label_6=this->label_6;
-	QLabel *label_7=this->label_7;
+	QLabel *gitCommitHashLabel=this->gitCommitHashLabel;
 	QProgressBar * progressBar= this->progressBar;
 	
 
@@ -68,7 +68,7 @@ void form_fileRecive::init()
 	
 	FileRecive.doConvertNumberToTransferSize(FileSize,SSize,SType,false);
 	label_6->setText(SSize);
-	label_7->setText(SType);
+	gitCommitHashLabel->setText(SType);
 
 	checkBox_3->setChecked(true);
 	progressBar->setMinimum(0);

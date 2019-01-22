@@ -63,7 +63,7 @@ void form_fileSend::init()
 	QString SSize;		
 	QLabel *label_4=this->label_4;
 	QLabel *label_6=this->label_6;
-	QLabel *label_7=this->label_7;
+	QLabel *gitCommitHashLabel=this->gitCommitHashLabel;
 	QProgressBar * progressBar= this->progressBar;
 	QString sType;
 	
@@ -74,7 +74,7 @@ void form_fileSend::init()
 
 	FileTransfer.doConvertNumberToTransferSize(FileSize,SSize,sType,false);
 	label_6->setText(SSize);
-	label_7->setText(sType);
+	gitCommitHashLabel->setText(sType);
 
 	progressBar->setMinimum(0);
 	progressBar->setMaximum(FileTransfer.getFileSize());

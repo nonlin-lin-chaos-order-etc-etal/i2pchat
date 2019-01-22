@@ -1,4 +1,7 @@
 *.pro.user*
 .cproject
 .project
-
+Makefile
+.qmake.stash
+temp
+src/gui/ui_form_*.h

@@ -1339,7 +1339,7 @@ p, li { white-space: pre-wrap; }
           </sizepolicy>
          </property>
         </widget>
-        <widget class="QLabel" name="label_7">
+        <widget class="QLabel" name="gitCommitHashLabel">
          <property name="geometry">
           <rect>
            <x>20</x>
