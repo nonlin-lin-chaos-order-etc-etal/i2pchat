@@ -1,4 +1,4 @@
-# 🌀 I2P Chat
+# 🌀 i2pchat
 
 Anonymous private secure opensource chat using end-to-end encrypted transport.
 
