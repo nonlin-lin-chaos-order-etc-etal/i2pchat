@@ -6,3 +6,5 @@ temp/**
 Makefile
 docs/*~
 *~
+.qmake.stash
+src/gui/ui_form_*.h

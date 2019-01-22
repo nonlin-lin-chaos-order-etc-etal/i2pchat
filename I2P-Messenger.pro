@@ -90,8 +90,8 @@ SOURCES += \
         src/backend/model/RemoteUserLocalImage.cpp \
         src/backend/model/AbstractUserLocalImage.cpp \
         src/backend/model/LocalUserLocalImage.cpp \
-    src/backend/model/SwarmParticipantLocalImage.cpp \
-    src/backend/model/OneToOneChatLocalImage.cpp
+        src/backend/model/SwarmParticipantLocalImage.cpp \
+        src/backend/model/OneToOneChatLocalImage.cpp
 
 HEADERS += \
         src/gui/form_chatwidget.h \
@@ -156,9 +156,9 @@ HEADERS += \
         src/backend/model/AbstractUserLocalImage.h \
         src/backend/model/RemoteUserLocalImage.h \
         src/backend/model/LocalUserLocalImage.h \
-    src/backend/model/SwarmParticipantLocalImage.h \
-    src/backend/enums/RemoteUserOnlineStatus.h \
-    src/backend/model/OneToOneChatLocalImage.h
+        src/backend/model/SwarmParticipantLocalImage.h \
+        src/backend/enums/RemoteUserOnlineStatus.h \
+        src/backend/model/OneToOneChatLocalImage.h
 
 FORMS += src/gui/form_Main.ui \
 	src/gui/form_chatwidget.ui \
