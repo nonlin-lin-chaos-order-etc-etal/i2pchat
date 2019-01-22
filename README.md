@@ -6,11 +6,11 @@ Previously I2P Chat AKA I2P Qt Messenger.
 
 ## Current project status: Wreckage
 
-## For plans description, see: https://github.com/hypnosis-i2p/famchat/issues/85
+## For plans description, see: https://github.com/drmagma/i2pchat/issues/85
 
 ## Features
 
- * The communication goes «directly over i2p» from client to client, no server is required. Note: The connections to the so-called «seedless» servers were removed from this project; see: https://github.com/hypnosis-i2p/famchat/issues/40 . —hypn.
+ * The communication goes «directly over i2p» from client to client, no server is required. Note: The connections to the so-called «seedless» servers were removed from this project; see: https://github.com/drmagma/i2pchat/issues/40 . —hypn.
 
 ## How to run it
 
@@ -78,5 +78,5 @@ make
 ## List of relevant repositories
  
 I created two repos of github:
- * one for old files of I2P Messenger: https://github.com/hypnosis-i2p/I2PQtMessengerLegacy ;
- * another for development: https://github.com/hypnosis-i2p/famchat .
+ * one for old files of I2P Messenger: https://github.com/drmagma/I2PQtMessengerLegacy ;
+ * another for development: https://github.com/drmagma/i2pchat .
