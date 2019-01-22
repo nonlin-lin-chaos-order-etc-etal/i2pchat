@@ -77,6 +77,6 @@ make
 
 ## List of relevant repositories
  
-I created two repos of github:
+Two repos:
  * one for old files of I2P Messenger: <a href=https://github.com/drmagma/I2PQtMessengerLegacy>https://github.com/drmagma/I2PQtMessengerLegacy</a>;
  * another for development: <a href=https://github.com/drmagma/i2pchat>https://github.com/drmagma/i2pchat</a>.
