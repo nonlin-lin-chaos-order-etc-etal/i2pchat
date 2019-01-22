@@ -23,7 +23,8 @@
 
 #include <QObject>
 
-#include "AppContext.h"
+class AppContext;
+
 #include "FileTransferReceive.h"
 #include "FileTransferSend.h"
 

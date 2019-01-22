@@ -22,7 +22,8 @@
 
 #include <QtGui>
 
-#include "AppContext.h"
+class AppContext;
+
 #include "ui_form_rename.h"
 
 

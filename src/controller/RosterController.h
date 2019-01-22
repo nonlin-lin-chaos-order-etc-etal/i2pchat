@@ -6,7 +6,7 @@
 #include <QListWidgetItem>
 
 #include "AbstractRosterEntry.h"
-#include "AppContext.h"
+class AppContext;
 #include "OneToOneRosterEntry.h"
 #include "SwarmType1LocalImage.h"
 #include "SwarmType1RosterEntry.h"

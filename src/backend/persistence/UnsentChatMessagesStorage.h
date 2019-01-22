@@ -25,7 +25,6 @@
 #include <QStringList>
 #include <QSettings>
 
-
 class UnsentChatMessagesStorage
 {
 public:

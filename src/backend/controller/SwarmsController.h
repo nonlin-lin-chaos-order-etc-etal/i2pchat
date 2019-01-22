@@ -4,6 +4,8 @@
 #include <QObject>
 
 #include "AbstractGroupRosterEntry.h"
+#include "SwarmType1RosterEntry.h"
+#include "SwarmType1LocalImage.h"
 
 class SwarmsController : public QObject
 {
@@ -14,9 +16,9 @@ public:
     //FIXME unreliable, can lose business data
     QStringList pickNewIncomingMessagesAndClear(shared_ptr<AbstractGroupRosterEntry> group) {
         if(!group)return QStringList();
-        auto swarmRE = group->asSwarmType1();
-        if(!swarmRE)return QStringList();
-        auto swarm = swarmRE->getSwarm();
+        auto swarmRosterEntry = group->asSwarmType1();
+        if(!swarmRosterEntry)return QStringList();
+        auto swarm = swarmRosterEntry->getSwarm();
         return swarm->pickNewIncomingMessagesAndClear(); //FIXME unreliable, can lose business data
     }
 

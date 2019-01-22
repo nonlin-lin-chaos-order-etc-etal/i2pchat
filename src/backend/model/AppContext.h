@@ -27,13 +27,15 @@
 #include "UserBlockManager.h"
 #include "Connector.h"
 #include "SoundManager.h"
-#include "UserManager.h"
+class UserManager;
 #include "FileTransferManager.h"
 #include "Roster.h"
 #include "RosterController.h"
 #include "SwarmsController.h"
 
 using namespace std;
+
+class RosterController;
 
 class AppContext : public std::enable_shared_from_this<AppContext> {
 public:

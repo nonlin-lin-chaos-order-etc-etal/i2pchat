@@ -27,13 +27,15 @@
 #include "RosterController.h"
 #include "UserManager.h"
 
+#include "AppContextImpl.h"
+
 
 form_MainWindow::form_MainWindow(QString configDir, QWidget* parent)
     : QMainWindow(parent){
     setupUi(this);
 
     QApplication::setQuitOnLastWindowClosed(false);
-    appCtx= new AppContext(configDir);
+    appCtx = new AppContextImpl(configDir)->shared_from_this();
     connect (appCtx,SIGNAL(signUserStatusChanged()),this,
              SLOT(eventUserChanged()));
 

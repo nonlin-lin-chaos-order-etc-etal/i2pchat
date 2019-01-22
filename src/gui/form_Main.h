@@ -33,7 +33,8 @@
 #include <QMutex>
 #include <QMap>
 
-#include "AppContext.h"
+class AppContext;
+
 #include "FileTransferReceive.h"
 #include "ui_form_Main.h"
 #include "gui_icons.h"
@@ -129,7 +130,7 @@ private:
 
 
 
-    AppContext* appCtx;
+    std::shared_ptr<AppContext> appCtx;
     bool applicationIsClosing;
 
     form_newUserWindow* newUserWindow;

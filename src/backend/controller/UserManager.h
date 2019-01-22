@@ -23,9 +23,9 @@
 
 #include <QObject>
 
-#include "AppContext.h"
+class AppContext;
 #include "Roster.h"
-#include "UnsentChatMessagesStorage.h"
+class UnsentChatMessagesStorage;
 #include "LocalUserLocalImage.h"
 
 #include <memory>

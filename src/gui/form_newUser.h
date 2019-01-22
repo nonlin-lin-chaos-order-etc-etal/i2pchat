@@ -22,7 +22,8 @@
 
 #include <QtGui>
 
-#include "AppContext.h"
+class AppContext;
+
 #include "ui_form_newUser.h"
 
 class form_newUserWindow : public QDialog, private Ui::form_newUserWindow

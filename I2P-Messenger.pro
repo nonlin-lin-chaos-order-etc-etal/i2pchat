@@ -8,6 +8,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia core
 
 TEMPLATE = app
 
+#DEFINES += DEBUG_LOGGING_ON=1
+
 QMAKE_CXXFLAGS += -std=c++11
 QMAKE_LFLAGS   += -std=c++11
 QMAKE_CXXFLAGS += -Wall
@@ -26,9 +28,9 @@ INCLUDEPATH += . \
         src/backend/model \
         src/backend/model/roster \
         src/backend/model/roster/entries \
-        src/backend/modelImpl \
-        src/backend/modelImpl/roster \
-        src/backend/modelImpl/roster/entries \
+        src/backend/model/impl \
+        src/backend/model/impl/roster \
+        src/backend/model/impl/roster/entries \
         src/backend/persistence \
         src/backend/protocol \
         src/backend/sam \
@@ -54,16 +56,16 @@ SOURCES += \
         src/gui/form_newUser.cpp \
         src/gui/form_settingsgui.cpp \
         src/backend/error/ParseError.cpp \
-        src/backend/modelImpl/SwarmType1LocalImageImpl.cpp \
-        src/backend/modelImpl/SwarmType1WhiteListImpl.cpp \
-        src/backend/modelImpl/UserImpl.cpp \
-        src/backend/modelImpl/AppContextImpl.cpp \
-        src/backend/modelImpl/ChatParticipationImpl.cpp \
-        src/backend/modelImpl/roster/entries/AbstractRosterEntryImpl.cpp \
-        src/backend/modelImpl/roster/entries/AbstractGroupRosterEntryImpl.cpp \
-        src/backend/modelImpl/roster/entries/OneToOneRosterEntryImpl.cpp \
-        src/backend/modelImpl/roster/entries/SwarmType1RosterEntryImpl.cpp \
-        src/backend/modelImpl/roster/RosterImpl.cpp \
+        src/backend/model/impl/SwarmType1LocalImageImpl.cpp \
+        src/backend/model/impl/SwarmType1WhiteListImpl.cpp \
+        src/backend/model/impl/UserImpl.cpp \
+        src/backend/model/impl/AppContextImpl.cpp \
+        src/backend/model/impl/ChatParticipationImpl.cpp \
+        src/backend/model/impl/roster/entries/AbstractRosterEntryImpl.cpp \
+        src/backend/model/impl/roster/entries/AbstractGroupRosterEntryImpl.cpp \
+        src/backend/model/impl/roster/entries/OneToOneRosterEntryImpl.cpp \
+        src/backend/model/impl/roster/entries/SwarmType1RosterEntryImpl.cpp \
+        src/backend/model/impl/roster/RosterImpl.cpp \
         src/backend/persistence/UnsentChatMessagesStorage.cpp \
         src/backend/protocol/Connector.cpp \
         src/backend/protocol/FileTransferReceive.cpp \
@@ -111,16 +113,16 @@ HEADERS += \
         src/gui/form_createNewSwarmType1.h \
         src/gui/form_UserSearch.h \
         src/backend/error/ParseError.h \
-        src/backend/modelImpl/SwarmType1LocalImageImpl.h \
-        src/backend/modelImpl/ChatParticipationImpl.h \
-        src/backend/modelImpl/UserImpl.h \
-        src/backend/modelImpl/AppContextImpl.h \
-        src/backend/modelImpl/roster/RosterImpl.h \
-        src/backend/modelImpl/roster/entries/AbstractGroupRosterEntryImpl.h \
-        src/backend/modelImpl/roster/entries/OneToOneRosterEntryImpl.h \
-        src/backend/modelImpl/roster/entries/SwarmType1RosterEntryImpl.h \
-        src/backend/modelImpl/roster/entries/AbstractRosterEntryImpl.h \
-        src/backend/modelImpl/SwarmType1WhiteListImpl.h \
+        src/backend/model/impl/SwarmType1LocalImageImpl.h \
+        src/backend/model/impl/ChatParticipationImpl.h \
+        src/backend/model/impl/UserImpl.h \
+        src/backend/model/impl/AppContextImpl.h \
+        src/backend/model/impl/roster/RosterImpl.h \
+        src/backend/model/impl/roster/entries/AbstractGroupRosterEntryImpl.h \
+        src/backend/model/impl/roster/entries/OneToOneRosterEntryImpl.h \
+        src/backend/model/impl/roster/entries/SwarmType1RosterEntryImpl.h \
+        src/backend/model/impl/roster/entries/AbstractRosterEntryImpl.h \
+        src/backend/model/impl/SwarmType1WhiteListImpl.h \
         src/backend/persistence/UnsentChatMessagesStorage.h \
         src/backend/protocol/FileTransferSend.h \
         src/backend/protocol/FileTransferReceive.h \

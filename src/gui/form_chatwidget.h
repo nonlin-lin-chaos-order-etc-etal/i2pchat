@@ -38,7 +38,8 @@
 #include <QScrollBar>
 #include <QApplication>
 #include <QDesktopWidget>
-#include "AppContext.h"
+class AppContext;
+class RosterController;
 #include "TextEmotionChangerUtil.h"
 
 class ChatEventEater : public QObject

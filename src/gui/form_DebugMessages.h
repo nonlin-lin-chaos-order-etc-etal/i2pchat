@@ -23,7 +23,8 @@
 #include <QtGui>
 #include <QtGlobal> 
 
-#include "AppContext.h"
+class AppContext;
+
 #include "ui_form_DebugMessages.h"
 #include "DebugMessageManager.h"
 
@@ -50,7 +51,9 @@ class form_DebugMessages : public QDialog, private Ui::form_DebugMessages
 	
 	private:
 	    AppContext& core;
-        DebugMessageManager* DebugMessageManager;
+#ifdef DEBUG_LOGGING_ON
+        shared_ptr<DebugMessageManager> DebugMessageManager;
+#endif
 
 	    void closeEvent(QCloseEvent *e);
 	    void keyPressEvent(QKeyEvent* event); 
