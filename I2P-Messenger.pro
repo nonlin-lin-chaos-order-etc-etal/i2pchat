@@ -199,13 +199,4 @@ include(gitversion.pri)
 #	src/gui/icons/userred24.png \
 #	src/gui/icons/personal.ico \
 #	src/gui/icons/agt_forum48.png
-
-DISTFILES += \
-    src/gui/icons/add_group.png \
-    src/gui/icons/add_group48.png \
-    src/gui/icons/agt_forum48 .png \
-    src/gui/icons/irc_protocol.png \
-    src/gui/icons/rebuild.png \
-    src/gui/icons/userred24.png \
-    src/gui/icons/personal.ico \
-    src/OLD_CODE/Core_cpp.txt
+#	src/OLD_CODE/Core_cpp.txt
