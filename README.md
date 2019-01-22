@@ -1,8 +1,8 @@
-# 🌀 Fam Chat
+# 🌀 I2P Chat
 
 Anonymous private secure opensource chat using end-to-end encrypted transport.
 
-Previously I2P Chat AKA I2P Qt Messenger.
+Previously I2P Qt Messenger.
 
 ## Current project status: Wreckage
 
