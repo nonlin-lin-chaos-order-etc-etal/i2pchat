@@ -434,7 +434,7 @@
           <rect>
            <x>10</x>
            <y>30</y>
-           <width>241</width>
+           <width>262</width>
            <height>29</height>
           </rect>
          </property>
@@ -538,7 +538,7 @@ p, li { white-space: pre-wrap; }
          </rect>
         </property>
         <property name="title">
-         <string>Autoaccept Filerecive</string>
+         <string>Autoaccept Filereceive</string>
         </property>
         <widget class="QWidget" name="layoutWidget_19">
          <property name="geometry">
@@ -621,7 +621,7 @@ p, li { white-space: pre-wrap; }
          </rect>
         </property>
         <property name="title">
-         <string>Debug  - Logging</string>
+         <string>Debug Logging</string>
         </property>
         <widget class="QCheckBox" name="checkBox_DebugLog">
          <property name="enabled">
@@ -631,7 +631,7 @@ p, li { white-space: pre-wrap; }
           <rect>
            <x>10</x>
            <y>20</y>
-           <width>58</width>
+           <width>101</width>
            <height>21</height>
           </rect>
          </property>
@@ -645,15 +645,17 @@ p, li { white-space: pre-wrap; }
         <widget class="QLabel" name="label_37">
          <property name="geometry">
           <rect>
-           <x>140</x>
-           <y>20</y>
-           <width>251</width>
-           <height>31</height>
+           <x>120</x>
+           <y>0</y>
+           <width>311</width>
+           <height>51</height>
           </rect>
          </property>
          <property name="text">
-          <string>write debuginformations to the file DebugLog.txt
-in your settingsdirectory</string>
+          <string>Write debug logs and chat logs to the file DebugLog.txt in your settings directory</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
          </property>
         </widget>
        </widget>
@@ -776,7 +778,7 @@ p, li { white-space: pre-wrap; }
            <x>10</x>
            <y>60</y>
            <width>391</width>
-           <height>107</height>
+           <height>118</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_10">
@@ -2443,7 +2445,7 @@ p, li { white-space: pre-wrap; }
            <x>10</x>
            <y>310</y>
            <width>211</width>
-           <height>26</height>
+           <height>29</height>
           </rect>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_8">
