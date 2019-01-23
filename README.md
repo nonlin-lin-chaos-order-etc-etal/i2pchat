@@ -6,6 +6,8 @@ Previously I2P Qt Messenger.
 
 ## Current project status: Wreckage
 
+косяки в и2пчате. всё переломал там
+
 ## For plans description, see <a href="https://github.com/drmagma/i2pchat/issues/85">issue 85</a>.
 
 ## Features
