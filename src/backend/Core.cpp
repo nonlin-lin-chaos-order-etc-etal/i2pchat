@@ -167,8 +167,7 @@ QString CCore::calcSessionOptionString() const
     SessionOptionString.append("outbound.length="+settings.value("outbound.length","3").toString()+ " ");
 
     //SIGNATURE_TYPE
-    //TODO take settings into account. SIGNATURE_TYPE
-    //SessionOptionString.append("SIGNATURE_TYPE="+settings.value("Signature_Type","DSA_SHA1").toString()+ " ");
+    SessionOptionString.append("SIGNATURE_TYPE="+settings.value("Signature_Type","DSA_SHA1").toString()+ " ");
     //TODO check for valid string match DSA_SHA1 || ECDSA_SHA256_P256 ...
     //TODO which Signature_Type as default for best security ???
 

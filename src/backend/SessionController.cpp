@@ -109,8 +109,7 @@ void CSessionController::slotReadFromSocket()
                 this->mHandShakeWasSuccesfullDone=true;
                 if(mSamPrivKey=="") {
                     QSettings settings(mConfigPath+"/application.ini",QSettings::IniFormat);
-                    //TODO take settings into account. SIGNATURE_TYPE
-                    QString Signature="";//"SIGNATURE_TYPE=%s";
+                    QString Signature="SIGNATURE_TYPE=%s";
                     settings.beginGroup("Network");
                     Signature.replace("%s",settings.value("Signature_Type","DSA_SHA1").toString());
                     this->doDestGenerate(Signature);
