@@ -19,6 +19,8 @@
  ***************************************************************************/
 #include "DebugMessageManager.h"
 
+#include <QDebug>
+
 //cDebugMessageManager::cDebugMessageManager(CConnectionManager* ConnectionManager)
 CDebugMessageManager::CDebugMessageManager(QString Group)
 {
@@ -43,6 +45,8 @@ void CDebugMessageManager::doClearAllMessages()
 
 
 void CDebugMessageManager::slotNewIncomingDebugMessage(const QString Message){
+    qDebug() << Message;
+
 	while(mMessages.count()>= (signed int)mMaxMessageCount){
 		mMessages.removeLast();
 	}

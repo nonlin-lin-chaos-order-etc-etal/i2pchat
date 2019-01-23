@@ -154,7 +154,7 @@ QString CCore::calcSessionOptionString() const
 
     settings.beginGroup("Network");
     SessionOptionString.append("inbound.nickname="+settings.value("TunnelName","I2P-Messenger").toString()+" ");
-    ///FIXME TunnelName no whitespace allowed...
+    //FIXME TunnelName no whitespace allowed...
 
     //inbound options
     SessionOptionString.append("inbound.quantity="+settings.value("inbound.quantity","1").toString()+ " ");
@@ -167,9 +167,10 @@ QString CCore::calcSessionOptionString() const
     SessionOptionString.append("outbound.length="+settings.value("outbound.length","3").toString()+ " ");
 
     //SIGNATURE_TYPE
-    SessionOptionString.append("SIGNATURE_TYPE="+settings.value("Signature_Type","DSA_SHA1").toString()+ " ");
-    ///TODO check for valid string match DSA_SHA1 || ECDSA_SHA256_P256 ...
-    ///TODO which Signature_Type as default for best security ???
+    //TODO take settings into account. SIGNATURE_TYPE
+    //SessionOptionString.append("SIGNATURE_TYPE="+settings.value("Signature_Type","DSA_SHA1").toString()+ " ");
+    //TODO check for valid string match DSA_SHA1 || ECDSA_SHA256_P256 ...
+    //TODO which Signature_Type as default for best security ???
 
     settings.remove("SessionOptionString");//no longer used,- so erase it
     settings.endGroup();
