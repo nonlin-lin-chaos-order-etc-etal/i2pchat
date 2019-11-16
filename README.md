@@ -2,7 +2,7 @@
 
 ## Features
 
- * The communication goes «directly over i2p» from client to client, no server is required.[1] Note: The connections to the so-called «seedless» servers were removed from this project ; see : https://github.com/hypnosis-i2p/i2pchat/issues/40 . —hypn.
+ * The communication goes «directly over i2p» from client to client, no server is required.[1] Note: The connections to the so-called «seedless» servers were removed from this project ; see : https://github.com/nonlinear-chaos-order-etc/i2pchat/issues/40 . —hypn.
 
 ## How to run it
 
@@ -69,8 +69,8 @@ http://forum.i2p/viewtopic.php?t=2474
 ## List of relevant repositories (in Russian)
  
 я два репа на гитхабе создал
- * один для антиквариата по части и2п массажника https://github.com/hypnosis-i2p/I2PQtMessengerLegacy ;
- * другой для разработки https://github.com/hypnosis-i2p/i2pchat .
+ * один для антиквариата по части и2п массажника https://github.com/nonlinear-chaos-order-etc/I2PQtMessengerLegacy ;
+ * другой для разработки https://github.com/nonlinear-chaos-order-etc/i2pchat .
 
 ## Footnotes
 
