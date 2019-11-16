@@ -61,17 +61,14 @@ make
  * http://echelon.i2p/qti2pmessenger/ → old eche|on's site for I2P Chat (versions up to 0.2.24);
  * https://launchpad.net/~i2p.packages/+archive/ubuntu/i2p/+sourcepub/4824794/+listing-archive-extra → Kill Your TV's PPA (v.0.2.25).
  * http://git.repo.i2p/w/I2P-Messenger-QT.git/shortlog → original repo (fully merged into this /i2pchat)
- 
-## Forum thread (English)
+ * Forum thread (English) → http://forum.i2p/viewtopic.php?t=2474 (link is obsolete; forum is down since long ago)
 
-http://forum.i2p/viewtopic.php?t=2474
-
-## List of relevant repositories (in Russian)
+## List of relevant repositories
  
-я два репа на гитхабе создал
- * один для антиквариата по части и2п массажника https://github.com/nonlinear-chaos-order-etc/I2PQtMessengerLegacy ;
- * другой для разработки https://github.com/nonlinear-chaos-order-etc/i2pchat .
+I created two repos 
+ * legacy i2p messenger files https://github.com/nonlinear-chaos-order-etc/I2PQtMessengerLegacy
+ * for development https://github.com/nonlinear-chaos-order-etc/i2pchat .
 
 ## Footnotes
 
-[1] http://forum.i2p/viewtopic.php?p=11071#11071
+[1] http://forum.i2p/viewtopic.php?p=11071#11071 (link is obsolete; forum is down since long ago)
