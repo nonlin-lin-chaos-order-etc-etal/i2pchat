@@ -2,7 +2,7 @@
 
 ## Features
 
- * The communication goes «directly over i2p» from client to client, no server is required.[1] Note: The connections to the so-called «seedless» servers were removed from this project ; see : https://github.com/nonlinear-chaos-order-etc/i2pchat/issues/40 . —hypn.
+ * The communication goes «directly over i2p» from client to client, no server is required.[1] Note: The connections to the so-called «seedless» servers were removed from this project ; see : https://github.com/nonlinear-chaos-order-etc-etal/i2pchat/issues/40 . —hypn.
 
 ## How to run it
 
@@ -66,8 +66,8 @@ make
 ## List of relevant repositories
  
 I created two repos 
- * legacy i2p messenger files https://github.com/nonlinear-chaos-order-etc/I2PQtMessengerLegacy
- * for development https://github.com/nonlinear-chaos-order-etc/i2pchat .
+ * legacy i2p messenger files https://github.com/nonlinear-chaos-order-etc-etal/I2PQtMessengerLegacy
+ * for development https://github.com/nonlinear-chaos-order-etc-etal/i2pchat .
 
 ## Footnotes
 
