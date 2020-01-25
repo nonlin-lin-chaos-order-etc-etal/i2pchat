@@ -26,7 +26,7 @@ Now the development was resumed by Hypnosis-i2p and R4SAS, with a lot more folks
   
 ### History
 
-Original developer of this messenger went away.
+Original developer of this messenger went away. Hypnosis-i2p is continuing his work and the work of I2P folks (of echelon, kytv et al); the work is being done in a very low priority mode.
 
 ## License
 
@@ -65,7 +65,8 @@ make
 
 ## List of relevant repositories
  
-I created two repos 
+I created two repos:
+
  * legacy i2p messenger files https://github.com/nonlinear-chaos-order-etc-etal/I2PQtMessengerLegacy
  * for development https://github.com/nonlinear-chaos-order-etc-etal/i2pchat .
 
