@@ -26,7 +26,9 @@ Now the development was resumed by Hypnosis-i2p and R4SAS, with a lot more folks
   
 ### History
 
-Original developer of this messenger went away. Hypnosis-i2p is continuing his work and the work of I2P folks (of echelon, kytv et al); the work is being done in a very low priority mode.
+Past. Original developer of this messenger went away.
+
+Present. Hypnosis is continuing his work and the work of I2P folks (of Echelon, KYTV et al); the work is being done in a very low priority mode.
 
 ## License
 
