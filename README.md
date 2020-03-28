@@ -1,5 +1,7 @@
 # I2P Chat AKA I2P Qt Messenger
 
+None: this repo is being eventually migrated to https://github.com/i2pchat/i2pchat which should considered as the main. This repo is deprecated.
+
 ## Features
 
  * The communication goes «directly over i2p» from client to client, no server is required.[1] Note: The connections to the so-called «seedless» servers were removed from this project ; see : https://github.com/nonlinear-chaos-order-etc-etal/i2pchat/issues/40 . —hypn.
