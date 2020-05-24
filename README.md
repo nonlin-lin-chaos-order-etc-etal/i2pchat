@@ -4,7 +4,7 @@
 
 https://github.com/i2pchat/i2pchat has new important fixes
 
-Note: this repo is being eventually migrated to https://github.com/i2pchat/i2pchat which should considered as the main. This repo is deprecated.
+Note: this repo is being eventually migrated to https://github.com/i2pchat/i2pchat which should be considered as the main. This repo is deprecated.
 
 ## Features
 
