@@ -1,6 +1,10 @@
 # I2P Chat AKA I2P Qt Messenger
 
-None: this repo is being eventually migrated to https://github.com/i2pchat/i2pchat which should considered as the main. This repo is deprecated.
+## Updates now go here
+
+https://github.com/i2pchat/i2pchat has new important fixes
+
+Note: this repo is being eventually migrated to https://github.com/i2pchat/i2pchat which should considered as the main. This repo is deprecated.
 
 ## Features
 
